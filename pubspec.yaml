@@ -29,6 +29,7 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   animated_button: ^0.3.1
+  rive: ^0.13.2
   animated_text_kit: ^4.2.2
   awesome_dialog: ^3.1.0
   carousel_slider: ^5.1.1
