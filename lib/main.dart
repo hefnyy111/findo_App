@@ -1,4 +1,6 @@
 // main.dart
+import 'package:device_preview/device_preview.dart';
+import 'package:findo/faatures/authentocation/presentaition/splash_screen/splash_view.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -10,11 +12,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowMaterialGrid: true,
       title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const Text('git add .') ,
+      home: const ,
     );
   }
 }
+
