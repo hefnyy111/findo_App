@@ -117,7 +117,7 @@ VoidCallback? onSuffixPressed,
     ),
     focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(15),
-        borderSide: const BorderSide(color: Color_app), // اللون الأساسي
+        borderSide: const BorderSide(color: AppColors.kPrimaryColor), // اللون الأساسي
       ),
    ),
   );
@@ -148,7 +148,7 @@ VoidCallback? onSuffixPressed,
   required VoidCallback? functionButton1,
   required String? textbutton1,
   required VoidCallback? functionButton2,
-  required String? textbutton2,
+  required String? textbutton2
  }) {
   showDialog(
     context: context, 
@@ -194,7 +194,7 @@ VoidCallback? onSuffixPressed,
               width: double.infinity,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Color_app,
+                  backgroundColor: AppColors.kPrimaryColor,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(25),
                   ),
@@ -228,7 +228,7 @@ VoidCallback? onSuffixPressed,
                 child: Text(
                   textbutton2!,
                   style: TextStyle(
-                    color: Color_app,
+                    color: AppColors.kPrimaryColor,
                     fontSize: 18.0,
                     fontWeight: FontWeight.w600,
                   ),
