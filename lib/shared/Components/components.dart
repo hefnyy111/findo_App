@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
  // ====================== Navigator and finish ======================
-void NavigatorAndFinist(context , Widget) {
+ void NavigatorAndFinist(context , Widget) {
   Navigator.pushAndRemoveUntil(
     context, 
     MaterialPageRoute(builder: (context) => Widget),
@@ -22,14 +22,14 @@ void NavigatorAndFinist(context , Widget) {
     size: 25
   ),
 );
- }
+}
  
  // ====================== Button field ======================
  Widget defauilButton({
   required VoidCallback? Functionn,
   required String text,
   required Color? color_borderside,
-  Color? backColor,
+  Color? backgroundColor,
   String? image,
   required Color? colorText,
   required double? width,
@@ -44,7 +44,7 @@ void NavigatorAndFinist(context , Widget) {
   child: OutlinedButton(
     onPressed: Functionn,
     style: OutlinedButton.styleFrom(
-      backgroundColor: backColor,
+      backgroundColor: backgroundColor,
       side: BorderSide(color: color_borderside!, width: 1),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
       padding: padding_vertical != null ? EdgeInsets.symmetric(vertical: padding_vertical) : EdgeInsets.symmetric(vertical: 14),
@@ -138,5 +138,109 @@ VoidCallback? onSuffixPressed,
       backgroundColor: color,
 
       ),
+  );
+ }
+
+ // ====================== Message Diaolg ======================
+ void ShowDialogMessage(BuildContext context, {
+  required String text1,
+  required String text2,
+  required VoidCallback? functionButton1,
+  required String? textbutton1,
+  required VoidCallback? functionButton2,
+  required String? textbutton2,
+ }) {
+  showDialog(
+    context: context, 
+    barrierDismissible: false,
+    builder: (context) => Dialog(
+     backgroundColor: Colors.white,
+     shape: RoundedRectangleBorder(borderRadius: BorderRadiusGeometry.circular(16)),
+     child: ConstrainedBox(
+        constraints: BoxConstraints(
+          maxWidth: 300,
+        ),
+      child: Padding(
+        padding: EdgeInsetsGeometry.symmetric(vertical: 20, horizontal: 15),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            // ========== Text ==========
+            Text(
+              text1 ?? "",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 20.0,
+              ),
+            ),
+            // ========== Sizebox ==========
+            const SizedBox(height: 15),
+            // ========== Text ==========
+            Text(
+              text2 ?? "",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Colors.black87,
+                fontSize: 17.0
+              ),
+            ),
+            // ========== Sizebox ==========
+            const SizedBox(height: 25),
+            // ========== Button 1 ==========
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Color_app,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(25),
+                  ),
+                  padding: const EdgeInsets.symmetric(vertical: 12),
+                ),
+                onPressed: functionButton1,
+                child: Text(
+                  textbutton1!,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 18.0,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ),
+            ),
+            // ========== Sizebox ==========
+            const SizedBox(height: 10),
+            // ========== Button 2 ==========
+            SizedBox(
+              width: double.infinity,
+              child: OutlinedButton(
+                style: OutlinedButton.styleFrom(
+                  side: BorderSide(color: Colors.transparent),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(25),
+                  ),
+                  padding: const EdgeInsets.symmetric(vertical: 12),
+                ),
+                onPressed: functionButton2,
+                child: Text(
+                  textbutton2!,
+                  style: TextStyle(
+                    color: Color_app,
+                    fontSize: 18.0,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ),
+            ),
+
+          ],
+        ),
+        ),
+
+    ),
+    ),
   );
  }
