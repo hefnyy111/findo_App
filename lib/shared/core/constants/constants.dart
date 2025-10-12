@@ -4,5 +4,5 @@ import 'package:flutter/material.dart';
 class AppColors {
   static const kPrimaryColor = Color(0xFF5FD4D8);
   static const kbackgroundColor =  Colors.black;
-
+   
 }
