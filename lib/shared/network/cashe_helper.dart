@@ -9,6 +9,7 @@ class CasheHelper {
     sharedPreferences = await SharedPreferences.getInstance();
   }
   
+
   // ====================== Save data ======================
   static Future<bool> saveData({
     required String key,
@@ -32,5 +33,5 @@ class CasheHelper {
   }) {
     return sharedPreferences!.remove(key);
   }
-
+ 
 }

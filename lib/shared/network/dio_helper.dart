@@ -27,6 +27,7 @@ class DioHelper {
       queryParameters: query,
     );
   }
+  
   // ====================== Post Data ======================
   static Future<Response> postData({
     required String url,
@@ -42,6 +43,7 @@ class DioHelper {
       data: data
     );
   }
+
   // ====================== Del Data ======================
   static Future<Response> deleteData({
     required String url,
