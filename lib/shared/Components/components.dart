@@ -4,16 +4,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 // ====================== Navigator and finish ======================
-void NavigatorAndFinist(context, Widget) {
+void navigatorAndFinish(context, widget) {
   Navigator.pushAndRemoveUntil(
     context,
-    MaterialPageRoute(builder: (context) => Widget),
+    MaterialPageRoute(builder: (context) => widget),
     (Route<dynamic> route) => false,
   );
 }
 
 // ====================== Icon back ======================
-Widget defauilIcon({required VoidCallback funtions}) {
+Widget customIcon({required VoidCallback funtions}) {
   return IconButton(
     onPressed: funtions,
     icon: Icon(Icons.close, color: Colors.white, size: 25),
@@ -21,32 +21,31 @@ Widget defauilIcon({required VoidCallback funtions}) {
 }
 
 // ====================== Button field ======================
-Widget defauilButton({
-  required VoidCallback? Functionn,
+Widget customButton({
+  required VoidCallback? function,
   required String text,
-  required Color? color_borderside,
+  required Color? colorBorderside,
   Color? backColor,
   String? image,
   required Color? colorText,
   required double? width,
-  double? height,
-  double? Fontsize,
-  double? padding_vertical,
+
+  double? fontsize,
+  double? paddingVertical,
 
   bool? enablee,
 }) => SizedBox(
   width: width,
-  height: height,
   child: OutlinedButton(
-    onPressed: Functionn,
+    onPressed: function,
     style: OutlinedButton.styleFrom(
       backgroundColor: backColor,
-      side: BorderSide(color: color_borderside!, width: 1),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
+      side: BorderSide(color: colorBorderside!, width: 1),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       padding:
-          padding_vertical != null
-              ? EdgeInsets.symmetric(vertical: padding_vertical)
-              : EdgeInsets.symmetric(vertical: 14),
+          paddingVertical != null
+              ? EdgeInsets.symmetric(vertical: paddingVertical)
+              : EdgeInsets.symmetric(vertical: 10),
     ),
 
     child: Row(
@@ -68,7 +67,7 @@ Widget defauilButton({
           text,
           style: TextStyle(
             color: colorText,
-            fontSize: Fontsize != null ? Fontsize : 17.0,
+            fontSize: fontsize ?? 17.0,
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -78,7 +77,7 @@ Widget defauilButton({
 );
 
 // ====================== Form field ======================
-Widget defauilFieldd({
+Widget customTextFormField({
   required TextEditingController controller,
   required String? Function(String?) validate,
   bool readOnly = false,
@@ -126,7 +125,7 @@ Widget defauilFieldd({
 }
 
 // ====================== Message notes ======================
-void defaultMessage(
+void customSnackBarMessage(
   BuildContext context, {
   required String text,
   required Color color,

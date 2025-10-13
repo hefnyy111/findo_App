@@ -1,5 +1,5 @@
-import 'package:findo/shared/Components/custom_button_border.dart';
-import 'package:findo/shared/Components/custom_button.dart';
+import 'package:findo/shared/Components/components.dart';
+import 'package:findo/shared/core/constants/constants.dart';
 import 'package:flutter/material.dart';
 
 class GetStartedView extends StatelessWidget {
@@ -8,21 +8,44 @@ class GetStartedView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          Image.asset('assets/Images/logo/logo_findo.png'),
-          Text(
-            'Welcome to Findo',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 20,
-              fontWeight: FontWeight.w500,
-              fontFamily: 'Roboto',
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            // Image.asset(
+            //   'assets/Images/logo_findo.png',
+            //   height: 100,
+            //   width: 100,
+            // ),
+            SizedBox(height: 20),
+            Text(
+              'Welcome to Findo',
+              style: TextStyle(
+                color: AppColors.kPrimaryColor,
+                fontSize: 20,
+                fontWeight: FontWeight.w500,
+              ),
             ),
-          ),
-          CustomButtonBorder(title: 'Get Started'),
-          CustomButton(text: 'Sign in'),
-        ],
+            SizedBox(height: 20),
+            customButton(
+              function: () {},
+              text: 'Get Started',
+              colorBorderside: Colors.white,
+              colorText: Colors.white,
+              width: double.infinity,
+              backColor: AppColors.kPrimaryColor,
+            ),
+            SizedBox(height: 20),
+            customButton(
+              function: () {},
+              text: 'Sign In',
+              colorBorderside: AppColors.kPrimaryColor,
+              colorText: AppColors.kPrimaryColor,
+              width: double.infinity,
+            ),
+          ],
+        ),
       ),
     );
   }

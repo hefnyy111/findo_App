@@ -3,10 +3,11 @@ import 'package:findo/faatures/authentocation/presentaition/splash_screen/splash
 import 'package:go_router/go_router.dart';
 
 class AppRouter {
-   static const kGetStartedView= '/getStartedView';
+  static const kGetStartedView = '/getStartedView';
   static final router = GoRouter(
-    routes: [GoRoute(path: '/', builder: (context, state) => SplashView()),
-    GoRoute(path: kGetStartedView, builder: (context, state) => GetStartedView())],
+    routes: [
+      // GoRoute(path: '', builder: (context, state) => SplashView()),
+      GoRoute(path: '/', builder: (context, state) => GetStartedView()),
+    ],
   );
-  
 }

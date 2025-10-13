@@ -1,6 +1,5 @@
 // main.dart
 
-import 'package:findo/faatures/authentocation/presentaition/splash_screen/splash_view.dart';
 import 'package:findo/shared/core/constants/app_router.dart';
 import 'package:flutter/material.dart';
 
@@ -14,13 +13,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       routerConfig: AppRouter.router,
-      debugShowMaterialGrid: true,
-      title: 'Flutter Demo',
+
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        scaffoldBackgroundColor: Colors.white,
+        fontFamily: 'SF-Pro-Text-Bold',
       ),
-    
     );
   }
 }
-
