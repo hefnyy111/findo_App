@@ -5,4 +5,6 @@ class AppColors {
   static const kPrimaryColor = Color(0xFF5FD4D8);
   static const kbackgroundColor =  Colors.black;
   static const kGreyColor = Color(0xFF9E9E9E);
+  static const kbackGroundField = Color(0xFF1E1F23);
+  static const kbutton_disabel = Color.fromARGB(255, 20, 47, 48);
 }

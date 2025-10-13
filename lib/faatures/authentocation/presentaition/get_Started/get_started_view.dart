@@ -57,7 +57,9 @@ class GetStartedView extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: customButton(
-                function: () {},
+                function: () {
+                  print('test');
+                },
                 text: 'Get Started',
                 colorBorderside: AppColors.kPrimaryColor,
                 colorText: Colors.black,
