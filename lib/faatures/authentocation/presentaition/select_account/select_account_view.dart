@@ -274,7 +274,7 @@ class SelectAccountView extends StatelessWidget {
                 ],
               ),
             ),
-                // ====================== Button naviage ======================
+                // ====================== Button naviage =====================
             bottomNavigationBar: Container(
             width: double.infinity,
             height: 55.0,
