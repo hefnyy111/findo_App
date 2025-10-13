@@ -40,7 +40,7 @@ class SelectAccountView extends StatelessWidget {
                   ),
                   // ====================== Sizebox ======================
                   const SizedBox(height: 40.0),
-                  // ====================== Create your account ======================
+                  // ====================== Create your account =====================
                   const Text(
                     'Create Your Account',
                     textAlign: TextAlign.center,
