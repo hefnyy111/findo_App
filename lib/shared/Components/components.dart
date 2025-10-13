@@ -66,7 +66,6 @@ Widget customButton({
           style: TextStyle(
             color: colorText,
             fontSize: fontsize != null ? fontsize : 18.0,
-            fontWeight: FontWeight.bold,
           ),
         ),
       ],
