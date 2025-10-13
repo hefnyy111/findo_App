@@ -1,9 +1,11 @@
 // faatures/authentocation/presentaition/splash_screen/splash_view.dart
 import 'package:findo/faatures/authentocation/presentaition/splash_screen/manager/splash_cubit.dart';
 import 'package:findo/faatures/authentocation/presentaition/splash_screen/manager/splash_states.dart';
+import 'package:findo/shared/core/constants/app_router.dart';
 import 'package:findo/shared/core/constants/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class SplashView extends StatelessWidget {
   @override
@@ -13,7 +15,7 @@ class SplashView extends StatelessWidget {
       child: BlocConsumer<SplashCubit, SplashStates>(
         listener: (context, state) {
           if (state is SplashTimeFinishStates) {
-            print('done');
+            GoRouter.of(context).push(AppRouter.kGetStartedView);
           }
         },
         builder: (context, state) {
@@ -35,12 +37,11 @@ Widget BuildSplash() => Column(
     // ====================== Image ======================
     Center(
       child: Image(
-        image: AssetImage('assets/images/logo/logo_findo.png'),
+        image: AssetImage('assets/Images/logo_findo.png'),
         height: 150.0,
         width: 150.0,
         fit: BoxFit.cover,
       ),
     ),
-
   ],
 );
