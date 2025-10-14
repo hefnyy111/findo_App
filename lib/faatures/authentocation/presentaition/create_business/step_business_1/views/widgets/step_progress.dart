@@ -1,3 +1,4 @@
+// faatures/authentocation/presentaition/create_business/step_business_1/views/widgets/step_progress.dart
 import 'package:flutter/material.dart';
 
 class StepProgress extends StatelessWidget {
@@ -24,6 +25,7 @@ class StepProgress extends StatelessWidget {
                 child: Stack(
                   clipBehavior: Clip.none,
                   children: [
+                    // ******************************* Container
                     Container(
                       height: 4,
                       decoration: BoxDecoration(
@@ -31,6 +33,7 @@ class StepProgress extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10),
                       ),
                     ),
+                    // ******************************* FractionallySizedBox
                     FractionallySizedBox(
                       widthFactor: progress,
                       child: Container(
@@ -41,6 +44,7 @@ class StepProgress extends StatelessWidget {
                         ),
                       ),
                     ),
+                    // ******************************* Positioned
                     Positioned(
                       right: 120,
                       bottom: -15,
@@ -62,13 +66,15 @@ class StepProgress extends StatelessWidget {
                         ),
                       ),
                     ),
+                    
                   ],
                 ),
               ),
             ],
           ),
-
+          // ******************************* Sizebox
           const SizedBox(height: 10),
+          // ******************************* Align
           Align(
             alignment: Alignment.centerRight,
             child: Text(

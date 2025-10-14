@@ -1,10 +1,10 @@
-// faatures/authentocation/presentaition/select_account/select_account_view.dart
-import 'package:findo/faatures/authentocation/presentaition/create_business/step_business_1/action/views/widgets/custom_raw.dart';
+// faatures/authentocation/presentaition/select_account/views/select_account_view.dart
+import 'package:findo/shared/Components/custom_buttonNavigation.dart';
 import 'package:findo/faatures/authentocation/presentaition/select_account/Cubit/select_account_cubit.dart';
 import 'package:findo/faatures/authentocation/presentaition/select_account/Cubit/select_account_states.dart';
-import 'package:findo/faatures/authentocation/presentaition/select_account/action/views/widgets/custom_continue_button.dart';
-import 'package:findo/faatures/authentocation/presentaition/select_account/action/views/widgets/custom_select_acount.dart';
-import 'package:findo/faatures/authentocation/presentaition/select_account/action/views/widgets/progress_indicator.dart'
+import 'package:findo/faatures/authentocation/presentaition/select_account/views/widgets/custom_continue_button.dart';
+import 'package:findo/faatures/authentocation/presentaition/select_account/views/widgets/custom_select_acount.dart';
+import 'package:findo/faatures/authentocation/presentaition/select_account/views/widgets/progress_indicator.dart'
     show CustomProgressIndicator;
 import 'package:findo/shared/core/constants/constants.dart';
 import 'package:flutter/material.dart';
@@ -38,7 +38,7 @@ class SelectAccountView extends StatelessWidget {
                     style: TextStyle(
                       fontFamily: 'SF-Pro-Rounded-Bold',
                       color: AppColors.kPrimaryColor,
-                      fontSize: 30,
+                      fontSize: 32,
                     ),
                   ),
                   // ====================== Sizebox ======================
@@ -60,7 +60,7 @@ class SelectAccountView extends StatelessWidget {
                     'What brings you here?',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      color: Colors.white70,
+                      color: AppColors.ksubTitle,
                       fontSize: 20,
                       fontWeight: FontWeight.w500,
                       height: 1.5,
@@ -86,7 +86,7 @@ class SelectAccountView extends StatelessWidget {
             ),
 
             // ====================== Button naviage =====================
-            bottomNavigationBar: CustomRow(
+            bottomNavigationBar: CustomButtomNavigationBar(
               text1: 'Have an acount Already',
               text2: 'Sign In',
               onTap: () {},

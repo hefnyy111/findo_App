@@ -11,11 +11,12 @@ class SplashView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => SplashCubit(),
+      create: (context) => SplashCubit()..LoadingSplash(),
       child: BlocConsumer<SplashCubit, SplashStates>(
         listener: (context, state) {
           if (state is SplashTimeFinishStates) {
-            GoRouter.of(context).push(AppRouter.kGetStartedView);
+       
+            GoRouter.of(context).go(AppRouter.kGetStartedView);
           }
         },
         builder: (context, state) {
@@ -37,7 +38,7 @@ Widget BuildSplash() => Column(
     // ====================== Image ======================
     Center(
       child: Image(
-        image: AssetImage('assets/Images/logo_findo.png'),
+        image: AssetImage('assets/logo_findo.png'),
         height: 150.0,
         width: 150.0,
         fit: BoxFit.cover,

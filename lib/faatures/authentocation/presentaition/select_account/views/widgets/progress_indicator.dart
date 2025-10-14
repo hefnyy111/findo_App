@@ -1,9 +1,9 @@
+// faatures/authentocation/presentaition/select_account/views/widgets/progress_indicator.dart
 
 import 'package:findo/shared/core/constants/constants.dart' show AppColors;
 
-import '../../../Cubit/select_account_cubit.dart';
+import '../../Cubit/select_account_cubit.dart';
 import 'package:flutter/material.dart';
-
 
 class CustomProgressIndicator extends StatelessWidget {
   const CustomProgressIndicator({super.key, required this.cubit_select});
@@ -15,21 +15,18 @@ class CustomProgressIndicator extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
+         // ====================== Icon1 ======================
         Icon(
           Icons.circle,
-          color:
-              cubit_select.selectedIndex == 1
-                  ? AppColors.kPrimaryColor
-                  : AppColors.kbackGroundField,
+          color: cubit_select.selectedIndex == 1 ? AppColors.kPrimaryColor : AppColors.kbackGroundField,
           size: 15.0,
         ),
+         // ====================== Sizebox ======================
         SizedBox(width: 10.0),
+         // ====================== Icon2 ======================
         Icon(
           Icons.circle,
-          color:
-              cubit_select.selectedIndex == 2
-                  ? AppColors.kPrimaryColor
-                  : AppColors.kbackGroundField,
+          color: cubit_select.selectedIndex == 2 ? AppColors.kPrimaryColor : AppColors.kbackGroundField,
           size: 15.0,
         ),
       ],

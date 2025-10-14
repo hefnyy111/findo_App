@@ -94,7 +94,7 @@ Widget customTextFormField({
     readOnly: readOnly,
     keyboardType: keyboard,
     onChanged: onChanged,
-    style: TextStyle(color: Colors.white, fontSize: 16),
+    style: TextStyle(color: Colors.white, fontSize: 14),
     cursorColor: Colors.white,
     focusNode: focusNode,
     inputFormatters: inputFormatters,

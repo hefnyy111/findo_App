@@ -1,5 +1,6 @@
 // faatures/authentocation/presentaition/get_Started/get_started_view.dart
 // faatures/authentocation/presentaition/get_Started/get_started_view.dart
+import 'package:findo/faatures/authentocation/presentaition/get_Started/action/get_started_action.dart';
 import 'package:findo/shared/Components/components.dart';
 import 'package:findo/shared/core/constants/constants.dart';
 
@@ -20,7 +21,7 @@ class GetStartedView extends StatelessWidget {
           children: [
             // ====================== Image ======================
             Image.asset(
-              'assets/Images/logo_findo.png',
+              'assets/logo_findo.png',
               height: 135,
               width: 135,
             ),
@@ -57,9 +58,7 @@ class GetStartedView extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: customButton(
-                function: () {
-                  print('test');
-                },
+                function: () => GetStartedAction.getStartedButtonPress(context, "go_getStarted"),
                 text: 'Get Started',
                 colorBorderside: AppColors.kPrimaryColor,
                 colorText: Colors.black,
@@ -73,7 +72,7 @@ class GetStartedView extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: customButton(
-                function: () {},
+                function: () => GetStartedAction.getStartedButtonPress(context, 'go_signIn'),
                 text: 'Sign In',
                 colorBorderside: AppColors.kPrimaryColor,
                 colorText: Colors.white,

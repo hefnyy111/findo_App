@@ -1,3 +1,4 @@
+// faatures/authentocation/presentaition/select_account/views/widgets/custom_select_acount.dart
 import 'package:findo/faatures/authentocation/presentaition/select_account/Cubit/select_account_cubit.dart';
 import 'package:findo/shared/core/constants/constants.dart' show AppColors;
 import 'package:flutter/material.dart';
@@ -16,11 +17,7 @@ class CustomSelectAcount extends StatelessWidget {
         // ====== Button 1 ======
         Expanded(
           child: GestureDetector(
-            onTap:
-                () => cubit_select.changeSelection(
-                  1,
-                  customFunction: () => print('1'),
-                ),
+            onTap: () => cubit_select.changeSelection(1,customFunction: () => print('1'),),
 
             child: Container(
               child: AnimatedContainer(
@@ -104,11 +101,7 @@ class CustomSelectAcount extends StatelessWidget {
         // ====== Button 2 ======
         Expanded(
           child: GestureDetector(
-            onTap:
-                () => cubit_select.changeSelection(
-                  2,
-                  customFunction: () => print('2'),
-                ),
+            onTap: () => cubit_select.changeSelection(2,customFunction: () => print('2'),),
 
             child: Container(
               child: AnimatedContainer(

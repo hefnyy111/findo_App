@@ -1,30 +1,32 @@
-// faatures/authentocation/presentaition/create_business/step_business_2/step_business_view2.dart
-import 'package:findo/faatures/authentocation/presentaition/create_business/step_business_1/views/widgets/step_progress.dart';
-import 'package:findo/faatures/authentocation/presentaition/create_business/step_business_2/action/step_business_action2.dart';
-import 'package:findo/faatures/authentocation/presentaition/create_business/step_business_2/manager/step_business_cubit2.dart';
-import 'package:findo/faatures/authentocation/presentaition/create_business/step_business_2/manager/step_business_states2.dart';
-import 'package:findo/shared/Components/components.dart';
+// faatures/authentocation/presentaition/create_business/step_business_1/views/step_business_view1.dart
+import 'package:findo/faatures/authentocation/presentaition/create_business/step_business_1/action/step_business_action.dart';
+import 'package:findo/faatures/authentocation/presentaition/create_business/step_business_1/manager/step_business_cubit1.dart';
+import 'package:findo/faatures/authentocation/presentaition/create_business/step_business_1/manager/step_business_states1.dart';
 import 'package:findo/shared/Components/custom_buttonNavigation.dart';
+import 'package:findo/shared/Components/components.dart';
 import 'package:findo/shared/core/constants/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shimmer_animation/shimmer_animation.dart';
 
-class StepBusinessView2 extends StatelessWidget {
+import 'widgets/step_progress.dart';
 
+class StepBusinessView1 extends StatelessWidget {
+  const StepBusinessView1({super.key});
+  
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create:(context) => StepBusinessCubit2(),
-      child: BlocConsumer<StepBusinessCubit2,StepBusinessStates2>(
-        listener:(context, state) {},
+      create: (context) => StepBusinessCubit1(),
+      child: BlocConsumer<StepBusinessCubit1, StepBusinessStates1>(
+        listener: (context, state) {},
         builder: (context, state) {
-          var cubit_stepBusiness2 = StepBusinessCubit2.get(context);
+          var cubit_stepBusiness1 = StepBusinessCubit1.get(context);
           return Scaffold(
             body: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24.0),
               child: Form(
-                key: cubit_stepBusiness2.forkey,
+                key: cubit_stepBusiness1.step1_forKey,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -54,12 +56,12 @@ class StepBusinessView2 extends StatelessWidget {
                     // ******************************* Sizebox
                     SizedBox(height: 40),
                     // ******************************* Step Progress
-                    StepProgress(currentStep: 2, totalSteps: 5),
+                    StepProgress(currentStep: 1, totalSteps: 5),
                     // ******************************* Sizebox
                     SizedBox(height: 20),
-                    // ******************************* Information
+                    // ******************************* Findo & Activiy
                     Text(
-                      'Information',
+                      'Findo & Activity',
                       style: TextStyle(
                         fontFamily: 'SF-Pro-Rounded-Bold',
                         fontSize: 21,
@@ -69,10 +71,9 @@ class StepBusinessView2 extends StatelessWidget {
                     ),
                     // ******************************* Sizebox
                     SizedBox(height: 20),
-
-                    // ******************************* full name
+                    // ******************************* Tell us
                     Text(
-                      'Full Name (Manager)',
+                      'Tell us about your Business',
                       style: TextStyle(
                         fontSize: 15,
                         fontWeight: FontWeight.w500,
@@ -83,20 +84,20 @@ class StepBusinessView2 extends StatelessWidget {
                     SizedBox(height: 15),
                     // ******************************* Field 1
                     customTextFormField(
-                      controller: cubit_stepBusiness2.full_name,
+                      controller: cubit_stepBusiness1.controller_1,
                       validate: (value) {
+
                       },
                       onChanged: (value) {
-                      cubit_stepBusiness2.changeButton(value, context, custom_functionButton: () => StepBusinessAction2.StepBusiness2ButtonPress(context, "go_step3"),);
+                      cubit_stepBusiness1.changeButton(value, context, custom_functionButton: () => StepBusinessAction.StepBusinessButtonPress(context, "go_step2"),);
                       },
-                      text: 'Enter your Fullname',
+                      text: 'Business Name',
                     ),
                     // ******************************* Sizebox
                     SizedBox(height: 20),
-
-                    // ******************************* National id
+                    // ******************************* Business Category
                     Text(
-                      'National id',
+                      'Business Category',
                       style: TextStyle(
                         fontSize: 15,
                         fontWeight: FontWeight.w500,
@@ -105,44 +106,18 @@ class StepBusinessView2 extends StatelessWidget {
                     ),
                     // ******************************* Sizebox
                     SizedBox(height: 15),
-                    // ******************************* Field 2
+                    // ******************************* Field2
                     customTextFormField(
-                      controller: cubit_stepBusiness2.National_id,
+                      controller: cubit_stepBusiness1.controller_2,
                       validate: (value) {
                       },
                       onChanged: (value) {
-                        cubit_stepBusiness2.changeButton(value, context, custom_functionButton: () => StepBusinessAction2.StepBusiness2ButtonPress(context, "go_step3"),);
+                        cubit_stepBusiness1.changeButton(value, context, custom_functionButton: () => StepBusinessAction.StepBusinessButtonPress(context, "go_step2"),);
                       },
-                      text: 'Enter your National id',
-                    ),
-                    // ******************************* Sizebox
-                    SizedBox(height: 20),
-
-                    // ******************************* Phone
-                    Text(
-                      'Phone',
-                      style: TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.w500,
-                        color: AppColors.ksubTitle,
-                      ),
-                    ),
-                    // ******************************* Sizebox
-                    SizedBox(height: 15),
-                    // ******************************* Field 3 
-                    customTextFormField(
-                      controller: cubit_stepBusiness2. phone,
-                      keyboard: TextInputType.phone,
-                      validate: (value) {
-                      },
-                      onChanged: (value) {
-                        cubit_stepBusiness2.changeButton(value, context, custom_functionButton: () => StepBusinessAction2.StepBusiness2ButtonPress(context, "go_step3"),);
-                      },
-                      text: 'Enter your phone',
+                      text: 'Select a Category',
                     ),
                     // ******************************* Sizebox
                     SizedBox(height: 50),
-
                     // ******************************* Button
                     ClipRRect(
                       borderRadius: BorderRadius.circular(25),
@@ -151,13 +126,13 @@ class StepBusinessView2 extends StatelessWidget {
                         interval: Duration(seconds: 1),
                         color: Colors.white,
                         colorOpacity: 1,
-                        enabled: cubit_stepBusiness2.startShimmer,
+                        enabled: cubit_stepBusiness1.startShimmer,
                         direction: ShimmerDirection.fromLBRT(),
                         child: customButton(
-                          function: cubit_stepBusiness2.functionButton,
+                          function: cubit_stepBusiness1.functionButton,
                           text: "Continue",
-                          colorBorderside: cubit_stepBusiness2.buttonEnable,
-                          backColor: cubit_stepBusiness2.buttonEnable,
+                          colorBorderside: cubit_stepBusiness1.buttonEnable,
+                          backColor: cubit_stepBusiness1.buttonEnable,
                           colorText: Colors.black,
                           width: double.infinity,
                         ),
@@ -175,9 +150,8 @@ class StepBusinessView2 extends StatelessWidget {
               onTap: () {},
             ),
           );
-        }, 
-
-        ),
-      );
+        },
+      ),
+    );
   }
 }
