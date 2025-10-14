@@ -2,7 +2,7 @@
 import 'package:findo/shared/core/constants/app_router.dart';
 import 'package:flutter/material.dart';
 
-import 'faatures/authentocation/presentaition/select_account/select_account_view.dart';
+import 'faatures/authentocation/presentaition/select_account/action/views/select_account_view.dart';
 
 void main() {
   runApp(const MyApp());

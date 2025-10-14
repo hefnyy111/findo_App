@@ -1,7 +1,7 @@
 // shared/core/constants/app_router.dart
 import 'package:device_preview/device_preview.dart';
 import 'package:findo/faatures/authentocation/presentaition/get_Started/get_started_view.dart';
-import 'package:findo/faatures/authentocation/presentaition/select_account/select_account_view.dart';
+import 'package:findo/faatures/authentocation/presentaition/select_account/action/views/select_account_view.dart';
 import 'package:findo/faatures/authentocation/presentaition/splash_screen/splash_view.dart';
 import 'package:go_router/go_router.dart';
 
