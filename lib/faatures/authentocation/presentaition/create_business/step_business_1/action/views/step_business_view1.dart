@@ -95,8 +95,7 @@ class StepBusinessView1 extends StatelessWidget {
                   ),
                   SizedBox(height: 30),
 
-                  SizedBox(height: 100),
-                  //============= Continue Button ==============
+                  // ============= Continue Button ==============
                   CustomContinueButton(cubit_select: cubit_select),
                   CustomRow(
                     text1: 'Already have an account?',

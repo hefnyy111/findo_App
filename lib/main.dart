@@ -1,25 +1,23 @@
 // main.dart
+import 'package:device_preview/device_preview.dart';
 import 'package:findo/shared/core/constants/app_router.dart';
 import 'package:flutter/material.dart';
 
-import 'faatures/authentocation/presentaition/select_account/action/views/select_account_view.dart';
-
 void main() {
-  runApp(const MyApp());
+  runApp(DevicePreview(enabled: true, builder: (context) => const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      // routerConfig: AppRouter.router,
+    return MaterialApp.router(
+      routerConfig: AppRouter.router,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        scaffoldBackgroundColor: Colors.white,
+        scaffoldBackgroundColor: Colors.black,
         fontFamily: 'SF-Pro-Text-Bold',
       ),
-        home: SelectAccountView()
     );
   }
 }
