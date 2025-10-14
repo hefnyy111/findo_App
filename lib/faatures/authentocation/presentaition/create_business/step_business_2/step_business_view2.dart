@@ -87,7 +87,7 @@ class StepBusinessView2 extends StatelessWidget {
                       validate: (value) {
                       },
                       onChanged: (value) {
-                      cubit_stepBusiness2.changeButton(value, context, custom_functionButton: () => StepBusinessAction2.StepBusiness2ButtonPress(context, "go_step3"),);
+                      cubit_stepBusiness2.changeButton(value, context, custom_functionButton: () => StepBusinessAction2.StepBusiness2ButtonPress(context, "go_step3"));
                       },
                       text: 'Enter your Fullname',
                     ),
