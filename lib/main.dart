@@ -4,8 +4,7 @@ import 'package:findo/shared/core/constants/app_router.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  // runApp(DevicePreview(enabled: true, builder: (context) => const MyApp()));
-  runApp(MyApp());
+  runApp(DevicePreview(enabled: true, builder: (context) => const MyApp()));
 }
 
 class MyApp extends StatelessWidget {

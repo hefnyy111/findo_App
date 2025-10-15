@@ -13,13 +13,18 @@ class AppRouter {
   static const kStepCreateBusiness1 = '/StepBusinessView1';
   static const kStepCreateBusiness2 = '/StepBusinessView2';
   static final router = GoRouter(
-
     routes: [
       // GoRoute(path: "/",builder: (context, state) => SplashView(),),
-      // GoRoute(path: kGetStartedView, builder: (context, state) => GetStartedView(),),
-      // GoRoute(path: kSelectAccountView, builder: (context, state) => SelectAccountView(),),
+      GoRoute(
+        path: kGetStartedView,
+        builder: (context, state) => GetStartedView(),
+      ),
+      GoRoute(
+        path: kSelectAccountView,
+        builder: (context, state) => SelectAccountView(),
+      ),
       // GoRoute(path: "/", builder: (context, state) => StepBusinessView1(),),
-      GoRoute(path: "/", builder: (context, state) => StepBusinessView2(),),
+      GoRoute(path: "/", builder: (context, state) => StepBusinessView1()),
     ],
   );
 }

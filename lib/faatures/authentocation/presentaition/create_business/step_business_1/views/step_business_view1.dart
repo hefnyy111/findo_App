@@ -1,5 +1,6 @@
 // faatures/authentocation/presentaition/create_business/step_business_1/views/step_business_view1.dart
 import 'package:findo/faatures/authentocation/presentaition/create_business/step_business_1/action/step_business_action.dart';
+import 'package:findo/faatures/authentocation/presentaition/create_business/step_business_1/action/views/widgets/custom_drop_down_button.dart';
 import 'package:findo/faatures/authentocation/presentaition/create_business/step_business_1/manager/step_business_cubit1.dart';
 import 'package:findo/faatures/authentocation/presentaition/create_business/step_business_1/manager/step_business_states1.dart';
 import 'package:findo/shared/Components/custom_buttonNavigation.dart';
@@ -13,7 +14,7 @@ import 'widgets/step_progress.dart';
 
 class StepBusinessView1 extends StatelessWidget {
   const StepBusinessView1({super.key});
-  
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -45,7 +46,7 @@ class StepBusinessView1 extends StatelessWidget {
                     ),
                     // ******************************* SubTitle
                     Center(
-                      child:Text(
+                      child: Text(
                         'For Business',
                         style: TextStyle(
                           fontSize: 16,
@@ -85,11 +86,17 @@ class StepBusinessView1 extends StatelessWidget {
                     // ******************************* Field 1
                     customTextFormField(
                       controller: cubit_stepBusiness1.controller_1,
-                      validate: (value) {
-
-                      },
+                      validate: (value) {},
                       onChanged: (value) {
-                      cubit_stepBusiness1.changeButton(value, context, custom_functionButton: () => StepBusinessAction.StepBusinessButtonPress(context, "go_step2"),);
+                        cubit_stepBusiness1.changeButton(
+                          value,
+                          context,
+                          custom_functionButton:
+                              () => StepBusinessAction.StepBusinessButtonPress(
+                                context,
+                                "go_step2",
+                              ),
+                        );
                       },
                       text: 'Business Name',
                     ),
@@ -107,17 +114,34 @@ class StepBusinessView1 extends StatelessWidget {
                     // ******************************* Sizebox
                     SizedBox(height: 15),
                     // ******************************* Field2
-                    customTextFormField(
-                      controller: cubit_stepBusiness1.controller_2,
-                      validate: (value) {
-                      },
-                      onChanged: (value) {
-                        cubit_stepBusiness1.changeButton(value, context, custom_functionButton: () => StepBusinessAction.StepBusinessButtonPress(context, "go_step2"),);
-                      },
-                      text: 'Select a Category',
-                    ),
+                    // customTextFormField(
+                    //   controller: cubit_stepBusiness1.controller_2,
+                    //   validate: (value) {},
+                    //   onChanged: (value) {
+                    //     cubit_stepBusiness1.changeButton(
+                    //       value,
+                    //       context,
+                    //       custom_functionButton:
+                    //           () => StepBusinessAction.StepBusinessButtonPress(
+                    //             context,
+                    //             "go_step2",
+                    //           ),
+                    //     );
+                    //   },
+                    //   text: 'Select a Category',
+                    //   suffixIcon: IconButton(
+                    //     onPressed: () {},
+                    //     icon: Icon(
+                    //       Icons.keyboard_arrow_down,
+                    //       color: Colors.cyanAccent,
+                    //       size: 25,
+                    //     ),
+                    //   ),
+                    // ),
+                    CustomCategoryDropdown(),
                     // ******************************* Sizebox
                     SizedBox(height: 50),
+
                     // ******************************* Button
                     ClipRRect(
                       borderRadius: BorderRadius.circular(25),
@@ -138,7 +162,6 @@ class StepBusinessView1 extends StatelessWidget {
                         ),
                       ),
                     ),
-
                   ],
                 ),
               ),
