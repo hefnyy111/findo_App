@@ -82,6 +82,7 @@ Widget customTextFormField({
   required String? Function(String?) validate,
   bool readOnly = false,
   TextInputType? keyboard,
+  bool obscureText = false,
   required Function(String?) onChanged,
   FocusNode? focusNode,
   List<TextInputFormatter>? inputFormatters,
@@ -95,24 +96,22 @@ Widget customTextFormField({
 }) {
   return TextFormField(
     minLines: minLines,
-    maxLines: maxLines,
+    maxLines: obscureText ? 1 : maxLines,
+    obscureText: obscureText,
     controller: controller,
     validator: validate,
     readOnly: readOnly,
-
     onChanged: onChanged,
-    style: TextStyle(color: Colors.white, fontSize: 14),
+    style: TextStyle(color: Colors.white, fontSize: 12),
     cursorColor: Colors.white,
     focusNode: focusNode,
     inputFormatters: inputFormatters,
-    maxLength: length,
+    maxLength: length, // length
     decoration: InputDecoration(
       filled: true,
       fillColor: const Color(0xFF1E1F23),
       hintText: text,
-      counterText: "${controller.text.length}/500 characters",
-      counterStyle: TextStyle(color: Color(0xFF9E9E9E)),
-      hintStyle: TextStyle(color: Color(0xFF9E9E9E), fontSize: 16.0),
+      hintStyle: TextStyle(color: Color(0xFF9E9E9E), fontSize: 12.0),
       prefixIcon: prefixIcon,
       suffixIcon:
           suffixIcon != null

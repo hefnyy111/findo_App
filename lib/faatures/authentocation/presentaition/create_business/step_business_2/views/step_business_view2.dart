@@ -1,4 +1,4 @@
-// faatures/authentocation/presentaition/create_business/step_business_2/step_business_view2.dart
+// faatures/authentocation/presentaition/create_business/step_business_2/views/step_business_view2.dart
 import 'package:findo/faatures/authentocation/presentaition/create_business/step_business_1/views/widgets/step_progress.dart';
 import 'package:findo/faatures/authentocation/presentaition/create_business/step_business_2/action/step_business_action2.dart';
 import 'package:findo/faatures/authentocation/presentaition/create_business/step_business_2/manager/step_business_cubit2.dart';
@@ -10,13 +10,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shimmer_animation/shimmer_animation.dart';
 
-class StepBusinessView3 extends StatelessWidget {
+class StepBusinessView2 extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => StepBusinessCubit2(),
-      child: BlocConsumer<StepBusinessCubit2, StepBusinessStates2>(
-        listener: (context, state) {},
+      create:(context) => StepBusinessCubit2(),
+      child: BlocConsumer<StepBusinessCubit2,StepBusinessStates2>(
+        listener:(context, state) {},
         builder: (context, state) {
           var cubit_stepBusiness2 = StepBusinessCubit2.get(context);
           return Scaffold(
@@ -28,37 +29,39 @@ class StepBusinessView3 extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     // ******************************* Sizebox
-                    SizedBox(height: 100.0),
-                    // ******************************* Text
-                    Center(
-                      child: Text(
-                        'Findo',
-                        style: TextStyle(
-                          fontFamily: 'SF-Pro-Rounded-Bold',
-                          color: AppColors.kPrimaryColor,
-                          fontSize: 32,
+                    const SizedBox(height: 100.0),
+                    // ******************************* Title
+                    const Center(
+                        child: Column(
+                          children: [
+                            Text(
+                              'Findo',
+                              style: TextStyle(
+                                fontFamily: 'SF-Pro-Rounded-Bold',
+                                color: AppColors.kPrimaryColor,
+                                fontSize: 32,
+                              ),
+                            ),
+                            const SizedBox(height: 4),
+                            Text(
+                              'For Business',
+                              style: TextStyle(
+                                fontSize: 16,
+                                color: AppColors.ksubTitle,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
-                    ),
-                    // ******************************* SubTitle
-                    Center(
-                      child: Text(
-                        'For Business',
-                        style: TextStyle(
-                          fontSize: 16,
-                          color: AppColors.ksubTitle,
-                        ),
-                      ),
-                    ),
-                    // ******************************* Sizebox
-                    SizedBox(height: 40),
+                      // ******************************* Sizebox
+                    const SizedBox(height: 35),
                     // ******************************* Step Progress
-                    StepProgress(currentStep: 3, totalSteps: 5),
+                    StepProgress(currentStep: 2, totalSteps: 5),
                     // ******************************* Sizebox
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     // ******************************* Information
-                    Text(
-                      'Location Details',
+                    const Text(
+                      'Information',
                       style: TextStyle(
                         fontFamily: 'SF-Pro-Rounded-Bold',
                         fontSize: 21,
@@ -67,11 +70,10 @@ class StepBusinessView3 extends StatelessWidget {
                       ),
                     ),
                     // ******************************* Sizebox
-                    SizedBox(height: 20),
-
+                    const SizedBox(height: 20),
                     // ******************************* full name
-                    Text(
-                      'Tell us where business is located',
+                    const Text(
+                      'Full Name (Manager)',
                       style: TextStyle(
                         fontSize: 15,
                         fontWeight: FontWeight.w500,
@@ -79,31 +81,22 @@ class StepBusinessView3 extends StatelessWidget {
                       ),
                     ),
                     // ******************************* Sizebox
-                    SizedBox(height: 15),
+                    const SizedBox(height: 15),
                     // ******************************* Field 1
                     customTextFormField(
                       controller: cubit_stepBusiness2.full_name,
-                      validate: (value) {},
-                      onChanged: (value) {
-                        cubit_stepBusiness2.changeButton(
-                          value,
-                          context,
-                          custom_functionButton:
-                              () =>
-                                  StepBusinessAction2.StepBusiness2ButtonPress(
-                                    context,
-                                    "go_step3",
-                                  ),
-                        );
+                      validate: (value) {
                       },
-                      text: 'Area/Twon',
+                      onChanged: (value) {
+                      cubit_stepBusiness2.changeButton(value, context, custom_functionButton: () => StepBusinessAction2.StepBusiness2ButtonPress(context, "go_step3"));
+                      },
+                      text: 'Enter your Fullname',
                     ),
                     // ******************************* Sizebox
-                    SizedBox(height: 22),
-
+                    const SizedBox(height: 20),
                     // ******************************* National id
-                    Text(
-                      'Detailed Address',
+                    const Text(
+                      'National id',
                       style: TextStyle(
                         fontSize: 15,
                         fontWeight: FontWeight.w500,
@@ -111,31 +104,22 @@ class StepBusinessView3 extends StatelessWidget {
                       ),
                     ),
                     // ******************************* Sizebox
-                    SizedBox(height: 15),
+                    const SizedBox(height: 15),
                     // ******************************* Field 2
                     customTextFormField(
                       controller: cubit_stepBusiness2.National_id,
-                      validate: (value) {},
-                      onChanged: (value) {
-                        cubit_stepBusiness2.changeButton(
-                          value,
-                          context,
-                          custom_functionButton:
-                              () =>
-                                  StepBusinessAction2.StepBusiness2ButtonPress(
-                                    context,
-                                    "go_step3",
-                                  ),
-                        );
+                      validate: (value) {
                       },
-                      text: 'Enter your Adress',
+                      onChanged: (value) {
+                        cubit_stepBusiness2.changeButton(value, context, custom_functionButton: () => StepBusinessAction2.StepBusiness2ButtonPress(context, "go_step3"),);
+                      },
+                      text: 'Enter your National id',
                     ),
                     // ******************************* Sizebox
-                    SizedBox(height: 22),
-
+                    const SizedBox(height: 20),
                     // ******************************* Phone
-                    Text(
-                      'Location',
+                    const Text(
+                      'Phone',
                       style: TextStyle(
                         fontSize: 15,
                         fontWeight: FontWeight.w500,
@@ -143,29 +127,20 @@ class StepBusinessView3 extends StatelessWidget {
                       ),
                     ),
                     // ******************************* Sizebox
-                    SizedBox(height: 15),
-                    // ******************************* Field 3
+                    const SizedBox(height: 15),
+                    // ******************************* Field 3 
                     customTextFormField(
-                      controller: cubit_stepBusiness2.phone,
+                      controller: cubit_stepBusiness2. phone,
                       keyboard: TextInputType.phone,
-                      validate: (value) {},
-                      onChanged: (value) {
-                        cubit_stepBusiness2.changeButton(
-                          value,
-                          context,
-                          custom_functionButton:
-                              () =>
-                                  StepBusinessAction2.StepBusiness2ButtonPress(
-                                    context,
-                                    "go_step3",
-                                  ),
-                        );
+                      validate: (value) {
                       },
-                      text: ' Entre Location',
+                      onChanged: (value) {
+                        cubit_stepBusiness2.changeButton(value, context, custom_functionButton: () => StepBusinessAction2.StepBusiness2ButtonPress(context, "go_step3"),);
+                      },
+                      text: 'Enter your phone',
                     ),
                     // ******************************* Sizebox
-                    SizedBox(height: 50),
-
+                    const SizedBox(height: 50),
                     // ******************************* Button
                     ClipRRect(
                       borderRadius: BorderRadius.circular(25),
@@ -197,8 +172,9 @@ class StepBusinessView3 extends StatelessWidget {
               onTap: () {},
             ),
           );
-        },
-      ),
-    );
+        }, 
+
+        ),
+      );
   }
 }

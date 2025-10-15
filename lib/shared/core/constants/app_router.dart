@@ -1,8 +1,8 @@
 // shared/core/constants/app_router.dart
 import 'package:device_preview/device_preview.dart';
 import 'package:findo/faatures/authentocation/presentaition/create_business/step_business_1/views/step_business_view1.dart';
-import 'package:findo/faatures/authentocation/presentaition/create_business/step_business_2/step_business_view2.dart';
-import 'package:findo/faatures/authentocation/presentaition/create_business/step_business_3/step_business_view3.dart';
+import 'package:findo/faatures/authentocation/presentaition/create_business/step_business_2/views/step_business_view2.dart';
+import 'package:findo/faatures/authentocation/presentaition/create_business/step_business_3/View/step_business_view3.dart';
 import 'package:findo/faatures/authentocation/presentaition/create_business/step_business_4/step_business_view4.dart';
 import 'package:findo/faatures/authentocation/presentaition/create_business/step_business_5/step_business_view5.dart';
 import 'package:findo/faatures/authentocation/presentaition/get_Started/get_started_view.dart';
@@ -29,9 +29,10 @@ class AppRouter {
         path: kSelectAccountView,
         builder: (context, state) => SelectAccountView(),
       ),
-      // GoRoute(path: "/", builder: (context, state) => StepBusinessView1(),),
-      // GoRoute(path: "/", builder: (context, state) => StepBusinessView3()),
-      GoRoute(path: "/", builder: (context, state) => StepBusinessView5()),
+      GoRoute(path: "/", builder: (context, state) => StepBusinessView1(),),
+        // GoRoute(path: "/", builder: (context, state) => StepBusinessView3()),
+      // GoRoute(path: "/", builder: (context, state) => StepBusinessView4()),
+      //  GoRoute(path: "/", builder: (context, state) => StepBusinessView5()),
     ],
   );
 }

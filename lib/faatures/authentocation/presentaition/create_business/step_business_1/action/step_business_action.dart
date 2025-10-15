@@ -6,11 +6,7 @@ class StepBusinessAction {
       
       case 'go_step2': {
          print('Done go');
-
       }
-
-
-
     }
   }
 }
