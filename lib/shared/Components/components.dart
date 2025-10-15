@@ -29,7 +29,7 @@ Widget customButton({
   String? image,
   required Color? colorText,
   required double? width,
- 
+
   double? fontsize,
   double? paddingVertical,
 
@@ -43,7 +43,10 @@ Widget customButton({
       backgroundColor: backColor,
       side: BorderSide(color: colorBorderside!, width: 1),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
-      padding:  paddingVertical != null ? EdgeInsets.symmetric(vertical: paddingVertical) : EdgeInsets.symmetric(vertical: 14),
+      padding:
+          paddingVertical != null
+              ? EdgeInsets.symmetric(vertical: paddingVertical)
+              : EdgeInsets.symmetric(vertical: 14),
     ),
 
     child: Row(
@@ -82,6 +85,8 @@ Widget customTextFormField({
   required Function(String?) onChanged,
   FocusNode? focusNode,
   List<TextInputFormatter>? inputFormatters,
+  int? minLines,
+  int? maxLines,
   int? length,
   required String text,
   Widget? prefixIcon,
@@ -89,10 +94,12 @@ Widget customTextFormField({
   VoidCallback? onSuffixPressed,
 }) {
   return TextFormField(
+    minLines: minLines,
+    maxLines: maxLines,
     controller: controller,
     validator: validate,
     readOnly: readOnly,
-    keyboardType: keyboard,
+
     onChanged: onChanged,
     style: TextStyle(color: Colors.white, fontSize: 14),
     cursorColor: Colors.white,
@@ -103,6 +110,8 @@ Widget customTextFormField({
       filled: true,
       fillColor: const Color(0xFF1E1F23),
       hintText: text,
+      counterText: "${controller.text.length}/500 characters",
+      counterStyle: TextStyle(color: Color(0xFF9E9E9E)),
       hintStyle: TextStyle(color: Color(0xFF9E9E9E), fontSize: 16.0),
       prefixIcon: prefixIcon,
       suffixIcon:
