@@ -114,30 +114,6 @@ class StepBusinessView1 extends StatelessWidget {
                     // ******************************* Sizebox
                     const SizedBox(height: 15),
                     // ******************************* Field2
-                    // customTextFormField(
-                    //   controller: cubit_stepBusiness1.controller_2,
-                    //   validate: (value) {},
-                    //   onChanged: (value) {
-                    //     cubit_stepBusiness1.changeButton(
-                    //       value,
-                    //       context,
-                    //       custom_functionButton:
-                    //           () => StepBusinessAction.StepBusinessButtonPress(
-                    //             context,
-                    //             "go_step2",
-                    //           ),
-                    //     );
-                    //   },
-                    //   text: 'Select a Category',
-                    //   suffixIcon: IconButton(
-                    //     onPressed: () {},
-                    //     icon: Icon(
-                    //       Icons.keyboard_arrow_down,
-                    //       color: Colors.cyanAccent,
-                    //       size: 25,
-                    //     ),
-                    //   ),
-                    // ),
                     CustomCategoryDropdown(),
                     // ******************************* Sizebox
                     const SizedBox(height: 50),
