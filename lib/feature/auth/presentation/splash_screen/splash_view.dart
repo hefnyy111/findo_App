@@ -1,9 +1,10 @@
-// faatures/auth/presentaition/splash_screen/splash_view.dart
+// feature/auth/presentation/splash_screen/splash_view.dart
 
-import 'package:findo/faatures/auth/presentaition/splash_screen/manager/splash_cubit.dart';
-import 'package:findo/faatures/auth/presentaition/splash_screen/manager/splash_states.dart';
-import 'package:findo/shared/core/constants/app_router.dart';
-import 'package:findo/shared/core/constants/constants.dart';
+
+import 'package:Ascend/feature/auth/presentation/splash_screen/manager/splash_cubit.dart';
+import 'package:Ascend/feature/auth/presentation/splash_screen/manager/splash_states.dart';
+import 'package:Ascend/shared/core/constants/app_router.dart';
+import 'package:Ascend/shared/core/constants/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';

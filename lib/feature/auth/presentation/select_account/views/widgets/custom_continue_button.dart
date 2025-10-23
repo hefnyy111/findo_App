@@ -1,7 +1,7 @@
-// faatures/auth/presentaition/select_account/views/widgets/custom_continue_button.dart
+// feature/auth/presentation/select_account/views/widgets/custom_continue_button.dart
 
-import 'package:findo/faatures/auth/presentaition/select_account/Cubit/select_account_cubit.dart';
-import 'package:findo/shared/Components/components.dart';
+import 'package:Ascend/feature/auth/presentation/select_account/Cubit/select_account_cubit.dart';
+import 'package:Ascend/shared/Components/components.dart';
 import 'package:flutter/material.dart';
 import 'package:shimmer_animation/shimmer_animation.dart';
 

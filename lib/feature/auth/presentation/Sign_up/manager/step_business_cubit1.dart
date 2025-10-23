@@ -1,6 +1,7 @@
-// faatures/auth/presentaition/Sign_up/manager/step_business_cubit1.dart
-import 'package:findo/faatures/auth/presentaition/Sign_up/manager/step_business_states1.dart';
-import 'package:findo/shared/core/constants/constants.dart';
+// feature/auth/presentation/Sign_up/manager/step_business_cubit1.dart
+
+import 'package:Ascend/feature/auth/presentation/Sign_up/manager/step_business_states1.dart';
+import 'package:Ascend/shared/core/constants/constants.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
 
