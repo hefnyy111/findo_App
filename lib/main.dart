@@ -1,5 +1,5 @@
 // main.dart
-import 'package:Ascend/feature/auth/presentation/get_Started/language/cubit/language_cubit.dart';
+import 'package:Ascend/features/auth/presentation/get_Started/language/cubit/language_cubit.dart';
 import 'package:Ascend/generated/l10n.dart';
 import 'package:Ascend/shared/core/constants/app_router.dart';
 import 'package:Ascend/shared/core/services/bloc_observer_class.dart';

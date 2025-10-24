@@ -1,6 +1,6 @@
 
-import 'package:Ascend/feature/auth/presentation/get_Started/get_started_view.dart';
-import 'package:Ascend/feature/auth/presentation/splash_screen/splash_view.dart';
+import 'package:Ascend/features/auth/presentation/get_Started/get_started_view.dart';
+import 'package:Ascend/features/auth/presentation/splash_screen/splash_view.dart';
 import 'package:go_router/go_router.dart';
 
 class AppRouter {
