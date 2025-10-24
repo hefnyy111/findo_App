@@ -1,7 +1,6 @@
-// shared/core/constants/app_router.dart
-// shared/core/constan
-import 'package:findo/faatures/auth/presentaition/get_Started/get_started_view.dart';
-import 'package:findo/faatures/auth/presentaition/splash_screen/splash_view.dart';
+
+import 'package:Ascend/feature/auth/presentation/get_Started/get_started_view.dart';
+import 'package:Ascend/feature/auth/presentation/splash_screen/splash_view.dart';
 import 'package:go_router/go_router.dart';
 
 class AppRouter {

@@ -114,7 +114,6 @@ class StepBusinessView1 extends StatelessWidget {
                     // ******************************* Sizebox
                     const SizedBox(height: 15),
                     // ******************************* Field2
-<<<<<<< HEAD:lib/faatures/auth/presentaition/Sign_up/views/step_business_view1.dart
                     // customTextFormField(
                     //   controller: cubit_stepBusiness1.controller_2,
                     //   validate: (value) {},
@@ -140,10 +139,8 @@ class StepBusinessView1 extends StatelessWidget {
                     //   ),
                     // ),
                     // CustomCategoryDropdown(),
-=======
-                    CustomCategoryDropdown(),
->>>>>>> 789dbe7202061973bf97945470948f2320591d1e:lib/faatures/authentocation/presentaition/create_business/step_business_1/views/step_business_view1.dart
-                    // ******************************* Sizebox
+
+                    // CustomCategoryDropdown(),
                     const SizedBox(height: 50),
                     // ******************************* Button
                     ClipRRect(

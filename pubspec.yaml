@@ -1,4 +1,4 @@
-name: findo
+name: Ascend
 description: "A new Flutter project."
 publish_to: 'none'
 
@@ -8,6 +8,9 @@ environment:
   sdk: ^3.7.2
 
 dependencies:
+  flutter:
+    sdk: flutter
+
   animated_button: ^0.3.1
   animated_text_kit: ^4.2.2
   awesome_dialog: ^3.1.0
@@ -54,10 +57,9 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
- 
+
   assets:
     - assets/images/Auth/select_account/
-    - assets/images/Auth/social/
     - assets/images/Auth/location/
     - assets/
 
@@ -77,15 +79,5 @@ flutter:
     - family: SF-Pro-Text-Bold
       fonts:
         - asset: assets/fonts/SF-Pro-Text-Bold.otf
-
-  
-  # An image asset can refer to one or more resolution-specific "variants", see
-  # https://flutter.dev/to/resolution-aware-images
-  # For details regarding adding assets from package dependencies, see
-  # https://flutter.dev/to/asset-from-package
-  # list giving the asset and other descriptors for the font. For
-  # example:
- 
-  #
-  # For details regarding fonts from package dependencies,
-  # see https://flutter.dev/to/font-from-package
+flutter_intl:
+  enabled: true
