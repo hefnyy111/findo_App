@@ -1,12 +1,12 @@
-// faatures/auth/presentaition/get_Started/get_started_view.dart
+// feature/auth/presentation/get_Started/get_started_view.dart
 // faatures/authentocation/presentaition/get_Started/get_started_view.dart
-import 'package:findo/faatures/auth/presentaition/get_Started/action/get_started_action.dart';
-import 'package:findo/faatures/auth/presentaition/get_Started/language/cubit/language_cubit.dart';
-import 'package:findo/faatures/auth/presentaition/get_Started/language/states/language_states.dart';
-import 'package:findo/faatures/auth/presentaition/get_Started/views/widgets/custom_drop_down_button.dart';
-import 'package:findo/shared/Components/components.dart';
-import 'package:findo/shared/core/constants/constants.dart';
 
+import 'package:Ascend/feature/auth/presentation/get_Started/action/get_started_action.dart';
+import 'package:Ascend/feature/auth/presentation/get_Started/language/cubit/language_cubit.dart';
+import 'package:Ascend/feature/auth/presentation/get_Started/language/states/language_states.dart';
+import 'package:Ascend/feature/auth/presentation/get_Started/views/widgets/custom_drop_down_button.dart';
+import 'package:Ascend/shared/Components/components.dart';
+import 'package:Ascend/shared/core/constants/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

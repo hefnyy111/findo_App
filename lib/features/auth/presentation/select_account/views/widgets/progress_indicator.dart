@@ -1,6 +1,6 @@
-// faatures/authentocation/presentaition/select_account/views/widgets/progress_indicator.dart
+// feature/auth/presentation/select_account/views/widgets/progress_indicator.dart
 
-import 'package:findo/shared/core/constants/constants.dart' show AppColors;
+import 'package:Ascend/shared/core/constants/constants.dart';
 
 import '../../Cubit/select_account_cubit.dart';
 import 'package:flutter/material.dart';

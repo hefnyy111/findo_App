@@ -1,13 +1,14 @@
-// faatures/auth/presentaition/Sign_up/views/step_business_view1.dart
+// feature/auth/presentation/Sign_up/views/step_business_view1.dart
 // faatures/authentocation/presentaition/create_business/step_business_1/views/step_busi
 
-import 'package:findo/faatures/auth/presentaition/Sign_up/action/step_business_action.dart';
-import 'package:findo/faatures/auth/presentaition/Sign_up/manager/step_business_cubit1.dart';
-import 'package:findo/faatures/auth/presentaition/Sign_up/manager/step_business_states1.dart';
-import 'package:findo/faatures/widgets/step_progress.dart';
-import 'package:findo/shared/Components/custom_buttonNavigation.dart';
-import 'package:findo/shared/Components/components.dart';
-import 'package:findo/shared/core/constants/constants.dart';
+
+import 'package:Ascend/feature/auth/presentation/Sign_up/action/step_business_action.dart';
+import 'package:Ascend/feature/auth/presentation/Sign_up/manager/step_business_cubit1.dart';
+import 'package:Ascend/feature/auth/presentation/Sign_up/manager/step_business_states1.dart';
+import 'package:Ascend/feature/auth/presentation/widgets/step_progress.dart';
+import 'package:Ascend/shared/Components/custom_buttonNavigation.dart';
+import 'package:Ascend/shared/Components/components.dart';
+import 'package:Ascend/shared/core/constants/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shimmer_animation/shimmer_animation.dart';
