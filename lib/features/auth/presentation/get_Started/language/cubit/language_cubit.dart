@@ -1,6 +1,6 @@
 // feature/auth/presentation/get_Started/language/cubit/language_cubit.dart
 
-import 'package:Ascend/feature/auth/presentation/get_Started/language/states/language_states.dart';
+import 'package:Ascend/features/auth/presentation/get_Started/language/states/language_states.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class LanguageCubit extends Cubit<LanguageStates> {

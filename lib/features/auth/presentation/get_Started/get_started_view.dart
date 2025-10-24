@@ -1,14 +1,15 @@
-// feature/auth/presentation/get_Started/get_started_view.dart
-// faatures/authentocation/presentaition/get_Started/get_started_view.dart
 
-import 'package:Ascend/feature/auth/presentation/get_Started/action/get_started_action.dart';
-import 'package:Ascend/feature/auth/presentation/get_Started/language/cubit/language_cubit.dart';
-import 'package:Ascend/feature/auth/presentation/get_Started/language/states/language_states.dart';
-import 'package:Ascend/feature/auth/presentation/get_Started/views/widgets/custom_drop_down_button.dart';
+
+import 'package:Ascend/features/auth/presentation/get_Started/action/get_started_action.dart';
+import 'package:Ascend/features/auth/presentation/get_Started/language/cubit/language_cubit.dart';
+import 'package:Ascend/features/auth/presentation/get_Started/language/states/language_states.dart' show LanguageStates;
+import 'package:Ascend/generated/l10n.dart';
 import 'package:Ascend/shared/Components/components.dart';
 import 'package:Ascend/shared/core/constants/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'views/widgets/custom_drop_down_button.dart';
 
 class GetStartedView extends StatelessWidget {
   const GetStartedView({super.key});
@@ -36,8 +37,8 @@ class GetStartedView extends StatelessWidget {
                 // ******************************* Sizebox
                 const SizedBox(height: 50),
                 // ******************************* Text 1
-                const Text(
-                  'Hello to Acsend',
+                Text(
+                  S.of(context).title,
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontFamily: 'SF-Pro-Rounded-Bold',

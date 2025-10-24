@@ -22,6 +22,7 @@ class MyApp extends StatelessWidget {
       child: Builder(
         builder:
             (context) => MaterialApp.router(
+              locale: Locale( LanguageCubit.get(context).selectedLanguage == "Arabic" ? 'ar' : 'en'),
               localizationsDelegates: [
                 S.delegate,
                 GlobalMaterialLocalizations.delegate,

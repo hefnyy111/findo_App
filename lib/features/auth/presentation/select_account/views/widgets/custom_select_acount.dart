@@ -1,6 +1,5 @@
-// feature/auth/presentation/select_account/views/widgets/custom_select_acount.dart
 
-import 'package:Ascend/feature/auth/presentation/select_account/Cubit/select_account_cubit.dart';
+import 'package:Ascend/features/auth/presentation/select_account/Cubit/select_account_cubit.dart';
 import 'package:Ascend/shared/core/constants/constants.dart';
 import 'package:flutter/material.dart';
 

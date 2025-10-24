@@ -1,6 +1,5 @@
-// feature/auth/presentation/splash_screen/manager/splash_cubit.dart
 
-import 'package:Ascend/feature/auth/presentation/splash_screen/manager/splash_states.dart';
+import 'package:Ascend/features/auth/presentation/splash_screen/manager/splash_states.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SplashCubit extends Cubit<SplashStates> {
