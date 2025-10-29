@@ -48,7 +48,9 @@ class SignInSelect extends StatelessWidget {
                     ),
                     onPressed: () {
                       cubit_signin.toggleSelected(true);
-                      
+                      if(cubit_signin.email.text.isNotEmpty) {
+         
+                      }
                     },
                     child: Text(
                       'Phone',
@@ -66,10 +68,7 @@ class SignInSelect extends StatelessWidget {
                   duration: Duration(milliseconds: 300),
                   height: double.infinity,
                   decoration: BoxDecoration(
-                    color:
-                        cubit_signin.isPhoeSelected
-                            ? AppColors.kbackGroundField
-                            : AppColors.kPrimaryColor,
+                    color: cubit_signin.isPhoeSelected ? AppColors.kbackGroundField : AppColors.kPrimaryColor,
                     borderRadius: BorderRadius.horizontal(
                       right: Radius.circular(25.0),
                     ),
@@ -80,6 +79,9 @@ class SignInSelect extends StatelessWidget {
                     ),
                     onPressed: () {
                       cubit_signin.toggleSelected(false);
+                        if(cubit_signin.phoneNumber.text.isNotEmpty && cubit_signin.codeCounter.text.isNotEmpty && cubit_signin.selectCountry != "Select country" ) {
+                
+                      }
                     },
                     child: Text(
                       'Email',

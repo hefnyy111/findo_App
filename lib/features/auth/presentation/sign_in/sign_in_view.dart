@@ -108,13 +108,14 @@ class SignInView extends StatelessWidget {
                   // ******************************* Sizebox
                   const SizedBox(height: 50.0),
                   ] else ...[
+
                   // ******************************* field email
                   customTextFormField(
                     controller: cubit_signin.email, 
                     validate: (value) {
                     }, 
                     onChanged: (valuee) {
-                     cubit_signin.changeButton(valuee, context, customButtonAction: () =>  SignInAction.signInButtonPress(context,  "continue_login",),);
+                    cubit_signin.changeButton(valuee, context, customButtonAction: () =>  SignInAction.signInButtonPress(context,  "continue_login",),);
                     } , 
                     text: "Email"
                     ),

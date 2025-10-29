@@ -46,7 +46,7 @@ class SignInCubit extends Cubit<SignInStates> {
     colorCountry = Colors.white;
     colorCodeCountry = Colors.white;
     selectCodeCountry = "+${country.phoneCode}";
-    codeCounter = TextEditingController(text: "+${country.phoneCode}");
+    codeCounter = TextEditingController(text: selectCodeCountry);
 
     emit(SignInSelectCountryStates());
   }
@@ -77,9 +77,11 @@ class SignInCubit extends Cubit<SignInStates> {
  VoidCallback? button_onpressed;
  bool ButtonShimmer = false;
 
+
  void changeButton(String? valuee, context, {VoidCallback? customButtonAction}) {
-  bool info = selectCountry != "Select country" && codeCounter.text.isNotEmpty && valuee!.isNotEmpty;
-  if(info) {
+  bool info_phone = selectCountry != "Select country" && codeCounter.text.isNotEmpty && valuee!.isNotEmpty;
+  
+  if(info_phone) {
    background_button = AppColors.kPrimaryColor;
    text_button = Colors.white;
    borderSide = AppColors.kPrimaryColor;
@@ -95,8 +97,5 @@ class SignInCubit extends Cubit<SignInStates> {
   emit(SigninChangeButtonStates());
  }
  
- void resetButton() {
-  
- }
 
 }
