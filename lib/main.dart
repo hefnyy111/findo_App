@@ -1,5 +1,6 @@
 // main.dart
 import 'package:Ascend/features/auth/presentation/get_Started/language/cubit/language_cubit.dart';
+import 'package:Ascend/features/auth/presentation/get_Started/language/states/language_states.dart';
 import 'package:Ascend/generated/l10n.dart';
 import 'package:Ascend/shared/core/constants/app_router.dart';
 import 'package:Ascend/shared/core/services/bloc_observer_class.dart';
@@ -16,29 +17,33 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
-  Widget build(BuildContext context) {
+  Widget build(
+    BuildContext context) {
     return MultiBlocProvider(
       providers: [BlocProvider(create: (_) => LanguageCubit())],
-      child: Builder(
-        builder:
-            (context) => MaterialApp.router(
-              locale: Locale( LanguageCubit.get(context).selectedLanguage == "Arabic" ? 'ar' : 'en'),
-              localizationsDelegates: [
-                S.delegate,
-                GlobalMaterialLocalizations.delegate,
-                GlobalWidgetsLocalizations.delegate,
-                GlobalCupertinoLocalizations.delegate,
+      child: BlocBuilder<LanguageCubit, LanguageStates>(
+        builder: (context, state) {
+          final cubit = LanguageCubit.get(context);
+
+          return MaterialApp.router(
+            routerConfig: AppRouter.router,
+            debugShowCheckedModeBanner: false,
+            locale: Locale(cubit.selectedLanguage == "Arabic" ? 'ar' : 'en'),
+            localizationsDelegates: const [
+              S.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
             ],
             supportedLocales: S.delegate.supportedLocales,
-             
-              routerConfig: AppRouter.router,
-              debugShowCheckedModeBanner: false,
-              theme: ThemeData(
-                scaffoldBackgroundColor: Colors.black,
-                fontFamily: 'SF-Pro-Text-Bold',
-              ),
+            theme: ThemeData(
+              scaffoldBackgroundColor: Colors.black,
+              fontFamily: 'SF-Pro-Text-Bold',
             ),
-      ),
-    );
-  }
+          );
+        },
+  ),
+);
+}
+
 }
