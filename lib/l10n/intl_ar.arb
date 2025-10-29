@@ -1,4 +1,13 @@
 {
-    "title": "الصعود"
-   
+     "comment": "========== Get Started Screen ==========",
+     "getstarted_title": "مرحبا بك في اكسند",
+     "getstarted_subtitle": "تبدأ رحلتك نحو الدردشة الذكية والمكافآت الرائعة",
+     "getstarted_textbutton": "ابدأ رحلتك",
+     "getstarted_button_navigation_text1": "من خلال النقر على \"ابدأ رحلتك\"، فإنك توافق",
+     "getstarted_button_navigation_text2": "علي",
+     "getstarted_button_navigation_text3": "و",
+     "getstarted_button_navigation_button1": "سياسة الخصوصية",
+     "getstarted_button_navigation_button2": "شروط الخدمة الخاصة بنا."
+    
+     
 }

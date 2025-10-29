@@ -54,9 +54,94 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
-  /// `Ascend`
-  String get title {
-    return Intl.message('Ascend', name: 'title', desc: '', args: []);
+  /// `========== Get Started Screen ==========`
+  String get comment {
+    return Intl.message(
+      '========== Get Started Screen ==========',
+      name: 'comment',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Hello to Ascend`
+  String get getstarted_title {
+    return Intl.message(
+      'Hello to Ascend',
+      name: 'getstarted_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your journey to smarter chat & epic rewards begins`
+  String get getstarted_subtitle {
+    return Intl.message(
+      'Your journey to smarter chat & epic rewards begins',
+      name: 'getstarted_subtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Start your journey`
+  String get getstarted_textbutton {
+    return Intl.message(
+      'Start your journey',
+      name: 'getstarted_textbutton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `By tapping "Start your journey", you agree to`
+  String get getstarted_button_navigation_text1 {
+    return Intl.message(
+      'By tapping "Start your journey", you agree to',
+      name: 'getstarted_button_navigation_text1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `our`
+  String get getstarted_button_navigation_text2 {
+    return Intl.message(
+      'our',
+      name: 'getstarted_button_navigation_text2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `and`
+  String get getstarted_button_navigation_text3 {
+    return Intl.message(
+      'and',
+      name: 'getstarted_button_navigation_text3',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Privacy Policy`
+  String get getstarted_button_navigation_button1 {
+    return Intl.message(
+      'Privacy Policy',
+      name: 'getstarted_button_navigation_button1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Terms of services.`
+  String get getstarted_button_navigation_button2 {
+    return Intl.message(
+      'Terms of services.',
+      name: 'getstarted_button_navigation_button2',
+      desc: '',
+      args: [],
+    );
   }
 }
 

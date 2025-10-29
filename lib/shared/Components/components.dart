@@ -14,7 +14,7 @@ void navigatorAndFinish(context, widget) {
 }
 
 // ====================== Icon back ======================
-Widget customIcon({required VoidCallback funtions}) {
+Widget customIconback({required VoidCallback funtions}) {
   return IconButton(
     onPressed: funtions,
     icon: Icon(Icons.close, color: Colors.white, size: 25),
@@ -109,22 +109,67 @@ Widget customTextFormField({
     inputFormatters: inputFormatters,
     maxLength: length, // length
     decoration: InputDecoration(
-      filled: true,
-      fillColor: const Color(0xFF1E1F23),
-      hintText: text,
-      hintStyle: TextStyle(color: Color(0xFF9E9E9E), fontSize: 12.0),
+      counterText: "", 
+      label: Text(text, style: TextStyle(color: AppColors.kGreyColor),),
+      labelStyle: const TextStyle(color: Color(0xFF9E9E9E), fontSize: 13),
       prefixIcon: prefixIcon,
-      suffixIcon:
-          suffixIcon != null
-              ? IconButton(onPressed: onSuffixPressed, icon: suffixIcon)
-              : null,
-      enabledBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(15),
-        borderSide: const BorderSide(color: Colors.transparent),
+      suffixIcon: suffixIcon != null ? IconButton(onPressed: onSuffixPressed, icon: suffixIcon) : null,
+
+      // ===== البوردر الخطّي =====
+      enabledBorder: const UnderlineInputBorder(
+        borderSide: BorderSide(color: AppColors.kGreyColor, width: 0.8),
       ),
-      focusedBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(15),
-        borderSide: const BorderSide(color: AppColors.kPrimaryColor),
+      focusedBorder: const UnderlineInputBorder(
+        borderSide: BorderSide(color: AppColors.kPrimaryColor, width: 1.5),
+      ),
+    ),
+  );
+}
+
+// ====================== Text field ======================
+Widget customTextField({
+  required TextEditingController controller,
+  bool readOnly = false,
+  TextInputType? keyboard,
+  bool obscureText = false,
+  required Function(String?) onChanged,
+  FocusNode? focusNode,
+  List<TextInputFormatter>? inputFormatters,
+  int? minLines,
+  int? maxLines,
+  int? length,
+  required String text,
+  Widget? prefixIcon,
+  Widget? suffixIcon,
+  VoidCallback? onSuffixPressed,
+}) {
+  return TextField(
+    minLines: minLines,
+    maxLines: obscureText ? 1 : maxLines,
+    obscureText: obscureText,
+    controller: controller,
+    readOnly: readOnly,
+    onChanged: onChanged,
+    style: TextStyle(color: Colors.white, fontSize: 12),
+    cursorColor: Colors.white,
+    focusNode: focusNode,
+    inputFormatters: inputFormatters,
+    maxLength: length, // length
+    decoration: InputDecoration(
+      counterText: "", 
+      label: Text(text, style: TextStyle(color: Colors.white),),
+      labelStyle: const TextStyle(color: Color(0xFF9E9E9E), fontSize: 13),
+      prefixIcon: prefixIcon ,
+      prefixIconConstraints: BoxConstraints(minWidth: 0, minHeight: 0),
+      contentPadding: EdgeInsets.zero,
+      suffixIcon: suffixIcon != null ? IconButton(onPressed: onSuffixPressed, icon: suffixIcon) : null,
+
+      // ===== البوردر الخطّي =====
+      enabledBorder: const UnderlineInputBorder(
+        borderSide: BorderSide(color: AppColors.kGreyColor, width: 0.8),
+      ),
+      focusedBorder: const UnderlineInputBorder(
+        borderSide: BorderSide(color: AppColors.kPrimaryColor, width: 1.5),
       ),
     ),
   );

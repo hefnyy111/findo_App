@@ -1,4 +1,11 @@
 {
-    "title": "Ascend"
-   
+     "comment": "========== Get Started Screen ==========",
+     "getstarted_title": "Hello to Ascend",
+     "getstarted_subtitle": "Your journey to smarter chat & epic rewards begins",
+     "getstarted_textbutton": "Start your journey",
+     "getstarted_button_navigation_text1": "By tapping \"Start your journey\", you agree to",
+     "getstarted_button_navigation_text2": "our",
+     "getstarted_button_navigation_text3": "and",
+     "getstarted_button_navigation_button1": "Privacy Policy",
+     "getstarted_button_navigation_button2": "Terms of services."
 }
