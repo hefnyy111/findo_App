@@ -69,7 +69,7 @@ class SignInView extends StatelessWidget {
                   // ******************************* Condition  *******************************
                   //
                   //
-                  if(cubit_signin.isPhoeSelected) ...[
+                  if(cubit_signin.isPhoneSelected) ...[
                   // ******************************* Country
                   SignInPicker(),
                   // ******************************* Sizebox

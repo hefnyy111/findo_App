@@ -36,7 +36,7 @@ class SignInSelect extends StatelessWidget {
                   duration: Duration(milliseconds: 300),
                   height: double.infinity,
                   decoration: BoxDecoration(
-                    color: cubit_signin.isPhoeSelected ? AppColors.kPrimaryColor : AppColors.kbackGroundField,
+                    color: cubit_signin.isPhoneSelected ? AppColors.kPrimaryColor : AppColors.kbackGroundField,
                     borderRadius: BorderRadius.horizontal(
                       left: Radius.circular(25.0),
                     ),
@@ -47,16 +47,14 @@ class SignInSelect extends StatelessWidget {
                       padding: EdgeInsets.zero,
                     ),
                     onPressed: () {
-                      cubit_signin.toggleSelected(true);
-                      if(cubit_signin.email.text.isNotEmpty) {
-         
-                      }
+                      cubit_signin.toggleSelected(true, context);
+
                     },
                     child: Text(
                       'Phone',
                       style: TextStyle(
                         color: Colors.white,
-                        fontSize: cubit_signin.isPhoeSelected ? 15 : 13,
+                        fontSize: cubit_signin.isPhoneSelected ? 15 : 13,
                       ),
                     ),
                   ),
@@ -68,7 +66,7 @@ class SignInSelect extends StatelessWidget {
                   duration: Duration(milliseconds: 300),
                   height: double.infinity,
                   decoration: BoxDecoration(
-                    color: cubit_signin.isPhoeSelected ? AppColors.kbackGroundField : AppColors.kPrimaryColor,
+                    color: cubit_signin.isPhoneSelected ? AppColors.kbackGroundField : AppColors.kPrimaryColor,
                     borderRadius: BorderRadius.horizontal(
                       right: Radius.circular(25.0),
                     ),
@@ -78,16 +76,13 @@ class SignInSelect extends StatelessWidget {
                       minimumSize: Size(double.infinity, double.infinity),
                     ),
                     onPressed: () {
-                      cubit_signin.toggleSelected(false);
-                        if(cubit_signin.phoneNumber.text.isNotEmpty && cubit_signin.codeCounter.text.isNotEmpty && cubit_signin.selectCountry != "Select country" ) {
-                
-                      }
+                      cubit_signin.toggleSelected(false, context);
                     },
                     child: Text(
                       'Email',
                       style: TextStyle(
                         color: Colors.white,
-                        fontSize: cubit_signin.isPhoeSelected ? 13 : 15,
+                        fontSize: cubit_signin.isPhoneSelected ? 13 : 15,
                       ),
                     ),
                   ),
