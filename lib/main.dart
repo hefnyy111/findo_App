@@ -4,8 +4,8 @@ import 'package:Ascend/features/auth/presentation/get_Started/language/manager/l
 import 'package:Ascend/features/auth/presentation/get_Started/language/manager/language_states.dart';
 import 'package:Ascend/features/auth/presentation/sign_in/manager/sign_in_cubit.dart';
 import 'package:Ascend/generated/l10n.dart';
-import 'package:Ascend/shared/core/constants/app_router.dart';
 import 'package:Ascend/shared/core/services/bloc_observer_class.dart';
+import 'package:Ascend/shared/core/utlis/app_router.dart';
 import 'package:Ascend/shared/network/cashe_helper.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';

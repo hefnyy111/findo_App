@@ -2,7 +2,7 @@
 import 'package:Ascend/features/auth/presentation/sign_in/action/sign_in_action.dart';
 import 'package:Ascend/features/auth/presentation/sign_in/manager/sign_in_cubit.dart';
 import 'package:Ascend/features/auth/presentation/sign_in/manager/sign_in_states.dart';
-import 'package:Ascend/shared/core/constants/constants.dart';
+import 'package:Ascend/shared/core/utlis/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

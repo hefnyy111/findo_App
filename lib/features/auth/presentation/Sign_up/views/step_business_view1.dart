@@ -1,14 +1,10 @@
-// feature/auth/presentation/Sign_up/views/step_business_view1.dart
-// faatures/authentocation/presentaition/create_business/step_business_1/views/step_busi
-
-
 import 'package:Ascend/features/auth/presentation/Sign_up/action/step_business_action.dart';
 import 'package:Ascend/features/auth/presentation/Sign_up/manager/step_business_cubit1.dart';
 import 'package:Ascend/features/auth/presentation/Sign_up/manager/step_business_states1.dart';
 import 'package:Ascend/features/auth/presentation/widgets/step_progress.dart';
-import 'package:Ascend/shared/Components/custom_buttonNavigation.dart';
 import 'package:Ascend/shared/Components/components.dart';
-import 'package:Ascend/shared/core/constants/constants.dart';
+import 'package:Ascend/shared/Components/custom_buttonNavigation.dart';
+import 'package:Ascend/shared/core/utlis/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shimmer_animation/shimmer_animation.dart';

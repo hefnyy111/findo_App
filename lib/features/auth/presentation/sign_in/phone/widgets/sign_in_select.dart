@@ -1,9 +1,10 @@
 // features/auth/presentation/sign_in/phone/widgets/sign_in_select.dart
 import 'package:Ascend/features/auth/presentation/sign_in/manager/sign_in_cubit.dart';
 import 'package:Ascend/features/auth/presentation/sign_in/manager/sign_in_states.dart';
-import 'package:Ascend/shared/core/constants/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../../../../shared/core/utlis/constants.dart';
 
 class SignInSelect extends StatelessWidget {
   @override
@@ -48,7 +49,7 @@ class SignInSelect extends StatelessWidget {
                     ),
                     onPressed: () {
                       cubit_signin.toggleSelected(true);
-                      
+ 
                     },
                     child: Text(
                       'Phone',
