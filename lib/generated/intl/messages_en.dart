@@ -22,6 +22,28 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-    "title": MessageLookupByLibrary.simpleMessage("Ascend"),
+    "comment": MessageLookupByLibrary.simpleMessage(
+      "========== Get Started Screen ==========",
+    ),
+    "getstarted_button_navigation_button1":
+        MessageLookupByLibrary.simpleMessage("Privacy Policy"),
+    "getstarted_button_navigation_button2":
+        MessageLookupByLibrary.simpleMessage("Terms of services."),
+    "getstarted_button_navigation_text1": MessageLookupByLibrary.simpleMessage(
+      "By tapping \"Start your journey\", you agree to",
+    ),
+    "getstarted_button_navigation_text2": MessageLookupByLibrary.simpleMessage(
+      "our",
+    ),
+    "getstarted_button_navigation_text3": MessageLookupByLibrary.simpleMessage(
+      "and",
+    ),
+    "getstarted_subtitle": MessageLookupByLibrary.simpleMessage(
+      "Your journey to smarter chat & epic rewards begins",
+    ),
+    "getstarted_textbutton": MessageLookupByLibrary.simpleMessage(
+      "Start your journey",
+    ),
+    "getstarted_title": MessageLookupByLibrary.simpleMessage("Hello to Ascend"),
   };
 }

@@ -1,8 +1,9 @@
+// features/auth/presentation/get_Started/get_started_view.dart
 
 
 import 'package:Ascend/features/auth/presentation/get_Started/action/get_started_action.dart';
-import 'package:Ascend/features/auth/presentation/get_Started/language/cubit/language_cubit.dart';
-import 'package:Ascend/features/auth/presentation/get_Started/language/states/language_states.dart' show LanguageStates;
+import 'package:Ascend/features/auth/presentation/get_Started/language/manager/language_cubit.dart';
+import 'package:Ascend/features/auth/presentation/get_Started/language/manager/language_states.dart' show LanguageStates;
 import 'package:Ascend/generated/l10n.dart';
 import 'package:Ascend/shared/Components/components.dart';
 import 'package:Ascend/shared/core/constants/constants.dart';
@@ -19,102 +20,101 @@ class GetStartedView extends StatelessWidget {
     return BlocConsumer<LanguageCubit, LanguageStates>(
       listener: (context, state) {},
       builder: (context, state) {
+        var cubit_lang = LanguageCubit.get(context);
         return Scaffold(
           backgroundColor: AppColors.kbackgroundColor,
           body: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 24.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                const SizedBox(height: 50.0),
-                // ******************************* Language
-                CustomLanguageDropdown(),
-                // ******************************* Sizebox
-                SizedBox(height: 80.0),
-                // ******************************* Image
-                Image.asset('assets/logo_acsend.png', height: 150, width: 150),
-                // ******************************* Sizebox
-                const SizedBox(height: 50),
-                // ******************************* Text 1
-                Text(
-                  S.of(context).title,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontFamily: 'SF-Pro-Rounded-Bold',
-                    color: Colors.white,
-                    fontSize: 32,
-
-                    height: 1.4,
+            child: Form(
+              key: cubit_lang.forKeySelecetedLanguage,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const SizedBox(height: 50.0),
+                  // ******************************* Language
+                  CustomLanguageDropdown(),
+                  // ******************************* Sizebox
+                  SizedBox(height: 80.0),
+                  // ******************************* Image
+                  Image.asset('assets/logo_acsend.png', height: 150, width: 150),
+                  // ******************************* Sizebox
+                  const SizedBox(height: 50),
+                  // ******************************* Text 1
+                  Text(
+                    S.of(context).getstarted_title,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontFamily: 'SF-Pro-Rounded-Bold',
+                      color: Colors.white,
+                      fontSize: 32,
+              
+                      height: 1.4,
+                    ),
                   ),
-                ),
-                // ******************************* Sizebox
-                const SizedBox(height: 20),
-                // ******************************* Text 2
-                const Text(
-                  'Your journey to smarter chat & epic rewards begins',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: AppColors.kGreyColor,
-                    fontSize: 15,
-                    height: 1.5,
+                  // ******************************* Sizebox
+                  const SizedBox(height: 20),
+                  // ******************************* Text 2
+                  Text(
+                    S.of(context).getstarted_subtitle,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: AppColors.kGreyColor,
+                      fontSize: 15,
+                      height: 1.5,
+                    ),
                   ),
-                ),
-                // ******************************* Sizebox
-                const SizedBox(height: 60),
-                // ******************************* Button 1
-                SizedBox(
-                  width: double.infinity,
-                  child: customButton(
-                    function:
-                        () => GetStartedAction.getStartedButtonPress(
-                          context,
-                          "go_getStarted",
-                        ),
-                    text: 'Start your journey',
-                    colorBorderside: AppColors.kPrimaryColor,
-                    colorText: Colors.white,
+                  // ******************************* Sizebox
+                  const SizedBox(height: 60),
+                  // ******************************* Button 1
+                  SizedBox(
                     width: double.infinity,
-                    backColor: AppColors.kPrimaryColor,
+                    child: customButton(
+                      function:() => GetStartedAction.getStartedButtonPress(  context,  "go_getStarted",),
+                      text: S.of(context).getstarted_textbutton,
+                      colorBorderside: AppColors.kPrimaryColor,
+                      colorText: Colors.white,
+                      width: double.infinity,
+                      backColor: AppColors.kPrimaryColor,
+                    ),
                   ),
-                ),
-                // ******************************* Sizebox
-                const SizedBox(height: 40),
-              ],
+                  // ******************************* Sizebox
+                  const SizedBox(height: 40),
+                ],
+              ),
             ),
           ),
           // ******************************* Button Navigate
           bottomNavigationBar: Padding(
             padding: const EdgeInsets.symmetric(
-              horizontal: 24.0,
+              horizontal: 20.0,
               vertical: 16.0,
             ),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                ///- TEXT
-                const Text(
-                  'By tapping "Start your journey", you agree to',
+                // ******************************* TEXT
+                Text(
+                  S.of(context).getstarted_button_navigation_text1,
                   style: TextStyle(color: AppColors.kGreyColor, fontSize: 12.0),
                 ),
-
-                ///- SIZEBOX
+                // ******************************* SIZEBOX
                 const SizedBox(height: 4),
-
-                ///- ROW
+                // ******************************* ROW
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    ///- OUR
-                    const Text(
-                      ' our ',
+                    // ******************************* OUR
+                    Text(
+                         S.of(context).getstarted_button_navigation_text2,
                       style: TextStyle(
                         color: AppColors.kGreyColor,
                         fontSize: 12.0,
                       ),
                     ),
-
-                    ///- TEXT BUTTON 1
+                    // ******************************* Sizebox
+                    SizedBox(width: 5.0,),
+                    // ******************************* TEXT BUTTON 1
                     TextButton(
                       onPressed: () {},
                       style: TextButton.styleFrom(
@@ -123,8 +123,7 @@ class GetStartedView extends StatelessWidget {
                         tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                       ),
                       child: Text(
-                        'Privacy Policy',
-
+                           S.of(context).getstarted_button_navigation_button1,
                         style: TextStyle(
                           color: AppColors.kPrimaryColor,
                           fontWeight: FontWeight.bold,
@@ -133,17 +132,19 @@ class GetStartedView extends StatelessWidget {
                         ),
                       ),
                     ),
-
-                    ///- AND
-                    const Text(
-                      ' and ',
+                    // ******************************* Sizebox
+                    SizedBox(width: 3.0,),
+                    // ******************************* AND
+                    Text(
+                         S.of(context).getstarted_button_navigation_text3,
                       style: TextStyle(
                         color: AppColors.kGreyColor,
                         fontSize: 12.0,
                       ),
                     ),
-
-                    ///- TEXT BUTTON 2
+                    // ******************************* Sizebox
+                    SizedBox(width: 5.0,),
+                    // ******************************* TEXT BUTTON 2
                     TextButton(
                       onPressed: () {},
                       style: TextButton.styleFrom(
@@ -152,7 +153,7 @@ class GetStartedView extends StatelessWidget {
                         tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                       ),
                       child: Text(
-                        'Terms of Service.',
+                           S.of(context).getstarted_button_navigation_button2,
 
                         style: TextStyle(
                           color: AppColors.kPrimaryColor,
