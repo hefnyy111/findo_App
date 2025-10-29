@@ -78,9 +78,8 @@ class SignInCubit extends Cubit<SignInStates> {
  bool ButtonShimmer = false;
 
  void changeButton(String? valuee, context, {VoidCallback? customButtonAction}) {
-  bool info = selectCountry != "Select country" && selectCodeCountry.isNotEmpty && valuee!.isNotEmpty;
+  bool info = selectCountry != "Select country" && codeCounter.text.isNotEmpty && valuee!.isNotEmpty;
   if(info) {
-   ButtonShimmer = true;
    background_button = AppColors.kPrimaryColor;
    text_button = Colors.white;
    borderSide = AppColors.kPrimaryColor;
@@ -94,6 +93,10 @@ class SignInCubit extends Cubit<SignInStates> {
   }
 
   emit(SigninChangeButtonStates());
+ }
+ 
+ void resetButton() {
+  
  }
 
 }

@@ -96,7 +96,10 @@ class SignInView extends StatelessWidget {
                         child: customTextFormField(
                           controller: cubit_signin.phoneNumber,
                           validate: (value) {},
-                          onChanged: (v) {},
+                          onChanged: (valuee) {
+                           cubit_signin.changeButton(valuee, context, customButtonAction: () =>  SignInAction.signInButtonPress(context,  "continue_login",),);
+
+                          },
                           text: "Phone",
                         ),
                       ),
@@ -147,21 +150,24 @@ class SignInView extends StatelessWidget {
 
           bottomNavigationBar: Padding(
             padding: EdgeInsets.all(24),
-            child: Shimmer(
-              duration: Duration(seconds: 4),
-                      interval: Duration(seconds: 1),
-                      color: Colors.grey,
-                      colorOpacity: 1,
-                      enabled: cubit_signin.ButtonShimmer,
-                      direction: ShimmerDirection.fromLBRT(),
-              child: customButton(
-                      function: cubit_signin.button_onpressed,
-                      text: "Continue",
-                      colorBorderside: cubit_signin.borderSide,
-                      backColor: cubit_signin.background_button,
-                      colorText: cubit_signin.text_button,
-                      width: double.infinity,
-                    ),
+            child: ClipRRect(
+              borderRadius: BorderRadiusGeometry.circular(25),
+              child: Shimmer(
+                duration: Duration(seconds: 4),
+                        interval: Duration(seconds: 1),
+                        color: Colors.grey,
+                        colorOpacity: 1,
+                        enabled: cubit_signin.ButtonShimmer,
+                        direction: ShimmerDirection.fromLBRT(),
+                child: customButton(
+                        function: cubit_signin.button_onpressed,
+                        text: "Continue",
+                        colorBorderside: cubit_signin.borderSide,
+                        backColor: cubit_signin.background_button,
+                        colorText: cubit_signin.text_button,
+                        width: double.infinity,
+                      ),
+              ),
             ),
             ),
         );
