@@ -10,10 +10,110 @@ class OtpCode extends StatefulWidget {
 }
 
 class _OtpCodeState extends State<OtpCode> {
+  final firstFocus = FocusNode();
+  final secondFocus = FocusNode();
   final firstController = TextEditingController();
   final secondController = TextEditingController();
 
-  bool isFirstActive = true;
+  List<String> firstDigits = ["0", "0", "0"];
+  List<String> secondDigits = ["0", "0", "0"];
+
+  @override
+  void dispose() {
+    firstFocus.dispose();
+    secondFocus.dispose();
+    firstController.dispose();
+    secondController.dispose();
+    super.dispose();
+  }
+
+  void updateDigits(String input, List<String> digits, FocusNode nextFocus) {
+    for (int i = 0; i < 3; i++) {
+      if (i < input.length) {
+        digits[i] = input[i];
+      } else {
+        digits[i] = "0";
+      }
+    }
+
+    if (input.length == 3) {
+      FocusScope.of(context).requestFocus(nextFocus);
+    }
+  }
+
+  Widget buildBox({
+    required List<String> digits,
+    required TextEditingController controller,
+    required FocusNode focusNode,
+    required FocusNode nextFocus,
+  }) {
+    return Container(
+      width: 90,
+      height: 60,
+      margin: const EdgeInsets.symmetric(horizontal: 8),
+      decoration: BoxDecoration(
+        color: Colors.grey,
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(
+          color: focusNode.hasFocus ? AppColors.kPrimaryColor : Colors.grey,
+          width: focusNode.hasFocus ? 2 : 1,
+        ),
+        boxShadow: [
+          if (focusNode.hasFocus)
+            BoxShadow(
+              color: AppColors.kPrimaryColor.withOpacity(0.15),
+              blurRadius: 6,
+              offset: const Offset(0, 3),
+            ),
+        ],
+      ),
+      child: Stack(
+        alignment: Alignment.center,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: List.generate(3, (i) {
+              return AnimatedSwitcher(
+                duration: const Duration(milliseconds: 250),
+                transitionBuilder:
+                    (child, anim) => SlideTransition(
+                      position: Tween<Offset>(
+                        begin: const Offset(0, 1),
+                        end: Offset.zero,
+                      ).animate(anim),
+                      child: child,
+                    ),
+                child: Text(
+                  digits[i],
+                  key: ValueKey(digits[i] + i.toString()),
+                  style: const TextStyle(
+                    fontSize: 32,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                  ),
+                ),
+              );
+            }),
+          ),
+          Opacity(
+            opacity: 0,
+            child: TextField(
+              controller: controller,
+              focusNode: focusNode,
+              keyboardType: TextInputType.number,
+              inputFormatters: [LengthLimitingTextInputFormatter(3)],
+              autofocus: focusNode == firstFocus,
+              onChanged: (val) {
+                setState(() {
+                  updateDigits(val, digits, nextFocus);
+                });
+              },
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,61 +121,19 @@ class _OtpCodeState extends State<OtpCode> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          buildCodeBox(
+          buildBox(
+            digits: firstDigits,
             controller: firstController,
-            isActive: isFirstActive,
-            onTap: () {
-              setState(() => isFirstActive = true);
-            },
+            focusNode: firstFocus,
+            nextFocus: secondFocus,
           ),
-          const SizedBox(width: 10),
-          buildCodeBox(
+          buildBox(
+            digits: secondDigits,
             controller: secondController,
-            isActive: !isFirstActive,
-            onTap: () {
-              setState(() => isFirstActive = false);
-            },
+            focusNode: secondFocus,
+            nextFocus: FocusNode(),
           ),
         ],
-      ),
-    );
-  }
-
-  Widget buildCodeBox({
-    required TextEditingController controller,
-    required bool isActive,
-    required VoidCallback onTap,
-  }) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        width: 90,
-        height: 60,
-        alignment: Alignment.center,
-        decoration: BoxDecoration(
-          color: const Color.fromARGB(255, 249, 230, 230),
-          borderRadius: BorderRadius.circular(20),
-          border:
-              isActive
-                  ? Border.all(color: AppColors.kPrimaryColor, width: 1)
-                  : null,
-        ),
-        child: TextField(
-          controller: controller,
-          textAlign: TextAlign.center,
-          style: const TextStyle(
-            fontSize: 24,
-            fontWeight: FontWeight.bold,
-            color: Colors.black,
-          ),
-          keyboardType: TextInputType.number,
-          inputFormatters: [LengthLimitingTextInputFormatter(3)],
-          decoration: const InputDecoration(
-            border: InputBorder.none,
-            hintText: '',
-          ),
-          onTap: onTap,
-        ),
       ),
     );
   }
