@@ -4,7 +4,7 @@ import 'package:Ascend/shared/core/constants/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-// ====================== Navigator and finish ======================
+// ====================== Navigator and finish =====================
 void navigatorAndFinish(context, widget) {
   Navigator.pushAndRemoveUntil(
     context,
