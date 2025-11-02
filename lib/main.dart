@@ -1,4 +1,5 @@
 // main.dart
+import 'package:Ascend/features/RegisterVerify/Cubit/verification_cubit.dart';
 import 'package:Ascend/features/auth/presentation/get_Started/language/manager/language_cubit.dart';
 import 'package:Ascend/features/auth/presentation/get_Started/language/manager/language_states.dart';
 import 'package:Ascend/features/auth/presentation/sign_in/manager/sign_in_cubit.dart';
@@ -14,8 +15,10 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 void main() async {
   Bloc.observer = AppBlocObserver();
   WidgetsFlutterBinding.ensureInitialized();
+ 
   await CasheHelper.init();
   runApp(DevicePreview(enabled: true, builder: (context) => const MyApp()));
+  
 }
 
 class MyApp extends StatelessWidget {

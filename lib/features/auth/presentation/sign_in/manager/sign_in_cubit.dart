@@ -11,7 +11,7 @@ class SignInCubit extends Cubit<SignInStates> {
 
   static SignInCubit get(context) => BlocProvider.of(context);
 
-  // ******************************* Variabels
+  // ******************************* Inputs
   final phoneNumber = TextEditingController();
   var codeCounter = TextEditingController(text: "+");
   final email = TextEditingController();
@@ -35,65 +35,71 @@ class SignInCubit extends Cubit<SignInStates> {
     changeButton(null, context);
   }
 
-  // ******************************* Change button
-  Color background_button = AppColors.kbutton_disabel;
-  Color text_button = Colors.grey;
-  Color borderSide = AppColors.kbutton_disabel;
-  VoidCallback? button_onpressed;
-  bool ButtonShimmer = false;
 
-  void changeButton(String? valuee,context, {VoidCallback? customButtonAction, }) {
-    bool info_phone = selectCountry != "Select country" && codeCounter.text.isNotEmpty && phoneNumber.text.isNotEmpty;
-    bool info_email = email.text.isNotEmpty;
+// ******************************* select country
+String selectCountry = "Select country";
+Color colorCountry = AppColors.kGreyColor;
+Color colorCodeCountry = AppColors.kGreyColor;
+String selectCodeCountry = "";
+String selectCountryISO = "";
 
-    if (isPhoneSelected) {
-      if (info_phone) {
-        background_button = AppColors.kPrimaryColor;
-        text_button = Colors.white;
-        ButtonShimmer = true;
-        borderSide = AppColors.kPrimaryColor;
-        button_onpressed = customButtonAction;
-      } else {
-        ButtonShimmer = false;
-        background_button = AppColors.kbutton_disabel;
-        text_button = Colors.grey;
-        borderSide = AppColors.kbutton_disabel;
-        button_onpressed = null;
-      }
-    } else { //email
-      if (info_email) {
-        background_button = AppColors.kPrimaryColor;
-        text_button = Colors.white;
-        ButtonShimmer = true;
-        borderSide = AppColors.kPrimaryColor;
-        button_onpressed = customButtonAction;
-      } else {
-        ButtonShimmer = false;
-        background_button = AppColors.kbutton_disabel;
-        text_button = Colors.grey;
-        borderSide = AppColors.kbutton_disabel;
-        button_onpressed = null;
-      }
+void selectedCountryy(Country country) {
+  selectCountry = "${country.name}";
+  selectCountryISO = country.countryCode; 
+  colorCountry = Colors.white;
+  colorCodeCountry = Colors.white;
+  selectCodeCountry = "+${country.phoneCode}";
+  codeCounter = TextEditingController(text: selectCodeCountry);
+
+  emit(SignInSelectCountryStates());
+}
+
+// ******************************* Change button
+Color background_button = AppColors.kbutton_disabel;
+Color text_button = Colors.grey;
+Color borderSide = AppColors.kbutton_disabel;
+VoidCallback? button_onpressed;
+bool ButtonShimmer = false;
+bool info_phone = false;
+
+Future<void> changeButton(String? valuee, context, {VoidCallback? customButtonAction}) async {
+  bool info_email = email.text.isNotEmpty;
+  bool info_phone = selectCountry != "Select country" && codeCounter.text.trim().isNotEmpty && phoneNumber.text.trim().isNotEmpty;
+
+  if (isPhoneSelected) {
+    if (info_phone) {
+      background_button = AppColors.kPrimaryColor;
+      text_button = Colors.white;
+      ButtonShimmer = true;
+      borderSide = AppColors.kPrimaryColor;
+      button_onpressed = customButtonAction;
+    } else {
+      ButtonShimmer = false;
+      background_button = AppColors.kbutton_disabel;
+      text_button = Colors.grey;
+      borderSide = AppColors.kbutton_disabel;
+      button_onpressed = null;
     }
-
-    emit(SigninChangeButtonStates());
+  } else {
+    // email
+    if (info_email) {
+      background_button = AppColors.kPrimaryColor;
+      text_button = Colors.white;
+      ButtonShimmer = true;
+      borderSide = AppColors.kPrimaryColor;
+      button_onpressed = customButtonAction;
+    } else {
+      ButtonShimmer = false;
+      background_button = AppColors.kbutton_disabel;
+      text_button = Colors.grey;
+      borderSide = AppColors.kbutton_disabel;
+      button_onpressed = null;
+    }
   }
 
-  // ******************************* select country
-  String selectCountry = "Select country";
-  Color colorCountry = AppColors.kGreyColor;
-  Color colorCodeCountry = AppColors.kGreyColor;
-  String selectCodeCountry = "";
+  emit(SigninChangeButtonStates());
+}
 
-  void selectedCountryy(Country country) {
-    selectCountry = "${country.name}";
-    colorCountry = Colors.white;
-    colorCodeCountry = Colors.white;
-    selectCodeCountry = "+${country.phoneCode}";
-    codeCounter = TextEditingController(text: selectCodeCountry);
-
-    emit(SignInSelectCountryStates());
-  }
 
   // ******************************* Search
   bool showSearch = false;
@@ -114,5 +120,5 @@ class SignInCubit extends Cubit<SignInStates> {
     emit(SignInUpdateSearchStates());
   }
 
-
+  
 }

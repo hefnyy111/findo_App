@@ -15,7 +15,9 @@ class SignInView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<SignInCubit, SignInStates>(
-      listener: (context, state) {},
+      listener: (context, state) {
+        
+      },
 
       builder: (context, state) {
         var cubit_signin = SignInCubit.get(context);
