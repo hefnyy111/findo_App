@@ -1,6 +1,6 @@
 
 import 'package:Ascend/features/auth/presentation/Sign_up/manager/step_business_states1.dart';
-import 'package:Ascend/shared/core/utlis/constants.dart';
+import 'package:Ascend/shared/core/constants/constants.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
 

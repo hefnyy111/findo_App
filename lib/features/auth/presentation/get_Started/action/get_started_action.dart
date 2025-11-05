@@ -1,5 +1,5 @@
 
-import 'package:Ascend/shared/core/utlis/app_router.dart';
+import 'package:Ascend/shared/core/constants/app_router.dart';
 import 'package:go_router/go_router.dart';
 
 class GetStartedAction {

@@ -3,13 +3,13 @@
 
 import 'package:Ascend/features/auth/presentation/splash_screen/manager/splash_cubit.dart';
 import 'package:Ascend/features/auth/presentation/splash_screen/manager/splash_states.dart';
-import 'package:Ascend/shared/core/utlis/app_router.dart' show AppRouter;
+import 'package:Ascend/shared/core/constants/app_router.dart' show AppRouter;
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../../shared/core/utlis/constants.dart';
+import '../../../../shared/core/constants/constants.dart';
 
 class SplashView extends StatelessWidget {
   @override

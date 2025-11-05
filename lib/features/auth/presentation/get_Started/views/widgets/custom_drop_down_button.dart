@@ -1,7 +1,7 @@
 
 import 'package:Ascend/features/auth/presentation/get_Started/language/manager/language_cubit.dart';
 import 'package:Ascend/features/auth/presentation/get_Started/language/manager/language_states.dart';
-import 'package:Ascend/shared/core/utlis/constants.dart';
+import 'package:Ascend/shared/core/constants/constants.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 
 import 'package:flutter/material.dart';

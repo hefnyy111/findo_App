@@ -1,7 +1,7 @@
 import 'package:Ascend/features/auth/presentation/sign_in/manager/cubit/verify_code_cubit.dart';
 import 'package:Ascend/features/auth/presentation/sign_in/phone/widgets/custom_raw.dart';
 import 'package:Ascend/features/auth/presentation/sign_in/phone/widgets/otp_code.dart';
-import 'package:Ascend/shared/core/utlis/constants.dart';
+import 'package:Ascend/shared/core/constants/constants.dart';
 import 'package:flutter/material.dart';
 
 class CodeView extends StatelessWidget {
@@ -46,6 +46,7 @@ class CodeView extends StatelessWidget {
                   ),
                   const SizedBox(height: 20.0),
                   OtpCode(),
+                  
                   const SizedBox(height: 20.0),
                   CustomRow(text1: 'Dont receive a code ?', text2: 'Resend'),
                   const SizedBox(height: 200.0),

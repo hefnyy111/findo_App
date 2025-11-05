@@ -1,22 +1,24 @@
 
-
 import 'package:Ascend/features/auth/presentation/get_Started/language/manager/language_cubit.dart';
 import 'package:Ascend/features/auth/presentation/get_Started/language/manager/language_states.dart';
 import 'package:Ascend/features/auth/presentation/sign_in/manager/sign_in_cubit.dart';
 import 'package:Ascend/generated/l10n.dart';
 import 'package:Ascend/shared/core/services/bloc_observer_class.dart';
-import 'package:Ascend/shared/core/utlis/app_router.dart';
+import 'package:Ascend/shared/core/constants/app_router.dart';
 import 'package:Ascend/shared/network/cashe_helper.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
+import 'package:Ascend/shared/core/constants/constants.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() async {
   Bloc.observer = AppBlocObserver();
   WidgetsFlutterBinding.ensureInitialized();
+ 
   await CasheHelper.init();
   runApp(DevicePreview(enabled: true, builder: (context) => const MyApp()));
+  
 }
 
 class MyApp extends StatelessWidget {

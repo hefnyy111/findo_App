@@ -5,7 +5,7 @@ import 'package:Ascend/features/auth/presentation/sign_in/manager/sign_in_states
 import 'package:Ascend/features/auth/presentation/sign_in/phone/widgets/sign_in_fieldPicker.dart';
 import 'package:Ascend/features/auth/presentation/sign_in/phone/widgets/sign_in_select.dart';
 import 'package:Ascend/shared/Components/components.dart';
-import 'package:Ascend/shared/core/utlis/constants.dart';
+import 'package:Ascend/shared/core/constants/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shimmer_animation/shimmer_animation.dart';
@@ -68,9 +68,9 @@ class SignInView extends StatelessWidget {
                   // ******************************* Condition  *******************************
                   //
                   //
-                  if (cubit_signin.isPhoeSelected) ...[
-                    // ******************************* Country
-                    SignInPicker(),
+                  // if (cubit_signin.isPhoeSelected) ...[
+                  //   // ******************************* Country
+                  //   SignInPicker(),
                     // ******************************* Sizebox
                     const SizedBox(height: 20.0),
                     // ******************************* Field phone
@@ -121,24 +121,24 @@ class SignInView extends StatelessWidget {
                     ),
                     // ******************************* Sizebox
                     const SizedBox(height: 50.0),
-                  ] else ...[
-                    // ******************************* field email
-                    customTextFormField(
-                      controller: cubit_signin.email,
-                      validate: (value) {},
-                      onChanged: (valuee) {
-                        cubit_signin.changeButton(
-                          valuee,
-                          context,
-                          customButtonAction:
-                              () => SignInAction.signInButtonPress(
-                                context,
-                                "continue_login",
-                              ),
-                        );
-                      },
-                      text: "Email",
-                    ),
+                  // ] else ...[
+                  //   // ******************************* field email
+                  //   customTextFormField(
+                  //     controller: cubit_signin.email,
+                  //     validate: (value) {},
+                  //     onChanged: (valuee) {
+                  //       cubit_signin.changeButton(
+                  //         valuee,
+                  //         context,
+                  //         customButtonAction:
+                  //             () => SignInAction.signInButtonPress(
+                  //               context,
+                  //               "continue_login",
+                  //             ),
+                  //       );
+                  //     },
+                    //   text: "Email",
+                    // ),
                     // ******************************* Sizebox
                     const SizedBox(height: 25.0),
 
@@ -168,7 +168,7 @@ class SignInView extends StatelessWidget {
                     // ******************************* Sizebox
                     const SizedBox(height: 30.0),
                   ],
-                ],
+                // ],
               ),
             ),
           ),

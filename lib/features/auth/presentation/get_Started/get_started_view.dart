@@ -6,7 +6,7 @@ import 'package:Ascend/features/auth/presentation/get_Started/language/manager/l
 import 'package:Ascend/features/auth/presentation/get_Started/language/manager/language_states.dart' show LanguageStates;
 import 'package:Ascend/generated/l10n.dart';
 import 'package:Ascend/shared/Components/components.dart';
-import 'package:Ascend/shared/core/utlis/constants.dart';
+import 'package:Ascend/shared/core/constants/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
