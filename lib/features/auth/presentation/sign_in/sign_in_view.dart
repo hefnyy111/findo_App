@@ -24,7 +24,7 @@ class SignInView extends StatelessWidget {
         return Scaffold(
           resizeToAvoidBottomInset: true,
           extendBodyBehindAppBar: true,
-          backgroundColor: Colors.black,
+          backgroundColor: AppColors.kbackgroundColor,
           body: Padding(
             padding: EdgeInsetsGeometry.all(24.0),
             child: Form(
@@ -35,11 +35,11 @@ class SignInView extends StatelessWidget {
                   // ******************************* Sizebox
                   const SizedBox(height: 100.0),
                   // ******************************* Text 1
-                  const Center(
+                  Center(
                     child: Column(
                       children: [
                         Text(
-                          'Enter your phone number',
+                         cubit_signin.isPhoneSelected ? 'Enter your phone number' : 'Enter your email' ,
                           style: TextStyle(
                             fontFamily: 'SF-Pro-Rounded-Bold',
                             color: Colors.white,
@@ -51,7 +51,7 @@ class SignInView extends StatelessWidget {
                         const SizedBox(height: 20.0),
                         // ******************************* Text 2
                         Text(
-                          "Verification is quick and easy -- just\n enter your number below",
+                         cubit_signin.isPhoneSelected ? "Verification is quick and easy -- just\n enter your number below" : "Verification is quick and easy -- just\n enter your email below",
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             color: AppColors.kGreyColor,
@@ -150,7 +150,7 @@ class SignInView extends StatelessWidget {
               ),
             ),
           ),
-
+      // ******************************* Button contiue
           bottomNavigationBar: Padding(
             padding: EdgeInsets.all(24),
             child: ClipRRect(

@@ -1,4 +1,5 @@
-// faatures/authentocation/presentaition/create_business/step_business_1/views/widgets/step_progress.dart
+// features/auth/presentation/Sign_up/widgets/step_progress.dart
+import 'package:Ascend/shared/core/constants/constants.dart';
 import 'package:flutter/material.dart';
 
 class StepProgress extends StatelessWidget {
@@ -16,7 +17,7 @@ class StepProgress extends StatelessWidget {
     double progress = currentStep / totalSteps;
 
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+      padding: const EdgeInsets.symmetric( vertical: 12),
       child: Column(
         children: [
           Row(
@@ -79,7 +80,7 @@ class StepProgress extends StatelessWidget {
             alignment: Alignment.centerRight,
             child: Text(
               'Step $currentStep of $totalSteps',
-              style: const TextStyle(color: Colors.white70),
+              style: const TextStyle(color: AppColors.kGreyColor),
             ),
           ),
         ],
