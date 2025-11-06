@@ -154,7 +154,6 @@ class GetStartedView extends StatelessWidget {
                       ),
                       child: Text(
                            S.of(context).getstarted_button_navigation_button2,
-
                         style: TextStyle(
                           color: AppColors.kPrimaryColor,
                           fontWeight: FontWeight.bold,
