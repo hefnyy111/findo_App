@@ -107,7 +107,7 @@ class StepAccount2View extends StatelessWidget {
                       direction: ShimmerDirection.fromLBRT(),
                       child: customButton(
                         function: () {},
-                        text: "Continue",
+                        text: "Next",
                         colorBorderside: AppColors.kPrimaryColor,
                         backColor: AppColors.kPrimaryColor,
                         colorText: Colors.white,
