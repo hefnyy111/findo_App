@@ -33,7 +33,7 @@ class SignInPicker extends StatelessWidget {
                   child: Text(
                     cubit_signin.selectCountry ?? "Select country",
                     style: TextStyle(
-                      color: cubit_signin.colorCountry ?? AppColors.kGreyColor,
+                      color: cubit_signin.colorCountry ??  AppColors.kGreyColor,
                       fontSize: 14, 
                       fontWeight: FontWeight.w500,
                     ),
