@@ -65,10 +65,12 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/images/Auth/select_account/
-    - assets/images/Auth/location/
+    - assets/logo_acsend.png
     - assets/
+    - assets/Images/Auth/forger_email/EmailBackground.png
 
+
+    
   fonts:
     - family: SF-Pro-Display-Heavy
       fonts:
