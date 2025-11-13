@@ -1,11 +1,7 @@
 // features/auth/presentation/Sign_up/step_account_4/step_account4_view.dart
-import 'package:Ascend/features/auth/presentation/Sign_up/step_account_2/manager/step_account2_cubit.dart';
-import 'package:Ascend/features/auth/presentation/Sign_up/step_account_2/manager/step_account2_states.dart';
-import 'package:Ascend/features/auth/presentation/Sign_up/step_account_3/manager/step_account3_cubit.dart';
-import 'package:Ascend/features/auth/presentation/Sign_up/step_account_3/manager/step_account3_states.dart';
+import 'package:Ascend/features/auth/presentation/Sign_up/step_account_4/action/step_account4_action.dart';
 import 'package:Ascend/features/auth/presentation/Sign_up/step_account_4/manager/step_account4_cubit.dart';
 import 'package:Ascend/features/auth/presentation/Sign_up/step_account_4/manager/step_account4_states.dart';
-import 'package:Ascend/features/auth/presentation/Sign_up/step_account_4/widgets/DashedBorderPainter.dart';
 import 'package:Ascend/features/auth/presentation/Sign_up/widgets/step_progress.dart';
 import 'package:Ascend/shared/Components/components.dart';
 import 'package:Ascend/shared/core/constants/app_router.dart';
@@ -37,112 +33,109 @@ class StepAccount4View extends StatelessWidget {
             body: Padding(
               padding: EdgeInsets.all(20.0),
 
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  // ******************************* Step Progress
-                  StepProgress(currentStep: 4, totalSteps: 5),
-                  // ******************************* Sizebox
-                  SizedBox(height: 45.0),
-                  // ******************************* Secure your account
-                  Align(
-                    alignment: Alignment.bottomLeft,
-                    child: Text(
-                      'Compelete your profile',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                        height: 1.4,
-                      ),
-                    ),
-                  ),
-                  // ******************************* Sizebox
-                  SizedBox(height: 10.0),
-                  // ******************************* Add a profile picture
-                  Align(
-                    alignment: Alignment.bottomLeft,
-                    child: Text(
-                      'Add a profile picture',
-                      textAlign: TextAlign.start,
-                      style: TextStyle(
-                        color: AppColors.kGreyColor,
-                        fontSize: 13,
-                        height: 1.3,
-                      ),
-                    ),
-                  ),
-                  // ******************************* Sizebox
-                  SizedBox(height: 60.0),
-                  // ******************************* Avatar
-                  Stack(
-                    alignment: Alignment.center,
-                    children: [
-                      // ************** الخط المتقطع حوالين الصورة
-                      SizedBox(
-                        width: 220,
-                        height: 220,
-                        child: CustomPaint(
-                          painter: DashedBorderPainter()
+              child: Form(
+                key: cubit_step4.forkey_step1,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    // ******************************* Step Progress
+                    StepProgress(currentStep: 4, totalSteps: 4),
+                    // ******************************* Sizebox
+                    SizedBox(height: 45.0),
+                    // ******************************* Secure your account
+                    Align(
+                      alignment: Alignment.bottomLeft,
+                      child: Text(
+                        'About your account',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 22,
+                          height: 1.4,
                         ),
                       ),
-
-                      // ************** الصورة
-                      CircleAvatar(
-                        radius: 100,
-                        backgroundColor: AppColors.kbackGroundField,
-                        child: ClipOval(
-                          child: Image.network(
-                            'src', // حط لينك الصورة هنا
-                            fit: BoxFit.cover,
-                            width: 240,
-                            height: 240,
-                            loadingBuilder: (context, child, loadingProgress) {
-                              if (loadingProgress == null) return child;
-                              return const Center(
-                                child: CircularProgressIndicator(),
-                              );
-                            },
-                            errorBuilder:
-                                (context, error, stackTrace) => const Icon(
-                                  Icons.person,
-                                  size: 100,
-                                  color: Colors.grey,
-                                ),
-                          ),
+                    ),
+                    // ******************************* Sizebox
+                    SizedBox(height: 10.0),
+                    // *******************************
+                    Align(
+                      alignment: Alignment.bottomLeft,
+                      child: Text(
+                        'Tell us more about what makes you unique',
+                        textAlign: TextAlign.start,
+                        style: TextStyle(
+                          color: AppColors.kGreyColor,
+                          fontSize: 13,
+                          height: 1.3,
                         ),
                       ),
-
-                      // ************** زرار الكاميرا
-                      Positioned(
-                        bottom: 8,
-                        right: 8,
-                        child: Container(
-                          width: 45,
-                          height: 45,
-                          decoration: BoxDecoration(
+                    ),
+                    // ******************************* Sizebox
+                    SizedBox(height: 60.0),
+                    // ******************************* Bio
+                    Container(
+                      width: double.infinity,
+                      height: 200,
+                      decoration: BoxDecoration(
+                        color: AppColors.kbackGroundField,
+                        borderRadius: BorderRadius.circular(15),
+                        boxShadow: [
+                          BoxShadow(
                             color: AppColors.kPrimaryColor,
-                            shape: BoxShape.circle,
-                            border: Border.all(color: Colors.black, width: 1),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.black.withOpacity(0.3),
-                                blurRadius: 6,
-                                offset: const Offset(0, 3),
+                            offset: Offset(0, 2),
+                            blurRadius: 4,
+                          )
+                        ],
+                      ),
+                      
+                      child: Padding(
+                        padding: const EdgeInsets.all(15.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            // ************** Description
+                            Text('About me',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 14,
+                            ),
+                            ),
+                            SizedBox(height: 10.0,),
+                            // ************** Field
+                            Expanded(
+                              child: TextField(
+                                keyboardType: TextInputType.multiline,
+                                maxLines: 8,
+                                maxLength: 500,
+                                cursorColor: AppColors.kPrimaryColor,
+                                style: TextStyle(color: Colors.white, fontSize: 12),
+                                onChanged: (value) {
+                                  cubit_step4.changeButton(value, onClickButton: () => StepAccount4Action.StepAccount_4Action(context, value, "finish")
+                                  );
+                                },
+                                decoration: InputDecoration(
+                                  hintText: 'Write something about yourself here',
+                                  hintStyle: TextStyle(color: Colors.grey[500], fontSize: 12),
+                                  counterText: "${cubit_step4.bio.text.length}/500 characters",
+                                  counterStyle: TextStyle(color: AppColors.kGreyColor),
+                                  filled: true,
+                                  fillColor: AppColors.kbackgroundColor,
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(15),
+                                    borderSide: BorderSide.none
+                                  ),
+                                  contentPadding: EdgeInsets.all(10)
+                                ),
                               ),
-                            ],
-                          ),
-                          child: const Icon(
-                            Icons.add_a_photo,
-                            color: Colors.white,
-                            size: 24,
-                          ),
+                            ),
+                
+                          ],
                         ),
                       ),
-                    ],
-                  ),
-
-                ],
+                    ),
+                
+                  ],
+                ),
               ),
             ),
             // ******************************* Button Next
@@ -155,14 +148,14 @@ class StepAccount4View extends StatelessWidget {
                   interval: Duration(seconds: 1),
                   color: Colors.grey,
                   colorOpacity: 1,
-                  enabled: true,
+                  enabled: cubit_step4.shimmer_button,
                   direction: ShimmerDirection.fromLBRT(),
                   child: customButton(
-                    function: () {},
-                    text: "Next",
-                    colorBorderside: AppColors.kPrimaryColor,
-                    backColor: AppColors.kPrimaryColor,
-                    colorText: Colors.white,
+                    function: cubit_step4.onpressed_button,
+                    text: "Finish",
+                    colorBorderside: cubit_step4.backGround_button,
+                    backColor: cubit_step4.borderSide_button,
+                    colorText: cubit_step4.text_button,
                     width: double.infinity,
                   ),
                 ),

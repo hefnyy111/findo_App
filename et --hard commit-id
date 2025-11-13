@@ -1,0 +1,36 @@
+[33mc52c589[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m HEAD@{0}: reset: moving to origin/main
+[33m7565d44[m HEAD@{1}: commit (merge): Co-authored-by: amirashawki <amirashawki@users.noreply.github.com>
+[33m8b15d28[m HEAD@{2}: pull origin main: Merge made by the 'ort' strategy.
+[33m9e3414c[m HEAD@{3}: commit: done sign up ui
+[33mbb9b045[m HEAD@{4}: commit: done validate login phone
+[33mf795cb0[m HEAD@{5}: commit: done_cubit
+[33m3f99b53[m HEAD@{6}: commit: doneee1
+[33m56de36e[m HEAD@{7}: commit: done_cubit
+[33ma0e04f3[m HEAD@{8}: commit: Co-authored-by: amirashawki <amirashawki@users.noreply.github.com>
+[33m2f32139[m HEAD@{9}: merge amira/main: Fast-forward
+[33m9391dee[m HEAD@{10}: reset: moving to origin/main
+[33m8b25ab1[m HEAD@{11}: merge amira/main: Fast-forward
+[33m9391dee[m HEAD@{12}: reset: moving to origin/main
+[33m9391dee[m HEAD@{13}: commit: done
+[33mf67a7e7[m HEAD@{14}: merge amira/main: Fast-forward
+[33m8f07e2e[m HEAD@{15}: reset: moving to origin/main
+[33m8f07e2e[m HEAD@{16}: commit (merge): Merge branch 'main' of https://github.com/hefnyy111/findo_App
+[33m3790081[m HEAD@{17}: commit: done feautrues
+[33m95409d3[m HEAD@{18}: commit: done edits
+[33mdbc3740[m HEAD@{19}: merge amira/main: Fast-forward
+[33mfa279b5[m HEAD@{20}: reset: moving to HEAD
+[33mfa279b5[m HEAD@{21}: commit: done files
+[33m14c7cde[m HEAD@{22}: merge amira/main: Fast-forward
+[33ma1768d5[m HEAD@{23}: pull origin main: Fast-forward
+[33m1e66063[m HEAD@{24}: commit: done select accounts
+[33m0b5c75c[m HEAD@{25}: commit (merge): improve GetStarted UI design
+[33m8c46237[m HEAD@{26}: commit: components done
+[33m16d66a2[m HEAD@{27}: commit: done components
+[33ma4c3fe9[m HEAD@{28}: merge amira/main: Merge made by the 'ort' strategy.
+[33ma0148a1[m HEAD@{29}: commit: updates
+[33m7131783[m HEAD@{30}: checkout: moving from 7131783ec386855f902dce9166f79c1ba2a0cb93 to main
+[33m7131783[m HEAD@{31}: checkout: moving from main to origin/main
+[33m7131783[m HEAD@{32}: commit: components done
+[33m3efbb03[m HEAD@{33}: commit: add clean architecture
+[33m77f1eff[m HEAD@{34}: Branch: renamed refs/heads/master to refs/heads/main
+[33m77f1eff[m HEAD@{36}: commit (initial): first commit

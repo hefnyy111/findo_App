@@ -1,4 +1,5 @@
 // features/auth/presentation/Sign_up/step_account_2/step_account2_view.dart
+import 'package:Ascend/features/auth/presentation/Sign_up/step_account_2/action/step_account2_action.dart';
 import 'package:Ascend/features/auth/presentation/Sign_up/step_account_2/manager/step_account2_cubit.dart';
 import 'package:Ascend/features/auth/presentation/Sign_up/step_account_2/manager/step_account2_states.dart';
 import 'package:Ascend/features/auth/presentation/Sign_up/widgets/step_progress.dart';
@@ -37,7 +38,7 @@ class StepAccount2View extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   // ******************************* Step Progress
-                  StepProgress(currentStep: 2, totalSteps: 5),
+                  StepProgress(currentStep: 2, totalSteps: 4),
                   // ******************************* Sizebox
                   SizedBox(height: 60.0),
                   // ******************************* Secure your account
@@ -47,7 +48,7 @@ class StepAccount2View extends StatelessWidget {
                       'Secure your account',
                       style: TextStyle(
                         color: Colors.white,
-                        fontSize: 20,
+                        fontSize: 22,
                         height: 1.4,
                       ),
                     ),
@@ -73,16 +74,21 @@ class StepAccount2View extends StatelessWidget {
                   customTextFormField(
                     controller: cubit_step2.password,
                     validate: (value) {},
-                    onChanged: (value) {},
+                    onChanged: (value) {
+                        cubit_step2.changeButton(value, onClickButton: () => StepAccount2Action.StepAccount_2Action(value, "next_password")
+                        );
+                    },
                     text: "Password",
                   ),
                   // ******************************* Sizebox
-                  SizedBox(height: 20.0),
+                  SizedBox(height: 25.0),
                   // ******************************* Field 2
                   customTextFormField(
                     controller: cubit_step2.confirm_password,
                     validate: (value) {},
-                    onChanged: (value) {},
+                    onChanged: (value) {
+                     cubit_step2.changeButton(value, onClickButton: () => StepAccount2Action.StepAccount_2Action(value, "next_password"));
+                    },
                     text: "Repeat password",
                   ),
 
@@ -103,15 +109,16 @@ class StepAccount2View extends StatelessWidget {
                       interval: Duration(seconds: 1),
                       color: Colors.grey,
                       colorOpacity: 1,
-                      enabled: true,
+                      enabled:  cubit_step2.shimmer_button,
                       direction: ShimmerDirection.fromLBRT(),
                       child: customButton(
-                        function: () {},
-                        text: "Next",
-                        colorBorderside: AppColors.kPrimaryColor,
-                        backColor: AppColors.kPrimaryColor,
-                        colorText: Colors.white,
+                        function:   cubit_step2.onpressed_button,
+                        text: "Continue",
+                       colorBorderside: cubit_step2.borderSide_button,
+                        backColor: cubit_step2.backGround_button,
+                        colorText: cubit_step2.text_button,
                         width: double.infinity,
+
                       ),
                     ),
                   ),
