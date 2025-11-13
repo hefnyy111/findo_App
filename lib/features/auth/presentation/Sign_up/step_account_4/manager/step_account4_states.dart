@@ -2,3 +2,6 @@
 abstract class StepAccount4States {}
 
 class StepAccount4InitialStates extends StepAccount4States {}
+
+// =============== Change button ===============
+class StepAccount4ChangeButtonStates extends StepAccount4States {}

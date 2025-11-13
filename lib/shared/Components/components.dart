@@ -110,7 +110,7 @@ Widget customTextFormField({
     decoration: InputDecoration(
       counterText: "", 
       label: Text(text, style: TextStyle(color: AppColors.kGreyColor),),
-      labelStyle: const TextStyle(color: Color(0xFF9E9E9E), fontSize: 13),
+      labelStyle: const TextStyle(color: Color(0xFF9E9E9E), fontSize: 14),
       prefixIcon: prefixIcon,
       suffixIcon: suffixIcon != null ? IconButton(onPressed: onSuffixPressed, icon: suffixIcon) : null,
 

@@ -5,14 +5,16 @@ class DioHelper {
   static Dio? dio;
 
   static void init() {
+    dio = Dio(
     BaseOptions(
-      baseUrl: '',
+      baseUrl: 'http://192.168.1.10:5000/api/',
       receiveDataWhenStatusError: true,
       connectTimeout: Duration(seconds: 20),
       receiveTimeout: Duration(seconds: 20),
       headers: {
          "Content-Type": "application/json",
       },
+    ),
     );
 
   }

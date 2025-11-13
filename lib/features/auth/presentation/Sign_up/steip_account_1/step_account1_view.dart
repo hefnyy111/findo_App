@@ -1,6 +1,8 @@
 // features/auth/presentation/Sign_up/steip_account_1/step_account1_view.dart
+import 'package:Ascend/features/auth/presentation/Sign_up/steip_account_1/action/step_account1_action.dart';
 import 'package:Ascend/features/auth/presentation/Sign_up/steip_account_1/manager/step_account1_cubit.dart';
 import 'package:Ascend/features/auth/presentation/Sign_up/steip_account_1/manager/step_account1_states.dart';
+import 'package:Ascend/shared/core/utils/lower_case_romatter.dart';
 import 'package:Ascend/features/auth/presentation/Sign_up/widgets/step_progress.dart';
 import 'package:Ascend/shared/Components/components.dart';
 import 'package:Ascend/shared/core/constants/app_router.dart';
@@ -16,10 +18,22 @@ class StepAccount1View extends StatelessWidget {
     return BlocProvider(
       create: (context) => StepAccount1Cubit(),
       child: BlocConsumer<StepAccount1Cubit, StepAccount1States>(
-        listener: (context, state) {},
+        listener: (context, state) {
+    if (state is StepAccount1UserAvailableStates) {
+      GoRouter.of(context).go(AppRouter.kStepAccount2View);
+    } else if (state is StepAccount1UserIsTakenStates || state is StepAccount1UserErrorStates) {
+      customSnackBarMessage(
+        context, 
+        text: "This name is already in taken. Please choose another name.", 
+        color: Colors.white
+        );
+    }
+        },
         builder: (context, state) {
           var cubit_step1 = StepAccount1Cubit.get(context);
           return Scaffold(
+            resizeToAvoidBottomInset: true,
+            extendBodyBehindAppBar: true,
             backgroundColor: AppColors.kbackgroundColor,
             appBar: AppBar(
             backgroundColor: AppColors.kbackgroundColor,
@@ -32,9 +46,10 @@ class StepAccount1View extends StatelessWidget {
 
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
                 children: [
                   // ******************************* Step Progress
-                  StepProgress(currentStep: 1, totalSteps: 5),
+                  StepProgress(currentStep: 1, totalSteps: 4),
                   // ******************************* Sizebox
                   SizedBox(height: 60.0),
                   // ******************************* Account details
@@ -44,7 +59,7 @@ class StepAccount1View extends StatelessWidget {
                       'Account Details',
                       style: TextStyle(
                         color: Colors.white,
-                        fontSize: 20,
+                        fontSize: 22,
                         height: 1.4,
                       ),
                     ),
@@ -70,8 +85,22 @@ class StepAccount1View extends StatelessWidget {
                   customTextFormField(
                     controller: cubit_step1.full_name,
                     validate: (value) {},
-                    onChanged: (value) {},
-                    text: "Name",
+                    onChanged: (value) {
+                       cubit_step1.changeButton(value, onClickButton: () => StepAccount1Action.StepAccount_1Action(context, value, "next_details"),);
+                    },
+                    text: "Full name",
+                  ),
+                  // ******************************* Sizebox
+                  SizedBox(height: 25.0),
+                  // ******************************* Field 1
+                  customTextFormField(
+                    inputFormatters: [LowerCaseRomatter()],
+                    controller: cubit_step1.username,
+                    validate: (value) {},
+                    onChanged: (value) {
+                      cubit_step1.changeButton(value, onClickButton: () => StepAccount1Action.StepAccount_1Action(context, value, "next_details"),);
+                    },
+                    text: "Username",
                   ),
                 ],
               ),
@@ -86,14 +115,14 @@ class StepAccount1View extends StatelessWidget {
                         interval: Duration(seconds: 1),
                         color: Colors.grey,
                         colorOpacity: 1,
-                        enabled: true,
+                        enabled: cubit_step1.shimmer_button,
                         direction: ShimmerDirection.fromLBRT(),
                 child: customButton(
-                        function: () {},
+                        function: cubit_step1.onpressed_button,
                         text: "Next",
-                        colorBorderside: AppColors.kPrimaryColor,
-                        backColor: AppColors.kPrimaryColor,
-                        colorText: Colors.white,
+                        colorBorderside: cubit_step1.borderSide_button,
+                        backColor: cubit_step1.backGround_button,
+                        colorText: cubit_step1.text_button,
                         width: double.infinity,
                       ),
               ),
