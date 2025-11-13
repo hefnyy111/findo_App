@@ -8,6 +8,7 @@ class StepAccount1Cubit extends Cubit<StepAccount1States> {
   StepAccount1Cubit() : super(StepAccount1InitialStates());
 
   static StepAccount1Cubit get(context) => BlocProvider.of(context);
+  
 
    // ******************************* Inputs
    final full_name = TextEditingController();
