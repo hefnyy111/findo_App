@@ -64,8 +64,8 @@ flutter:
 
   assets:
     - assets/logo_acsend.png
-    - assets/
     - assets/Images/Auth/forger_email/EmailBackground.png
+    - assets/animation/
 
   fonts:
     - family: SF-Pro-Display-Heavy
