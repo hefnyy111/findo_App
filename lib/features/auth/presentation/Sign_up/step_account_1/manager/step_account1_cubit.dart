@@ -1,5 +1,5 @@
-// features/auth/presentation/Sign_up/steip_account_1/manager/step_account1_cubit.dart
-import 'package:Ascend/features/auth/presentation/Sign_up/steip_account_1/manager/step_account1_states.dart';
+// features/auth/presentation/Sign_up/step_account_1/manager/step_account1_cubit.dart
+import 'package:Ascend/features/auth/presentation/Sign_up/step_account_1/manager/step_account1_states.dart';
 import 'package:Ascend/shared/core/constants/constants.dart';
 import 'package:Ascend/shared/network/dio_helper.dart';
 import 'package:flutter/cupertino.dart';
@@ -45,7 +45,6 @@ class StepAccount1Cubit extends Cubit<StepAccount1States> {
   // ******************************* Text Api
 void checkUsername({ required String username }) async {
   emit(StepAccount1UserLoadingStates());
-  print('loading');
 
   try {
     final response = await DioHelper.postData(

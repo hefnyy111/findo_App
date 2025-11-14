@@ -1,3 +1,4 @@
+// main.dart
 
 import 'package:Ascend/features/auth/presentation/get_Started/language/manager/language_cubit.dart';
 import 'package:Ascend/features/auth/presentation/get_Started/language/manager/language_states.dart';
@@ -18,8 +19,8 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   DioHelper.init();
   await CasheHelper.init();
-  runApp(DevicePreview(enabled: true, builder: (context) => const MyApp()));
-
+  // runApp(DevicePreview(enabled: true, builder: (context) => const MyApp()));
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {

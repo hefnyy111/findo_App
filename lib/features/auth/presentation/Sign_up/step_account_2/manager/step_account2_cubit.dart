@@ -1,3 +1,4 @@
+// features/auth/presentation/Sign_up/step_account_2/manager/step_account2_cubit.dart
 import 'package:Ascend/features/auth/presentation/Sign_up/step_account_2/manager/step_account2_states.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -23,6 +24,7 @@ class StepAccount2Cubit extends Cubit<StepAccount2States> {
   void changeButton(String? value, {VoidCallback? onClickButton}) {
     bool isVaild = password.text.isNotEmpty && confirm_password.text.isNotEmpty;
     bool isPasswordValid = hasLower && hasUpper && hasNumber && hasMinLength;
+
     if (isVaild && isPasswordValid) {
       backGround_button = AppColors.kPrimaryColor;
       borderSide_button = AppColors.kPrimaryColor;
@@ -45,22 +47,7 @@ class StepAccount2Cubit extends Cubit<StepAccount2States> {
   bool hasLower = false;
   bool hasUpper = false;
   bool hasNumber = false;
-  // validatePassWord(String value) {
-  //   if (value.length < 8) {
-  //     hasMinLength = true;
-  //     return 'passWord is contain 8 digits';
-  //   } else if (!value.contains(RegExp(r'[a-z]'))) {
-  //     hasLower = true;
-  //     return 'At Least one LowerCase Latter';
-  //   } else if (!value.contains(RegExp(r'[A-Z]'))) {
-  //     hasUpper = true;
-  //     return 'At Least Two UpperCase Latters';
-  //   } else if (!value.contains(RegExp(r'[0-9]'))) {
-  //     hasNumber = true;
-  //     return 'At Least one Number Latter';
-  //   }
-  //   emit(StepAccount2VaildateUserStates());
-  // }
+
    void validatePassword(String value) {
     hasMinLength = value.length >= 8;
     hasLower = RegExp(r'[a-z]').hasMatch(value);

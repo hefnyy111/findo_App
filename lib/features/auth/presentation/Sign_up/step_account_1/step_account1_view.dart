@@ -1,7 +1,7 @@
-// features/auth/presentation/Sign_up/steip_account_1/step_account1_view.dart
-import 'package:Ascend/features/auth/presentation/Sign_up/steip_account_1/action/step_account1_action.dart';
-import 'package:Ascend/features/auth/presentation/Sign_up/steip_account_1/manager/step_account1_cubit.dart';
-import 'package:Ascend/features/auth/presentation/Sign_up/steip_account_1/manager/step_account1_states.dart';
+// features/auth/presentation/Sign_up/step_account_1/step_account1_view.dart
+import 'package:Ascend/features/auth/presentation/Sign_up/step_account_1/action/step_account1_action.dart';
+import 'package:Ascend/features/auth/presentation/Sign_up/step_account_1/manager/step_account1_cubit.dart';
+import 'package:Ascend/features/auth/presentation/Sign_up/step_account_1/manager/step_account1_states.dart';
 import 'package:Ascend/shared/core/utils/lower_case_romatter.dart';
 import 'package:Ascend/features/auth/presentation/Sign_up/widgets/step_progress.dart';
 import 'package:Ascend/shared/Components/components.dart';
@@ -29,6 +29,8 @@ class StepAccount1View extends StatelessWidget {
         );
     }
         },
+
+        
         builder: (context, state) {
           var cubit_step1 = StepAccount1Cubit.get(context);
           return Scaffold(

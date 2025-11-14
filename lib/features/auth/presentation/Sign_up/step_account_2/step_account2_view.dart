@@ -1,8 +1,9 @@
+// features/auth/presentation/Sign_up/step_account_2/step_account2_view.dart
 
 import 'package:Ascend/features/auth/presentation/Sign_up/step_account_2/action/step_account2_action.dart';
 import 'package:Ascend/features/auth/presentation/Sign_up/step_account_2/manager/step_account2_cubit.dart';
 import 'package:Ascend/features/auth/presentation/Sign_up/step_account_2/manager/step_account2_states.dart';
-import 'package:Ascend/features/auth/presentation/Sign_up/step_account_2/manager/vaildate_password.dart';
+import 'package:Ascend/features/auth/presentation/Sign_up/step_account_2/widgets/vaildate_password.dart';
 import 'package:Ascend/features/auth/presentation/Sign_up/widgets/step_progress.dart';
 import 'package:Ascend/shared/Components/components.dart';
 import 'package:Ascend/shared/core/constants/app_router.dart';
@@ -13,6 +14,7 @@ import 'package:go_router/go_router.dart';
 import 'package:shimmer_animation/shimmer_animation.dart';
 
 class StepAccount2View extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -82,6 +84,7 @@ class StepAccount2View extends StatelessWidget {
                         value,
                         onClickButton:
                             () => StepAccount2Action.StepAccount_2Action(
+                              context,
                               value,
                               "next_password",
                             ),
@@ -96,12 +99,11 @@ class StepAccount2View extends StatelessWidget {
                     controller: cubit_step2.confirm_password,
                     validate: (value) {},
                     onChanged: (value) {
-                      cubit_step2.validatePassword(value!);
-
                       cubit_step2.changeButton(
                         value,
                         onClickButton:
                             () => StepAccount2Action.StepAccount_2Action(
+                              context,
                               value,
                               "next_password",
                             ),
@@ -110,7 +112,7 @@ class StepAccount2View extends StatelessWidget {
                     text: "Repeat password",
                   ),
                   // ******************************* Sizebox
-                  SizedBox(height: 20.0),
+                  SizedBox(height: 40.0),
                   // ******************************* validatepassWord
                   VaidatePassWord(),
                 ],
@@ -163,4 +165,3 @@ class StepAccount2View extends StatelessWidget {
   }
 }
 
-// ******************************* Button Next
