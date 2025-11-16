@@ -22,7 +22,6 @@ void main() async {
   // runApp(DevicePreview(enabled: true, builder: (context) => const MyApp()));
   runApp(const MyApp());
 }
-
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
