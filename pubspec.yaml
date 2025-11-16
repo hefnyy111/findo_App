@@ -34,6 +34,7 @@ dependencies:
   google_sign_in: ^6.2.1
   hexcolor: ^3.0.1
   http: ^1.1.0
+  iconsax_flutter: ^1.0.1
   im_stepper: ^1.0.1
   image_cropper: ^11.0.0
   image_picker: ^1.2.0
@@ -66,6 +67,8 @@ flutter:
     - assets/Images/logo_acsend.png
     - assets/Images/Auth/forger_email/EmailBackground.png
     - assets/animation/
+    - assets/Images/Auth/
+    - assets/Images/Auth/
 
   fonts:
     - family: SF-Pro-Display-Heavy

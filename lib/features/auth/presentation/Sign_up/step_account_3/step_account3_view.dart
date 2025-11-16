@@ -1,9 +1,12 @@
 // features/auth/presentation/Sign_up/step_account_3/step_account3_view.dart
+
 import 'dart:io';
 
+import 'package:Ascend/features/auth/presentation/Sign_up/step_account_3/action/step_account3_action.dart';
 import 'package:Ascend/features/auth/presentation/Sign_up/step_account_3/manager/step_account3_cubit.dart';
 import 'package:Ascend/features/auth/presentation/Sign_up/step_account_3/manager/step_account3_states.dart';
 import 'package:Ascend/features/auth/presentation/Sign_up/step_account_3/widgets/DashedBorderPainter.dart';
+import 'package:Ascend/features/auth/presentation/Sign_up/step_account_3/widgets/show_bottom_sheet.dart';
 import 'package:Ascend/features/auth/presentation/Sign_up/widgets/step_progress.dart';
 import 'package:Ascend/shared/Components/components.dart';
 import 'package:Ascend/shared/core/constants/app_router.dart';
@@ -11,24 +14,27 @@ import 'package:Ascend/shared/core/constants/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:shimmer_animation/shimmer_animation.dart';
 
 class StepAccount3View extends StatelessWidget {
   final String full_name;
   final String username;
   final String password;
+  StepAccount3View({ required this.full_name, required this.username, required this.password});
 
-  StepAccount3View({required this.full_name, required this.username, required this.password});
+  
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => StepAccount3Cubit(),
       child: BlocConsumer<StepAccount3Cubit, StepAccount3States>(
         listener: (context, state) {
-          
+          if(state is ProfileImageSelected) {
+            Navigator.pop(context);
+          }
         },
         builder: (context, state) {
-
           var cubit_step3 = StepAccount3Cubit.get(context);
           return Scaffold(
             backgroundColor: AppColors.kbackgroundColor,
@@ -97,15 +103,14 @@ class StepAccount3View extends StatelessWidget {
                         radius: 100,
                         backgroundColor: AppColors.kbackGroundField,
                         child: ClipOval(
-                          child: cubit_step3.profileImage != null ? 
-                           Image.file(
-                            cubit_step3.profileImage!,
-                            fit: BoxFit.cover,
-                            width: 240,
-                            height: 240,
+                          child: cubit_step3.profileImage != null ?
+                           Image.file(File(cubit_step3.profileImage!.path),
+                           width: 240,
+                           height: 240,
+                           fit: BoxFit.cover,
                            ) :
                            Image.network(
-                            'src',
+                            'src', // حط لينك الصورة هنا
                             fit: BoxFit.cover,
                             width: 240,
                             height: 240,
@@ -145,7 +150,21 @@ class StepAccount3View extends StatelessWidget {
                             ],
                           ),
                           child: IconButton(
-                            onPressed: cubit_step3.pickAndCropImage,
+                            onPressed: () {
+                              showModelBottomSheet(
+                                context,
+                                onPressed1: () {
+                                  cubit_step3.pickAndCropImage( ImageSource.camera,);
+                                  cubit_step3.changeButton(onClickButton: () => StepAccount3Action.StepAccount_3Action(full_name, username, password, context, "next_step4"));
+                                },
+                                onPressed2: () {
+                                  cubit_step3.pickAndCropImage(
+                                    ImageSource.gallery,
+                                  );
+                                },
+                              );
+                            },
+                            // cubit_step3.pickAndCropImage,
                             icon: Icon(
                               Icons.add_a_photo,
                               color: Colors.white,
@@ -170,14 +189,14 @@ class StepAccount3View extends StatelessWidget {
                   interval: Duration(seconds: 1),
                   color: Colors.grey,
                   colorOpacity: 1,
-                  enabled: true,
+                  enabled: cubit_step3.shimmer_button,
                   direction: ShimmerDirection.fromLBRT(),
                   child: customButton(
-                    function: () {},
+                    function: cubit_step3.onpressed_button,
                     text: "Continue",
-                    colorBorderside: AppColors.kPrimaryColor,
-                    backColor: AppColors.kPrimaryColor,
-                    colorText: Colors.white,
+                    colorBorderside: cubit_step3.borderSide_button,
+                    backColor: cubit_step3.backGround_button,
+                    colorText: cubit_step3.text_button,
                     width: double.infinity,
                   ),
                 ),
