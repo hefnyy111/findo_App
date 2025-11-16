@@ -61,14 +61,14 @@ class AppRouter {
         // GoRoute(path: "/", builder: (context, state) => StepAccount3View(),),
         // GoRoute(path: kStepAccount4View, builder: (context, state) => StepAccount4View(),),
 
-      GoRoute(
-        path: kSignInCountriesView,
-        builder: (context, state) => SignInCountriesView(),
-      ),
+      // GoRoute(
+      //   path: kSignInCountriesView,
+      //   builder: (context, state) => SignInCountriesView(),
+      // ),
 
       // GoRoute( path: "/", builder: (context, state) => SignInView(),),
       // GoRoute( path: kSignInCountriesView, builder: (context, state) => SignInCountriesView(),),
-      GoRoute(path: '/', builder: (context, state) => StepAccount3View()),
+      GoRoute(path: '/', builder: (context, state) => StepAccount4View(full_name: '', username: '', password: '', photo_url: '')),
 
     ],
   );

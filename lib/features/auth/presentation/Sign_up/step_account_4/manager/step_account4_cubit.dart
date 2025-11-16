@@ -1,6 +1,8 @@
 // features/auth/presentation/Sign_up/step_account_4/manager/step_account4_cubit.dart
 import 'package:Ascend/features/auth/presentation/Sign_up/step_account_4/manager/step_account4_states.dart';
 import 'package:Ascend/shared/core/constants/constants.dart';
+import 'package:Ascend/shared/network/dio_helper.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -15,7 +17,7 @@ class StepAccount4Cubit extends Cubit<StepAccount4States> {
    final forkey_step1 = GlobalKey<FormState>();
    final bio = TextEditingController();
 
-     // ******************************* Change button
+   // ******************************* Change button
   Color backGround_button = AppColors.kbutton_disabel;
   Color borderSide_button = AppColors.kbutton_disabel;
   Color text_button = AppColors.kGreyColor;
@@ -40,4 +42,28 @@ class StepAccount4Cubit extends Cubit<StepAccount4States> {
    emit(StepAccount4ChangeButtonStates());
   }
   
+    // ******************************* Api
+   Future<void> createAccount({required String display_name, required String username, required String password, required String photo_url, required String bio}) async {
+    emit(StepAccount4LoadingAccountStates());
+
+    try{
+    final response = await DioHelper.postData(
+      url: "signup", 
+      data: {
+    "username": username,
+    "display_name": display_name,
+    "phone": "01040345145",
+    "email": null,
+    "password": password,
+    "profile_image": photo_url,
+    "about_me": bio
+  });
+  
+    print(response.data);
+    emit(StepAccount4SuccessAccountStates());
+
+    } catch (e) {
+      StepAccount4ErrorAccountStates(e.toString());
+    }
+   }
 } 

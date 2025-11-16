@@ -18,7 +18,7 @@ class StepAccount3Action {
 
        } else {
         print('Path ${cubit_step3.profileImage!.path}');
-        navigatorAndFinish(context, StepAccount4View(full_name: full_name, username: username, password: password, image_url: cubit_step3.profileImage!.path,));
+        navigatorAndFinish(context, StepAccount4View(full_name: full_name, username: username, password: password, photo_url: cubit_step3.profileImage!.path,));
        }
       }
     }
