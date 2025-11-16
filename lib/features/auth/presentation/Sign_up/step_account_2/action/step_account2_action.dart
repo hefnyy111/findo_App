@@ -1,5 +1,6 @@
 // features/auth/presentation/Sign_up/step_account_2/action/step_account2_action.dart
 import 'package:Ascend/features/auth/presentation/Sign_up/step_account_2/manager/step_account2_cubit.dart';
+import 'package:Ascend/features/auth/presentation/Sign_up/step_account_3/step_account3_view.dart';
 import 'package:Ascend/shared/Components/components.dart';
 import 'package:Ascend/shared/core/constants/app_router.dart';
 import 'package:flutter/material.dart';
@@ -7,7 +8,7 @@ import 'package:go_router/go_router.dart';
 
 class StepAccount2Action {
 
-  static void StepAccount_2Action(context, String? value, String? action) {
+  static void StepAccount_2Action(context, String? value, full_name, username, String? action) {
     var cubit_step2 = StepAccount2Cubit.get(context);
     switch(action) {
       case "next_password": {
@@ -18,7 +19,7 @@ class StepAccount2Action {
             color: Colors.white
             );
          } else {
-          GoRouter.of(context).push(AppRouter.kStepAccount3View);
+          navigatorAndFinish(context, StepAccount3View(full_name: full_name, username: username, password: value!,));
          }
       }
     }

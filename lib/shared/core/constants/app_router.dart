@@ -1,11 +1,6 @@
 // shared/core/constants/app_router.dart
-import 'package:Ascend/features/auth/presentation/Sign_up/step_account_1/step_account1_view.dart';
-import 'package:Ascend/features/auth/presentation/Sign_up/step_account_2/step_account2_view.dart';
 import 'package:Ascend/features/auth/presentation/Sign_up/step_account_3/step_account3_view.dart';
 import 'package:Ascend/features/auth/presentation/Sign_up/step_account_4/step_account4_view.dart';
-import 'package:Ascend/features/auth/presentation/sign_in/manager/cubit/verify_code_cubit.dart';
-import 'package:Ascend/features/auth/presentation/sign_in/phone/widgets/sign_in_countries_view.dart';
-import 'package:Ascend/features/auth/presentation/sign_in/views/code_view.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
@@ -48,11 +43,16 @@ class AppRouter {
       // GoRoute( path: kSignInCountriesView, builder: (context, state) => SignInCountriesView(),),
       // GoRoute(path: '/', builder: (context, state) => StepAccount4View()),
 
-      GoRoute(path: '/', builder: (context, state) => StepAccount3View()),
+      // GoRoute(path: '/', builder: (context, state) => StepAccount3View()),
       // GoRoute(
       //   path: "/StepAccount2View",
       //   builder: (context, state) => StepAccount2View(),
       // ),
+        // GoRoute(path: '/', builder: (context, state) => StepAccount1View()),
+        // GoRoute(path: kStepAccount2View, builder: (context, state) => StepAccount2View(),),
+        // GoRoute(path: "/", builder: (context, state) => StepAccount3View(),),
+        // GoRoute(path: kStepAccount4View, builder: (context, state) => StepAccount4View(),),
+
     ],
   );
 }

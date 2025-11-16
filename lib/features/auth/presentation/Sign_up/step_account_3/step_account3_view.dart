@@ -1,8 +1,6 @@
 // features/auth/presentation/Sign_up/step_account_3/step_account3_view.dart
 import 'dart:io';
 
-import 'package:Ascend/features/auth/presentation/Sign_up/step_account_2/manager/step_account2_cubit.dart';
-import 'package:Ascend/features/auth/presentation/Sign_up/step_account_2/manager/step_account2_states.dart';
 import 'package:Ascend/features/auth/presentation/Sign_up/step_account_3/manager/step_account3_cubit.dart';
 import 'package:Ascend/features/auth/presentation/Sign_up/step_account_3/manager/step_account3_states.dart';
 import 'package:Ascend/features/auth/presentation/Sign_up/step_account_3/widgets/DashedBorderPainter.dart';
@@ -16,12 +14,19 @@ import 'package:go_router/go_router.dart';
 import 'package:shimmer_animation/shimmer_animation.dart';
 
 class StepAccount3View extends StatelessWidget {
+  final String full_name;
+  final String username;
+  final String password;
+
+  StepAccount3View({required this.full_name, required this.username, required this.password});
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => StepAccount3Cubit(),
       child: BlocConsumer<StepAccount3Cubit, StepAccount3States>(
-        listener: (context, state) {},
+        listener: (context, state) {
+          
+        },
         builder: (context, state) {
 
           var cubit_step3 = StepAccount3Cubit.get(context);

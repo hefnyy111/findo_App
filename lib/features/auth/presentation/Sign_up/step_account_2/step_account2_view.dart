@@ -1,5 +1,4 @@
 // features/auth/presentation/Sign_up/step_account_2/step_account2_view.dart
-
 import 'package:Ascend/features/auth/presentation/Sign_up/step_account_2/action/step_account2_action.dart';
 import 'package:Ascend/features/auth/presentation/Sign_up/step_account_2/manager/step_account2_cubit.dart';
 import 'package:Ascend/features/auth/presentation/Sign_up/step_account_2/manager/step_account2_states.dart';
@@ -14,6 +13,9 @@ import 'package:go_router/go_router.dart';
 import 'package:shimmer_animation/shimmer_animation.dart';
 
 class StepAccount2View extends StatelessWidget {
+  final String full_name;
+  final String username;
+  StepAccount2View({required this.full_name, required this.username});
 
   @override
   Widget build(BuildContext context) {
@@ -86,6 +88,8 @@ class StepAccount2View extends StatelessWidget {
                             () => StepAccount2Action.StepAccount_2Action(
                               context,
                               value,
+                              full_name,
+                              username,
                               "next_password",
                             ),
                       );
@@ -105,6 +109,8 @@ class StepAccount2View extends StatelessWidget {
                             () => StepAccount2Action.StepAccount_2Action(
                               context,
                               value,
+                              full_name,
+                              username,
                               "next_password",
                             ),
                       );

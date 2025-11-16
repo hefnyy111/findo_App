@@ -2,8 +2,9 @@
 import 'package:Ascend/features/auth/presentation/Sign_up/step_account_1/action/step_account1_action.dart';
 import 'package:Ascend/features/auth/presentation/Sign_up/step_account_1/manager/step_account1_cubit.dart';
 import 'package:Ascend/features/auth/presentation/Sign_up/step_account_1/manager/step_account1_states.dart';
-import 'package:Ascend/shared/core/utils/lower_case_romatter.dart';
+import 'package:Ascend/features/auth/presentation/Sign_up/step_account_2/step_account2_view.dart';
 import 'package:Ascend/features/auth/presentation/Sign_up/widgets/step_progress.dart';
+import 'package:Ascend/shared/core/utils/lower_case_romatter.dart';
 import 'package:Ascend/shared/Components/components.dart';
 import 'package:Ascend/shared/core/constants/app_router.dart';
 import 'package:Ascend/shared/core/constants/constants.dart';
@@ -20,7 +21,9 @@ class StepAccount1View extends StatelessWidget {
       child: BlocConsumer<StepAccount1Cubit, StepAccount1States>(
         listener: (context, state) {
     if (state is StepAccount1UserAvailableStates) {
-      GoRouter.of(context).go(AppRouter.kStepAccount2View);
+       var cubit_step1 = StepAccount1Cubit.get(context);
+      navigatorAndFinish(context, StepAccount2View(full_name: cubit_step1.full_name.text, username: cubit_step1.username.text,));
+
     } else if (state is StepAccount1UserIsTakenStates || state is StepAccount1UserErrorStates) {
       customSnackBarMessage(
         context, 

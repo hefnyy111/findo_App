@@ -12,6 +12,12 @@ import 'package:go_router/go_router.dart';
 import 'package:shimmer_animation/shimmer_animation.dart';
 
 class StepAccount4View extends StatelessWidget {
+  final String full_name;
+  final String username;
+  final String password;
+  final String photo_url;
+  StepAccount4View({ required this.full_name, required this.username, required this.password, required this.photo_url});
+  
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -110,7 +116,7 @@ class StepAccount4View extends StatelessWidget {
                                 cursorColor: AppColors.kPrimaryColor,
                                 style: TextStyle(color: Colors.white, fontSize: 12),
                                 onChanged: (value) {
-                                  cubit_step4.changeButton(value, onClickButton: () => StepAccount4Action.StepAccount_4Action(context, value, "finish")
+                                  cubit_step4.changeButton(value, onClickButton: () => StepAccount4Action.StepAccount_4Action(full_name,username,password,photo_url, context, value, "finish")
                                   );
                                 },
                                 decoration: InputDecoration(

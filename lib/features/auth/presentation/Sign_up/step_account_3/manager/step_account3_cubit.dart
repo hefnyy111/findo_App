@@ -43,7 +43,7 @@ class StepAccount3Cubit extends Cubit<StepAccount3States> {
         ],
       );
       if (cropped == null) return;
-
+      
       profileImage = File(cropped.path);
       emit(ProfileImageSelected(File(cropped.path)));
     } catch (er) {

@@ -19,8 +19,8 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   DioHelper.init();
   await CasheHelper.init();
-  // runApp(DevicePreview(enabled: true, builder: (context) => const MyApp()));
-  runApp(const MyApp());
+  runApp(DevicePreview(enabled: true, builder: (context) => const MyApp()));
+  // runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {

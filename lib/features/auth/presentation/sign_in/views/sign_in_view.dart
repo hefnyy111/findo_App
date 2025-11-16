@@ -1,3 +1,4 @@
+// features/auth/presentation/sign_in/views/sign_in_view.dart
 import 'package:Ascend/features/auth/presentation/get_Started/action/get_started_action.dart';
 import 'package:Ascend/features/auth/presentation/sign_in/action/sign_in_action.dart';
 import 'package:Ascend/features/auth/presentation/sign_in/manager/sign_in_cubit.dart';

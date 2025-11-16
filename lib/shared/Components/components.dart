@@ -1,7 +1,7 @@
-
 import 'package:Ascend/shared/core/constants/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:lottie/lottie.dart';
 
 // ====================== Navigator and finish =====================
 void navigatorAndFinish(context, widget) {
@@ -108,11 +108,14 @@ Widget customTextFormField({
     inputFormatters: inputFormatters,
     maxLength: length, // length
     decoration: InputDecoration(
-      counterText: "", 
-      label: Text(text, style: TextStyle(color: AppColors.kGreyColor),),
+      counterText: "",
+      label: Text(text, style: TextStyle(color: AppColors.kGreyColor)),
       labelStyle: const TextStyle(color: Color(0xFF9E9E9E), fontSize: 14),
       prefixIcon: prefixIcon,
-      suffixIcon: suffixIcon != null ? IconButton(onPressed: onSuffixPressed, icon: suffixIcon) : null,
+      suffixIcon:
+          suffixIcon != null
+              ? IconButton(onPressed: onSuffixPressed, icon: suffixIcon)
+              : null,
 
       // ===== البوردر الخطّي =====
       enabledBorder: const UnderlineInputBorder(
@@ -155,13 +158,16 @@ Widget customTextField({
     inputFormatters: inputFormatters,
     maxLength: length, // length
     decoration: InputDecoration(
-      counterText: "", 
-      label: Text(text, style: TextStyle(color: Colors.white),),
+      counterText: "",
+      label: Text(text, style: TextStyle(color: Colors.white)),
       labelStyle: const TextStyle(color: Color(0xFF9E9E9E), fontSize: 13),
-      prefixIcon: prefixIcon ,
+      prefixIcon: prefixIcon,
       prefixIconConstraints: BoxConstraints(minWidth: 0, minHeight: 0),
       contentPadding: EdgeInsets.zero,
-      suffixIcon: suffixIcon != null ? IconButton(onPressed: onSuffixPressed, icon: suffixIcon) : null,
+      suffixIcon:
+          suffixIcon != null
+              ? IconButton(onPressed: onSuffixPressed, icon: suffixIcon)
+              : null,
 
       // ===== البوردر الخطّي =====
       enabledBorder: const UnderlineInputBorder(
@@ -184,7 +190,11 @@ void customSnackBarMessage(
     SnackBar(
       content: Text(
         text,
-        style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 12),
+        style: TextStyle(
+          color: Colors.black,
+          fontWeight: FontWeight.bold,
+          fontSize: 12,
+        ),
       ),
       duration: Duration(seconds: 2),
       behavior: SnackBarBehavior.floating,
@@ -198,128 +208,163 @@ void customSnackBarMessage(
 
 // ====================== Message ======================
 
-void showMessage(BuildContext context, {
-String? text1,
-String? text2,
+void showMessage(
+  BuildContext context, {
+  String? text1,
+  String? text2,
 
-String? text_button1,
-Color? textColor_button1,
-Color? color_buttonSide1,
-Color? color_buttonBackground1,
-VoidCallback? onpressed_button1,
-AlignmentGeometry? alignment1,
-double? width1,
-double? text_buttonSize1,
+  String? text_button1,
+  Color? textColor_button1,
+  Color? color_buttonSide1,
+  Color? color_buttonBackground1,
+  VoidCallback? onpressed_button1,
+  AlignmentGeometry? alignment1,
+  double? width1,
+  double? text_buttonSize1,
 
-String? text_button2,
-Color? textColor_button2,
-Color? color_buttonSide2,
-Color? color_buttonBackground2,
-VoidCallback? onpressed_button2,
-AlignmentGeometry? alignment2,
-double? width2,
-double? text1_buttonSize2,
+  String? text_button2,
+  Color? textColor_button2,
+  Color? color_buttonSide2,
+  Color? color_buttonBackground2,
+  VoidCallback? onpressed_button2,
+  AlignmentGeometry? alignment2,
+  double? width2,
+  double? text1_buttonSize2,
 }) async {
   showDialog(
-    context: context, 
+    context: context,
     barrierDismissible: false,
-    builder: (context) => Dialog(
-     backgroundColor: Color.fromARGB(255, 24, 24, 26),
-     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-     child: Padding(
-      padding: EdgeInsetsGeometry.symmetric(vertical: 20, horizontal: 15),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          // ******************************* Text 1
-          Text(
-          text1 ?? "",
-          textAlign: TextAlign.start,
-          style: TextStyle(
-            color: AppColors.kGreyColor,
-            fontSize: 12.0,
-            fontWeight: FontWeight.w500,
-            height: 1.7
+    builder:
+        (context) => Dialog(
+          backgroundColor: Color.fromARGB(255, 24, 24, 26),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
           ),
-          ),
-          // ******************************* Text 2
-          if(text1 != null) ...[
-          const SizedBox(height: 15,),
-          Text(
-          text2 ?? "",
-          textAlign: TextAlign.start,
-          style: const TextStyle(
-            color: Colors.black87,
-            fontWeight: FontWeight.w500,
-            fontSize: 10.0,
-          ),
-          ),
-          ],
-          
-          const SizedBox(height: 15),
-          // ******************************* Button 1
-          Align(
-            alignment: alignment1 ?? Alignment.center,
-            child: Container(
-              width: width1,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: color_buttonBackground1 ?? AppColors.kPrimaryColor,
-                  side: BorderSide(color: color_buttonSide1 ?? AppColors.kPrimaryColor),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(25),
-                  ),
-                  padding: const EdgeInsets.symmetric(vertical: 12),
-                ),
-                onPressed: onpressed_button1,
-                child: Text(
-                  text_button1 ?? "",
+          child: Padding(
+            padding: EdgeInsetsGeometry.symmetric(vertical: 20, horizontal: 15),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                // ******************************* Text 1
+                Text(
+                  text1 ?? "",
+                  textAlign: TextAlign.start,
                   style: TextStyle(
-                    color: textColor_button1,
-                    fontSize: text_buttonSize1 ?? 13.0,
-                    fontWeight: FontWeight.w600,
+                    color: AppColors.kGreyColor,
+                    fontSize: 12.0,
+                    fontWeight: FontWeight.w500,
+                    height: 1.7,
                   ),
                 ),
-              ),
-            ),
-          ),
-          // ******************************* Button 2
-          if(text_button2 != null) ...[
-          const SizedBox(height: 10),
-          Align(
-            alignment: alignment2 ?? Alignment.center,
-            child: Container(
-             width: width1,
-              child: OutlinedButton(
-                style: OutlinedButton.styleFrom(
-                  backgroundColor: color_buttonBackground2,
-                  side: BorderSide(color: color_buttonSide2!),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(25),
+                // ******************************* Text 2
+                if (text1 != null) ...[
+                  const SizedBox(height: 15),
+                  Text(
+                    text2 ?? "",
+                    textAlign: TextAlign.start,
+                    style: const TextStyle(
+                      color: Colors.black87,
+                      fontWeight: FontWeight.w500,
+                      fontSize: 10.0,
+                    ),
                   ),
-                  padding: const EdgeInsets.symmetric(vertical: 12),
-                ),
-                onPressed: onpressed_button2,
-                child: Text(
-                  text_button2 ?? "",
-                  style: TextStyle(
-                    color: textColor_button2,
-                    fontSize: text1_buttonSize2 ?? 13.0,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-              ),
-            ),
-          ),
-          
-          ]
+                ],
 
-        ],
-      ),
-      ),
-    ),
-    );
-  
+                const SizedBox(height: 15),
+                // ******************************* Button 1
+                Align(
+                  alignment: alignment1 ?? Alignment.center,
+                  child: Container(
+                    width: width1,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor:
+                            color_buttonBackground1 ?? AppColors.kPrimaryColor,
+                        side: BorderSide(
+                          color: color_buttonSide1 ?? AppColors.kPrimaryColor,
+                        ),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(25),
+                        ),
+                        padding: const EdgeInsets.symmetric(vertical: 12),
+                      ),
+                      onPressed: onpressed_button1,
+                      child: Text(
+                        text_button1 ?? "",
+                        style: TextStyle(
+                          color: textColor_button1,
+                          fontSize: text_buttonSize1 ?? 13.0,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                // ******************************* Button 2
+                if (text_button2 != null) ...[
+                  const SizedBox(height: 10),
+                  Align(
+                    alignment: alignment2 ?? Alignment.center,
+                    child: Container(
+                      width: width1,
+                      child: OutlinedButton(
+                        style: OutlinedButton.styleFrom(
+                          backgroundColor: color_buttonBackground2,
+                          side: BorderSide(color: color_buttonSide2!),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(25),
+                          ),
+                          padding: const EdgeInsets.symmetric(vertical: 12),
+                        ),
+                        onPressed: onpressed_button2,
+                        child: Text(
+                          text_button2 ?? "",
+                          style: TextStyle(
+                            color: textColor_button2,
+                            fontSize: text1_buttonSize2 ?? 13.0,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ],
+            ),
+          ),
+        ),
+  );
+}
+
+// ====================== Custom Loading ======================
+void loadingScreen(context) {
+  showDialog(
+    context: context,
+    builder: (BuildContext) {
+      return Container(
+        width: double.infinity,
+        height: double.infinity,
+        color: Colors.black.withOpacity(0.5),
+        child: Center(
+          child: Lottie.asset(
+            'assets/animation/loading circle.json',
+            width: 140,
+            height: 140,
+            fit: BoxFit.contain,
+            delegates: LottieDelegates(values: [
+              ValueDelegate.color(
+                value:AppColors.kPrimaryColor,
+                const ["**"],
+              ),
+
+            ])
+
+          ),
+        ),
+      );
+    },
+    barrierDismissible: false,
+  );
 }
