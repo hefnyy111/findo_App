@@ -14,7 +14,7 @@ class SignInAction {
       // ******************************* Button Login
       case "continue_login":
         {
-        // **************** Phone ****************
+        // **************** Phone ***************
       if (cubit_signin.isPhoneSelected) {
         bool isValid = false;
         String pattern = "";
