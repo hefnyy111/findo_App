@@ -8,6 +8,8 @@ import 'package:Ascend/features/auth/presentation/Sign_up/step_account_3/step_ac
 import 'package:Ascend/features/auth/presentation/sign_in/manager/cubit/verify_code_cubit.dart';
 import 'package:Ascend/features/auth/presentation/sign_in/phone/widgets/sign_in_countries_view.dart';
 import 'package:Ascend/features/auth/presentation/sign_in/views/code_view.dart';
+import 'package:Ascend/features/auth/presentation/verify_code/verify_code_view.dart';
+import 'package:Ascend/features/auth/presentation/verify_code/widgets/field_otp_view.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
@@ -68,7 +70,7 @@ class AppRouter {
 
       // GoRoute( path: "/", builder: (context, state) => SignInView(),),
       // GoRoute( path: kSignInCountriesView, builder: (context, state) => SignInCountriesView(),),
-      GoRoute(path: '/', builder: (context, state) => StepAccount4View(full_name: '', username: '', password: '', photo_url: '')),
+      GoRoute(path: '/', builder: (context, state) => VerifyCodeView()),
 
     ],
   );
