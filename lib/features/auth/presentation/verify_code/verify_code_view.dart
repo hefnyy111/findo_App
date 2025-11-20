@@ -2,8 +2,10 @@
 import 'package:Ascend/features/auth/presentation/verify_code/manager/verify_code_cubit.dart';
 import 'package:Ascend/features/auth/presentation/verify_code/manager/verify_code_states.dart';
 import 'package:Ascend/features/auth/presentation/verify_code/widgets/field_otp_view.dart';
+import 'package:Ascend/shared/Components/components.dart';
 import 'package:Ascend/shared/core/constants/constants.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -93,21 +95,36 @@ class VerifyCodeView extends StatelessWidget {
                       ),
                 
                       SizedBox(width: 5.0,),
-                
-                      TextButton(
-                        onPressed: () {},
-                        style: TextButton.styleFrom(
-                          padding: EdgeInsets.zero,
-                          minimumSize: Size(0, 0),
-                          tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                        ),
-                        child: Text('Resend',
-                        style: TextStyle(
-                        color: AppColors.kPrimaryColor,
-                        fontSize: 13,
-                        ),
-                        ),
-                        ),
+                      
+                      ConditionalBuilder(
+                        condition: state is! VerifyCodeLoadingCodeStates,
+                        builder: (context) {
+                         return TextButton(
+                          onPressed: () {
+                            cubitVerify.startTimeer();
+                          },
+                          style: TextButton.styleFrom(
+                            padding: EdgeInsets.zero,
+                            minimumSize: Size(0, 0),
+                            tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                          ),
+                          child: cubitVerify.showTimerr ? 
+                          Text('${cubitVerify.secondes}',
+                          style: TextStyle(
+                          color: AppColors.kPrimaryColor,
+                          fontSize: 13,
+                          ),
+                          ) :
+                           Text('Resend',
+                          style: TextStyle(
+                          color: AppColors.kPrimaryColor,
+                          fontSize: 13,
+                          ),
+                          ),
+                          );
+                        }, 
+                        fallback: (context) => CircularProgressIndicator(),
+                      ),
                     ],
                   )
                   ],

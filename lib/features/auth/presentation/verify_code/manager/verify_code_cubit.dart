@@ -17,8 +17,10 @@ class VerifyCodeCubit extends Cubit<VerifyCodeStates> {
   bool startShimmer = false;
   bool showCodeIncorrect = false;
   bool showCodeSuccess = false;
+  Timer? timer;
   bool showTimerr = false;
   int secondes = 60;
+  
   // ******************************* Initial Fields
   void initFields() {
     controllers = List.generate(6, (_) => TextEditingController());
@@ -78,8 +80,20 @@ class VerifyCodeCubit extends Cubit<VerifyCodeStates> {
 
   // ******************************* StartTimer
   void startTimeer() {
-    Future.delayed(Duration(seconds: 1), () {
-      secondes--;
+    showTimerr = true;
+    secondes = 60;
+    emit(VerifyCodeStartCodeStates());
+    
+    timer = Timer.periodic(Duration(seconds: 1), (timer) {
+     if(secondes > 0) {
+       secondes--;
+       emit(VerifyCodeRunningStates(secondes));
+     } else {
+       showTimerr = false;
+       timer.cancel();
+       emit(VerifyCodeFinishCodeStates(secondes));
+     }
     });
   }
+
 }
