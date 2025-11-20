@@ -66,6 +66,7 @@ flutter:
   assets:
     - assets/Images/logo_acsend.png
     - assets/Images/Auth/forger_email/
+    - assets/Images/Auth/Animations/success.json
     - assets/Images/Auth/
 
   fonts:

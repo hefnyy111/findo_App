@@ -132,6 +132,7 @@ void sendEmail({ required String email}) async {
       "email": email
     }
     );
+    
  final login_model = response.data['next_step'];
   if(login_model == "verify_login") {
     print('Done login to homeview');
