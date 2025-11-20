@@ -26,7 +26,7 @@ class AppRouter {
   static const kVerifyCode = '/VerifyCodeView';
   static final router = GoRouter(
     routes: [
-      GoRoute(path: '/', builder: (context, state) => ForgetEmailView()),
+      GoRoute(path: '/', builder: (context, state) => VerifyCodeView()),
       // GoRoute(path: '/', builder: (context, state) => SignInView()),
       // GoRoute(path: kVerifyCode, builder: (context, state) => VerifyCodeView(),),
       

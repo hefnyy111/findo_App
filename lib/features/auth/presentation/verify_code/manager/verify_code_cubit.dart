@@ -16,6 +16,9 @@ class VerifyCodeCubit extends Cubit<VerifyCodeStates> {
   int currentBorder = 1;
   bool startShimmer = false;
   bool showCodeIncorrect = false;
+  bool showCodeSuccess = false;
+  bool showTimerr = false;
+  int secondes = 60;
   // ******************************* Initial Fields
   void initFields() {
     controllers = List.generate(6, (_) => TextEditingController());
@@ -54,7 +57,11 @@ class VerifyCodeCubit extends Cubit<VerifyCodeStates> {
    await Future.delayed(Duration(seconds: 3), () {
    if(otpCode == "123456") {
     startShimmer = false;
+    showCodeSuccess = true;
+    Future.delayed(Duration(seconds: 4), () {
     print('success');
+
+    });
    } else {
     showCodeIncorrect = true;
     startShimmer = false;
@@ -69,5 +76,10 @@ class VerifyCodeCubit extends Cubit<VerifyCodeStates> {
     });
   }
 
-  
+  // ******************************* StartTimer
+  void startTimeer() {
+    Future.delayed(Duration(seconds: 1), () {
+      secondes--;
+    });
+  }
 }

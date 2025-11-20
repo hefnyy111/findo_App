@@ -78,7 +78,6 @@ class VerifyCodeView extends StatelessWidget {
                           ],
                         ),
                       ),
-                  ] else ...[
                   ],
                   // ******************************* Sizebox
                   SizedBox(height: 40,),
