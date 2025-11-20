@@ -2,6 +2,10 @@
 abstract class StepAccount3States {}
 
 class StepAccount3InitialStates extends StepAccount3States {}
+
+//================vaildate===================
+class StepAccount3VaildateUserStates extends StepAccount3States {}
+
 // =============== Add Photo ===============
 class StepAccount3AddPhotoStates extends StepAccount3States {}
 

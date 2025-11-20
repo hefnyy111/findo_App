@@ -1,6 +1,6 @@
 // features/auth/presentation/sign_in/action/sign_in_action.dart
 import 'package:Ascend/features/auth/presentation/sign_in/manager/sign_in_cubit.dart';
-import 'package:Ascend/features/auth/presentation/sign_in/phone/widgets/sign_in_countries_view.dart';
+import 'package:Ascend/features/auth/presentation/sign_in/views/phone_counties_view/widgets/sign_in_countries_view.dart';
 import 'package:Ascend/shared/Components/components.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,7 +14,7 @@ class SignInAction {
       // ******************************* Button Login
       case "continue_login":
         {
-        // **************** Phone ****************
+        // **************** Phone ***************
       if (cubit_signin.isPhoneSelected) {
         bool isValid = false;
         String pattern = "";
@@ -74,6 +74,7 @@ class SignInAction {
             color: Colors.white,
           );
         } else if (cubit_signin.forkey_signin.currentState!.validate()) {
+          cubit_signin.sendEmail(email: cubit_signin.email.text.trim());
           print('✅ Done login with email: ${cubit_signin.email.text.trim()}');
         }
 
@@ -107,14 +108,14 @@ class SignInAction {
           }
         }
         break;
-      // ******************************* Show search
+      // ******************************* Show search countries
       case 'show_search':
         {
           print('tsadsaest');
           cubit_signin.showSearchNow(true);
         }
         break;
-      // ******************************* Hide search
+      // ******************************* Hide search countries
       case 'hide_search':
         {
           print('tsadsaest');

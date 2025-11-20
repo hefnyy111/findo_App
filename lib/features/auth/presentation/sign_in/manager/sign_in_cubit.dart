@@ -1,5 +1,8 @@
+// features/auth/presentation/sign_in/manager/sign_in_cubit.dart
 import 'package:Ascend/features/auth/presentation/sign_in/manager/sign_in_states.dart';
 import 'package:Ascend/shared/core/constants/constants.dart';
+import 'package:Ascend/shared/network/cashe_helper.dart';
+import 'package:Ascend/shared/network/dio_helper.dart';
 import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -99,7 +102,7 @@ Future<void> changeButton(String? valuee, context, {VoidCallback? customButtonAc
 }
 
 
-  // ******************************* Search
+// ******************************* Search
   bool showSearch = false;
   void showSearchNow(bool value) {
     showSearch = value;
@@ -118,5 +121,30 @@ Future<void> changeButton(String? valuee, context, {VoidCallback? customButtonAc
     emit(SignInUpdateSearchStates());
   }
 
+// ******************************* Email API
+void sendEmail({ required String email}) async {
+  emit(SigninLoadingEmailStates());
+  
+  try {
+  final response = await DioHelper.postData(
+    url: "login_email",
+    data: {
+      "email": email
+    }
+    );
+ final login_model = response.data['next_step'];
+  if(login_model == "verify_login") {
+    print('Done login to homeview');
+    
+  } else if(login_model == "verify_register") {
+    print('Done login and register now');
+  }
+  emit(SigninSuccessEmailStates());
+
+  } catch (e) {
+    emit(SigninErrorEmailStates(e.toString()));
+  }
+  
+}
   
 }

@@ -1,3 +1,4 @@
+// shared/Components/components.dart
 import 'package:Ascend/shared/core/constants/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -110,7 +111,7 @@ Widget customTextFormField({
     decoration: InputDecoration(
       counterText: "",
       label: Text(text, style: TextStyle(color: AppColors.kGreyColor)),
-      labelStyle: const TextStyle(color: Color(0xFF9E9E9E), fontSize: 14),
+      labelStyle: const TextStyle(color: Color(0xFF9E9E9E), fontSize: 13),
       prefixIcon: prefixIcon,
       suffixIcon:
           suffixIcon != null

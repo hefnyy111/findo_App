@@ -1,3 +1,4 @@
+// features/auth/presentation/Sign_up/step_account_2/widgets/vaildate_password.dart
 
 import 'package:Ascend/features/auth/presentation/Sign_up/step_account_2/manager/step_account2_cubit.dart';
 import 'package:Ascend/shared/core/constants/constants.dart';
@@ -36,28 +37,29 @@ class VaidatePassWord extends StatelessWidget {
   }
 }
 
+
+// ******************************* Custom Validate password
+
 class CustomVaidateUser extends StatelessWidget {
-  const CustomVaidateUser({
-    super.key,
-    required this.condition,
-    required this.text,
-  });
+  const CustomVaidateUser({ super.key, required this.condition, required this.text, });
   final bool condition;
   final String text;
+
+
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
         condition
-            ? Icon(Icons.check_circle, color: AppColors.kPrimaryColor, size: 20)
-            : Icon(Icons.cancel, color: AppColors.kGreyColor, size: 20),
+            ? Icon(Icons.check_circle, color: AppColors.kPrimaryColor, size: 15)
+            : Icon(Icons.cancel, color: AppColors.kGreyColor, size: 15),
 
         const SizedBox(width: 8),
         Text(
           text,
           style: TextStyle(
             color: condition ? AppColors.kPrimaryColor : AppColors.kGreyColor,
-            fontSize: 14,
+            fontSize: 12,
           ),
         ),
       ],

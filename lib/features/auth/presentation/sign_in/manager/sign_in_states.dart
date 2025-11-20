@@ -13,3 +13,12 @@ class SignInShowSearchStates extends SignInStates {}
 class SignInUpdateSearchStates extends SignInStates {}
 // ================ Change button  ================
 class SigninChangeButtonStates extends SignInStates {}
+// ================ Email API ================
+class SigninLoadingEmailStates extends SignInStates {}
+
+class SigninSuccessEmailStates extends SignInStates {}
+
+class SigninErrorEmailStates extends SignInStates {
+  final String error;
+  SigninErrorEmailStates(this.error);
+}

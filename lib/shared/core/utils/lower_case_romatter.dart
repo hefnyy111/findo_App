@@ -1,4 +1,4 @@
-// features/auth/presentation/Sign_up/steip_account_1/widgets/lower_case_romatter.dart
+// shared/core/utils/lower_case_romatter.dart
 import 'package:flutter/services.dart';
 
 class LowerCaseRomatter extends TextInputFormatter {
