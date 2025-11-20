@@ -81,7 +81,7 @@ class SignInView extends StatelessWidget {
                     SignInSelect(),
                     // ******************************* Sizebox
                     const SizedBox(height: 50.0),
-                    // ******************************* Condition  *******************************
+                    // ******************************* Condition  ******************************
                     //
                     //
                     if(cubit_signin.isPhoneSelected) ...[
