@@ -1,6 +1,8 @@
+// features/auth/presentation/forgetEmail/views/forget_email_view.dart
 import 'package:Ascend/shared/Components/components.dart';
 import 'package:Ascend/shared/core/constants/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:shimmer_animation/shimmer_animation.dart';
 
 class ForgetEmailView extends StatelessWidget {
   const ForgetEmailView({super.key});
@@ -8,18 +10,20 @@ class ForgetEmailView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       resizeToAvoidBottomInset: true,
       extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        titleSpacing: 0.0,
+        backgroundColor: Colors.black,
+        leading: customIconback(funtions: () {}),
+        title: Text(
+          'Find your account',
+          style: TextStyle(color: Colors.white, fontSize: 19),
+        ),
+      ),
 
       body: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage(
-              'assets/Images/Auth/forger_email/EmailBackground.png',
-            ),
-            fit: BoxFit.cover,
-          ),
-        ),
         child: Padding(
           padding: EdgeInsetsGeometry.all(24.0),
           child: Form(
@@ -27,48 +31,33 @@ class ForgetEmailView extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 // ******************************* Sizebox
-                const SizedBox(height: 100.0),
+                const SizedBox(height: 120.0),
+                // ******************************* image of email
+                Image.asset(
+                  'assets/Images/Auth/forger_email/email_image.png',
+                  width: 150,
+                  height: 150,
+                  fit: BoxFit.cover,
+                ),
+                // ******************************* Sizebox
+                const SizedBox(height: 30.0),
                 // ******************************* Text 1
-                const Center(
-                  child: Column(
-                    children: [
-                      Text(
-                        'Forgot your email?',
-                        style: TextStyle(
-                          fontFamily: 'SF-Pro-Rounded-Bold',
-                          color: Colors.white,
-                          fontSize: 26,
-                          height: 1.4,
-                        ),
-                      ),
-                      // ******************************* Sizebox
-                      const SizedBox(height: 20.0),
-                      // ******************************* Text 2
-                      Text(
-                        "Enter your phone number or username, and we’ll \n help you find your account.",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: AppColors.kGreyColor,
-                          fontSize: 15,
-                          height: 1.5,
-                        ),
-                      ),
-                    ],
+                Text(
+                  "Enter your phone number or username, and\nwe’ll help you find your account.",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: AppColors.kGreyColor,
+                    fontSize: 13,
+                    height: 1.5,
                   ),
                 ),
                 // ******************************* Sizebox
                 const SizedBox(height: 50.0),
-                // ******************************* image of email
-                Image.asset('assets/Images/Auth/forger_email/email.png'),
-                // ******************************* Sizebox
-                const SizedBox(height: 50.0),
-                Expanded(
-                  child: customTextFormField(
-                    controller: TextEditingController(),
-                    validate: (value) {},
-                    onChanged: (valuee) {},
-                    text: "Phone number or username",
-                  ),
+                customTextFormField(
+                  controller: TextEditingController(),
+                  validate: (value) {},
+                  onChanged: (valuee) {},
+                  text: "Phone number or username",
                 ),
               ],
             ),
@@ -76,29 +65,28 @@ class ForgetEmailView extends StatelessWidget {
         ),
       ),
 
-      // bottomNavigationBar: Padding(
-      //   padding: EdgeInsets.all(24),
-      //   child: ClipRRect(
-      //     borderRadius: BorderRadiusGeometry.circular(25),
-      //     child: Shimmer(
-      //       duration: Duration(seconds: 4),
-      //               interval: Duration(seconds: 1),
-      //               color: Colors.grey,
-      //               colorOpacity: 1,
-      //               // enabled: cubit_signin.ButtonShimmer,
-      //               direction: ShimmerDirection.fromLBRT(),
-      //       child:
-      //       customButton(
-      //               function: (){},
-      //               text: "Continue",
-      //               colorBorderside: cubit_signin.borderSide,
-      //               backColor: cubit_signin.background_button,
-      //               colorText: cubit_signin.text_button,
-      //               width: double.infinity,
-      //             ),
-      //     ),
-      //   ),
-      //   ),
+      bottomNavigationBar: Padding(
+        padding: EdgeInsets.all(24),
+        child: ClipRRect(
+          borderRadius: BorderRadiusGeometry.circular(25),
+          child: Shimmer(
+            duration: Duration(seconds: 4),
+            interval: Duration(seconds: 1),
+            color: Colors.grey,
+            colorOpacity: 1,
+            enabled: true,
+            direction: ShimmerDirection.fromLBRT(),
+            child: customButton(
+              function: () {},
+              text: "Continue",
+              colorBorderside: AppColors.kPrimaryColor,
+              backColor: AppColors.kPrimaryColor,
+              colorText: Colors.white,
+              width: double.infinity,
+            ),
+          ),
+        ),
+      ),
     );
   }
 }

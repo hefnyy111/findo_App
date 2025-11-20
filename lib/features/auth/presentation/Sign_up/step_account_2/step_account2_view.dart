@@ -38,90 +38,92 @@ class StepAccount2View extends StatelessWidget {
             body: Padding(
               padding: EdgeInsets.all(20.0),
 
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  // ******************************* Step Progress
-                  StepProgress(currentStep: 2, totalSteps: 5),
-                  // ******************************* Sizebox
-                  SizedBox(height: 60.0),
-                  // ******************************* Secure your account
-                  Align(
-                    alignment: Alignment.bottomLeft,
-                    child: Text(
-                      'Secure your account',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                        height: 1.4,
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    // ******************************* Step Progress
+                    StepProgress(currentStep: 2, totalSteps: 5),
+                    // ******************************* Sizebox
+                    SizedBox(height: 60.0),
+                    // ******************************* Secure your account
+                    Align(
+                      alignment: Alignment.bottomLeft,
+                      child: Text(
+                        'Secure your account',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                          height: 1.4,
+                        ),
                       ),
                     ),
-                  ),
-                  // ******************************* Sizebox
-                  SizedBox(height: 10.0),
-                  // *******************************
-                  Align(
-                    alignment: Alignment.bottomLeft,
-                    child: Text(
-                      'You can set a password now or skip for later',
-                      textAlign: TextAlign.start,
-                      style: TextStyle(
-                        color: AppColors.kGreyColor,
-                        fontSize: 13,
-                        height: 1.3,
+                    // ******************************* Sizebox
+                    SizedBox(height: 10.0),
+                    // *******************************
+                    Align(
+                      alignment: Alignment.bottomLeft,
+                      child: Text(
+                        'You can set a password now or skip for later',
+                        textAlign: TextAlign.start,
+                        style: TextStyle(
+                          color: AppColors.kGreyColor,
+                          fontSize: 13,
+                          height: 1.3,
+                        ),
                       ),
                     ),
-                  ),
-                  // ******************************* Sizebox
-                  SizedBox(height: 30.0),
-                  // ******************************* Field 1
-                  customTextFormField(
-                    controller: cubit_step2.password,
-                    validate: (value) {},
-                    onChanged: (value) {
-                      cubit_step2.validatePassword(value!);
-
-                      cubit_step2.changeButton(
-                        value,
-                        onClickButton:
-                            () => StepAccount2Action.StepAccount_2Action(
-                              context,
-                              value,
-                              full_name,
-                              username,
-                              "next_password",
-                            ),
-                      );
-                    },
-                    text: "Password",
-                  ),
-                  // ******************************* Sizebox
-                  SizedBox(height: 20.0),
-                  // ******************************* Field 2
-                  customTextFormField(
-                    controller: cubit_step2.confirm_password,
-                    validate: (value) {},
-                    onChanged: (value) {
-                      cubit_step2.changeButton(
-                        value,
-                        onClickButton:
-                            () => StepAccount2Action.StepAccount_2Action(
-                              context,
-                              value,
-                              full_name,
-                              username,
-                              "next_password",
-                            ),
-                      );
-                    },
-                    text: "Repeat password",
-                  ),
-                  // ******************************* Sizebox
-                  SizedBox(height: 40.0),
-                  // ******************************* validatepassWord
-                  VaidatePassWord(),
-                ],
+                    // ******************************* Sizebox
+                    SizedBox(height: 30.0),
+                    // ******************************* Field 1
+                    customTextFormField(
+                      controller: cubit_step2.password,
+                      validate: (value) {},
+                      onChanged: (value) {
+                        cubit_step2.validatePassword(value!);
+                
+                        cubit_step2.changeButton(
+                          value,
+                          onClickButton:
+                              () => StepAccount2Action.StepAccount_2Action(
+                                context,
+                                value,
+                                full_name,
+                                username,
+                                "next_password",
+                              ),
+                        );
+                      },
+                      text: "Password",
+                    ),
+                    // ******************************* Sizebox
+                    SizedBox(height: 20.0),
+                    // ******************************* Field 2
+                    customTextFormField(
+                      controller: cubit_step2.confirm_password,
+                      validate: (value) {},
+                      onChanged: (value) {
+                        cubit_step2.changeButton(
+                          value,
+                          onClickButton:
+                              () => StepAccount2Action.StepAccount_2Action(
+                                context,
+                                value,
+                                full_name,
+                                username,
+                                "next_password",
+                              ),
+                        );
+                      },
+                      text: "Repeat password",
+                    ),
+                    // ******************************* Sizebox
+                    SizedBox(height: 40.0),
+                    // ******************************* validatepassWord
+                    VaidatePassWord(),
+                  ],
+                ),
               ),
             ),
             // ******************************* Button Next

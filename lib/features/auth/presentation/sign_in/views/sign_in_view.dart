@@ -3,8 +3,7 @@ import 'package:Ascend/features/auth/presentation/get_Started/action/get_started
 import 'package:Ascend/features/auth/presentation/sign_in/action/sign_in_action.dart';
 import 'package:Ascend/features/auth/presentation/sign_in/manager/sign_in_cubit.dart';
 import 'package:Ascend/features/auth/presentation/sign_in/manager/sign_in_states.dart';
-import 'package:Ascend/features/auth/presentation/sign_in/phone/widgets/sign_in_fieldPicker.dart';
-import 'package:Ascend/features/auth/presentation/sign_in/phone/widgets/sign_in_select.dart';
+import 'package:Ascend/features/auth/presentation/sign_in/views/phone_counties_view/widgets/sign_in_select.dart';
 import 'package:Ascend/shared/Components/components.dart';
 import 'package:Ascend/shared/core/constants/constants.dart';
 import 'package:flutter/material.dart';

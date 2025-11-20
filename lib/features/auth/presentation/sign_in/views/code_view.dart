@@ -1,5 +1,5 @@
 // features/auth/presentation/sign_in/views/code_view.dart
-import 'package:Ascend/features/auth/presentation/sign_in/manager/cubit/verify_code_cubit.dart';
+import 'package:Ascend/features/auth/presentation/verify_code/manager/verify_code_cubit.dart';
 import 'package:Ascend/shared/core/constants/constants.dart';
 import 'package:flutter/material.dart';
 

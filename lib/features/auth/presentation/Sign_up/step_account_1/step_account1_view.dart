@@ -49,65 +49,67 @@ class StepAccount1View extends StatelessWidget {
             body: Padding(
               padding: EdgeInsets.all(20.0),
 
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  // ******************************* Step Progress
-                  StepProgress(currentStep: 1, totalSteps: 4),
-                  // ******************************* Sizebox
-                  SizedBox(height: 60.0),
-                  // ******************************* Account details
-                  Align(
-                    alignment: Alignment.bottomLeft,
-                    child: Text(
-                      'Account Details',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 22,
-                        height: 1.4,
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    // ******************************* Step Progress
+                    StepProgress(currentStep: 1, totalSteps: 4),
+                    // ******************************* Sizebox
+                    SizedBox(height: 60.0),
+                    // ******************************* Account details
+                    Align(
+                      alignment: Alignment.bottomLeft,
+                      child: Text(
+                        'Account Details',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 22,
+                          height: 1.4,
+                        ),
                       ),
                     ),
-                  ),
-                  // ******************************* Sizebox
-                  SizedBox(height: 10.0),
-                  // *******************************
-                  Align(
-                    alignment: Alignment.bottomLeft,
-                    child: Text(
-                      'Let\'s start by setting up your name and\nusername',
-                      textAlign: TextAlign.start,
-                      style: TextStyle(
-                        color: AppColors.kGreyColor,
-                        fontSize: 13,
-                        height: 1.3,
+                    // ******************************* Sizebox
+                    SizedBox(height: 10.0),
+                    // *******************************
+                    Align(
+                      alignment: Alignment.bottomLeft,
+                      child: Text(
+                        'Let\'s start by setting up your name and\nusername',
+                        textAlign: TextAlign.start,
+                        style: TextStyle(
+                          color: AppColors.kGreyColor,
+                          fontSize: 13,
+                          height: 1.3,
+                        ),
                       ),
                     ),
-                  ),
-                  // ******************************* Sizebox
-                  SizedBox(height: 30.0),
-                  // ******************************* Field 1
-                  customTextFormField(
-                    controller: cubit_step1.full_name,
-                    validate: (value) {},
-                    onChanged: (value) {
-                       cubit_step1.changeButton(value, onClickButton: () => StepAccount1Action.StepAccount_1Action(context, value, "next_details"),);
-                    },
-                    text: "Full name",
-                  ),
-                  // ******************************* Sizebox
-                  SizedBox(height: 25.0),
-                  // ******************************* Field 1
-                  customTextFormField(
-                    inputFormatters: [LowerCaseRomatter()],
-                    controller: cubit_step1.username,
-                    validate: (value) {},
-                    onChanged: (value) {
-                      cubit_step1.changeButton(value, onClickButton: () => StepAccount1Action.StepAccount_1Action(context, value, "next_details"),);
-                    },
-                    text: "Username",
-                  ),
-                ],
+                    // ******************************* Sizebox
+                    SizedBox(height: 30.0),
+                    // ******************************* Field 1
+                    customTextFormField(
+                      controller: cubit_step1.full_name,
+                      validate: (value) {},
+                      onChanged: (value) {
+                         cubit_step1.changeButton(value, onClickButton: () => StepAccount1Action.StepAccount_1Action(context, value, "next_details"),);
+                      },
+                      text: "Full name",
+                    ),
+                    // ******************************* Sizebox
+                    SizedBox(height: 25.0),
+                    // ******************************* Field 1
+                    customTextFormField(
+                      inputFormatters: [LowerCaseRomatter()],
+                      controller: cubit_step1.username,
+                      validate: (value) {},
+                      onChanged: (value) {
+                        cubit_step1.changeButton(value, onClickButton: () => StepAccount1Action.StepAccount_1Action(context, value, "next_details"),);
+                      },
+                      text: "Username",
+                    ),
+                  ],
+                ),
               ),
             ),
                   // ******************************* Button Next
