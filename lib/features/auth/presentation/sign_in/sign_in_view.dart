@@ -20,7 +20,7 @@ class SignInView extends StatelessWidget {
       listener: (context, state) { 
         if(state is SigninSuccessEmailStates) {
           GoRouter.of(context).push(AppRouter.kVerifyCode);
-        } else {
+        } else if(state is SigninErrorEmailStates) {
           customSnackBarMessage(
             context,
             text: "An error occurred. Please try again.",
@@ -81,7 +81,7 @@ class SignInView extends StatelessWidget {
                     SignInSelect(),
                     // ******************************* Sizebox
                     const SizedBox(height: 50.0),
-                    // ******************************* Condition  *******************************
+                    // ******************************* Condition  ******************************
                     //
                     //
                     if(cubit_signin.isPhoneSelected) ...[

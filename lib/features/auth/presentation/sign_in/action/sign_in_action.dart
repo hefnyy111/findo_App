@@ -58,11 +58,12 @@ class SignInAction {
           },
           );
           return;
+        } else {
+        String fullPhone = "${cubit_signin.selectCodeCountry}${cubit_signin.phoneNumber.text.trim()}";
+        cubit_signin.sendPhone(phone: fullPhone);
+        print('📲 Logging in with phone: $fullPhone');
         }
 
-        String fullPhone = "${cubit_signin.selectCodeCountry}${cubit_signin.phoneNumber.text.trim()}";
-
-        print('📲 Logging in with phone: $fullPhone');
 
 
         // **************** Email ****************
