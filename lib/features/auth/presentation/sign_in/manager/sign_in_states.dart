@@ -22,3 +22,15 @@ class SigninErrorEmailStates extends SignInStates {
   final String error;
   SigninErrorEmailStates(this.error);
 }
+
+// ================ Phone API ================
+class SigninLoadingPhoneOTPStates extends SignInStates {}
+
+class SigninVerifiedPhoneOTPStates extends SignInStates {}
+
+class SigninSuccessPhoneOTPStates extends SignInStates {}
+
+class SigninErrorPhoneOTPtates extends SignInStates {
+  final String error;
+  SigninErrorPhoneOTPtates(this.error);
+}
