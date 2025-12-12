@@ -19,7 +19,7 @@ class NotificationService {
     final InitializationSettings initializationSettings = InitializationSettings(android: initializationSettingsAndroid);
 
     await flutterLocalNotificationsPlugin.initialize(initializationSettings);
-
+ 
      // ***** Foreground notifications *****
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
       _showNotification(message);

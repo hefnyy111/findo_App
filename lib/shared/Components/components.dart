@@ -208,7 +208,6 @@ void customSnackBarMessage(
 }
 
 // ====================== Message ======================
-
 void showMessage(
   BuildContext context, {
   String? text1,
@@ -340,8 +339,14 @@ void showMessage(
 }
 
 // ====================== Custom Loading ======================
-void loadingScreen(context) {
-  showDialog(
+Future<dynamic> loadingScreen(context, int secondes) {
+ Future.delayed(Duration(seconds: secondes), () {
+  if(Navigator.of(context).canPop()) {
+     Navigator.pop(context);
+  }
+ });
+ 
+ return showDialog(
     context: context,
     builder: (BuildContext) {
       return Container(
@@ -350,7 +355,7 @@ void loadingScreen(context) {
         color: Colors.black.withOpacity(0.5),
         child: Center(
           child: Lottie.asset(
-            'assets/animation/loading circle.json',
+            'assets/Images/Auth/loading/loading_circle.json',
             width: 140,
             height: 140,
             fit: BoxFit.contain,

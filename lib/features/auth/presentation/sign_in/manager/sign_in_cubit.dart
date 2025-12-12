@@ -25,6 +25,7 @@ class SignInCubit extends Cubit<SignInStates> {
   bool isPhoneSelected = true;
   Color colorBackground = AppColors.kPrimaryColor;
   Color textColor = Colors.white;
+  
   void toggleSelected(bool selectPhone, context) {
     isPhoneSelected = selectPhone;
     if (isPhoneSelected) {
@@ -70,10 +71,7 @@ class SignInCubit extends Cubit<SignInStates> {
     VoidCallback? customButtonAction,
   }) async {
     bool info_email = email.text.isNotEmpty;
-    bool info_phone =
-        selectCountry != "Select country" &&
-        codeCounter.text.trim().isNotEmpty &&
-        phoneNumber.text.trim().isNotEmpty;
+    bool info_phone = selectCountry != "Select country" && codeCounter.text.trim().isNotEmpty && phoneNumber.text.trim().isNotEmpty;
 
     if (isPhoneSelected) {
       if (info_phone) {
@@ -152,18 +150,15 @@ class SignInCubit extends Cubit<SignInStates> {
 
   // ******************************* Phone API + Notification
   String deviceToken = "";
-void sendPhone({required String phone}) async {
+  void sendPhone({required String phone}) async {
     emit(SigninLoadingPhoneOTPStates());
-    
-     deviceToken = await FirebaseMessaging.instance.getToken() ?? "";
-     print(deviceToken);
+
+    deviceToken = await FirebaseMessaging.instance.getToken() ?? "";
+    print(deviceToken);
     try {
       final response = await DioHelper.postData(
         url: "login_phone",
-        data: {
-          "phone": phone,
-          "deviceToken": deviceToken
-          },
+        data: {"phone": phone, "deviceToken": deviceToken},
       );
       print(response.data);
 
@@ -172,5 +167,4 @@ void sendPhone({required String phone}) async {
       emit(SigninErrorPhoneOTPtates(e.toString()));
     }
   }
-
 }

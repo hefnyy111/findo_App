@@ -37,7 +37,7 @@ class GetStartedView extends StatelessWidget {
                   // ******************************* Sizebox
                   SizedBox(height: 80.0),
                   // ******************************* Image
-                  Image.asset('assets/logo_acsend.png', height: 150, width: 150),
+                  Image.asset('assets/images/logo_acsend.png', height: 150, width: 150),
                   // ******************************* Sizebox
                   const SizedBox(height: 50),
                   // ******************************* Text 1

@@ -2,9 +2,11 @@
 import 'package:Ascend/features/auth/presentation/sign_in/manager/sign_in_cubit.dart';
 import 'package:Ascend/features/auth/presentation/sign_in/views/phone_counties_view/widgets/sign_in_countries_view.dart';
 import 'package:Ascend/shared/Components/components.dart';
+import 'package:Ascend/shared/core/constants/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:Ascend/shared/core/constants/constants.dart';
+import 'package:go_router/go_router.dart';
 class SignInAction {
   static void signInButtonPress(context, String? action) async {
     var cubit_signin = SignInCubit.get(context);
@@ -123,6 +125,11 @@ class SignInAction {
           cubit_signin.showSearchNow(false);
         }
         break;
+      // ******************************* Forget email
+      case 'forgeted_email': {
+        await loadingScreen(context, 3);
+        GoRouter.of(context).push(AppRouter.kForgetEmailView);
+      } 
     }
   }
 }

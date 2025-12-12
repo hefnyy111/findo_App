@@ -1,4 +1,4 @@
-// features/auth/presentation/sign_in/phone/widgets/sign_in_select.dart
+// features/auth/presentation/sign_in/views/phone_counties_view/widgets/sign_in_select.dart
 import 'package:Ascend/features/auth/presentation/sign_in/manager/sign_in_cubit.dart';
 import 'package:Ascend/features/auth/presentation/sign_in/manager/sign_in_states.dart';
 import 'package:flutter/material.dart';
@@ -31,7 +31,7 @@ class SignInSelect extends StatelessWidget {
 
           child: Row(
             children: [
-              // ******************************* Phoen
+              // ******************************* Phone
               Expanded(
                 child: AnimatedContainer(
                   duration: Duration(milliseconds: 300),
@@ -48,7 +48,7 @@ class SignInSelect extends StatelessWidget {
                       padding: EdgeInsets.zero,
                     ),
                     onPressed: () {
-
+                       cubit_signin.toggleSelected(true, context);
                     },
                     child: Text(
                       'Phone',

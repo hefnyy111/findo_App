@@ -70,7 +70,8 @@ flutter:
     - assets/Images/logo_acsend.png
     - assets/Images/Auth/forger_email/
     - assets/Images/Auth/Animations/success.json
-    - assets/Images/Auth/
+    - assets/images/
+    - assets/Images/Auth/loading/
 
   fonts:
     - family: SF-Pro-Display-Heavy

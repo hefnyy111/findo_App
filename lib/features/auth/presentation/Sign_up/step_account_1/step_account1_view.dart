@@ -23,7 +23,7 @@ class StepAccount1View extends StatelessWidget {
     if (state is StepAccount1UserAvailableStates) {
        var cubit_step1 = StepAccount1Cubit.get(context);
       navigatorAndFinish(context, StepAccount2View(full_name: cubit_step1.full_name.text, username: cubit_step1.username.text,));
-
+      
     } else if (state is StepAccount1UserIsTakenStates || state is StepAccount1UserErrorStates) {
       customSnackBarMessage(
         context, 

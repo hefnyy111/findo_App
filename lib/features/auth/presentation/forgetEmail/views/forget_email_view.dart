@@ -10,13 +10,15 @@ class ForgetEmailView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: AppColors.kbackgroundColor,
       resizeToAvoidBottomInset: true,
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         titleSpacing: 0.0,
-        backgroundColor: Colors.black,
-        leading: customIconback(funtions: () {}),
+        backgroundColor: AppColors.kbackgroundColor,
+        leading: customIconback(funtions: () {
+          Navigator.pop(context);
+        }),
         title: Text(
           'Find your account',
           style: TextStyle(color: Colors.white, fontSize: 19),

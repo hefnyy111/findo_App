@@ -10,7 +10,7 @@ class SplashCubit extends Cubit<SplashStates> {
 
   // ====================== Loading Splash ======================
   void LoadingSplash() {
-    Future.delayed(Duration(seconds: 3), () {
+    Future.delayed(Duration(seconds: 5), () {
       emit(SplashTimeFinishStates());
     });
   }

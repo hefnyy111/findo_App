@@ -36,6 +36,12 @@ class SignInView extends StatelessWidget {
           resizeToAvoidBottomInset: true,
           extendBodyBehindAppBar: true,
           backgroundColor: AppColors.kbackgroundColor,
+          appBar: AppBar(
+            backgroundColor: AppColors.kbackgroundColor,
+            leading: customIconback(funtions: () {
+              Navigator.pop(context);
+            }),
+          ),
           body: Padding(
             padding: EdgeInsetsGeometry.all(24.0),
             child: Form(
@@ -136,18 +142,18 @@ class SignInView extends StatelessWidget {
                       ),
                     // ******************************* Sizebox
                     const SizedBox(height: 25.0),
-                    // ******************************* forgeted password
+                    // ******************************* forgeted email
                     Align(
                       alignment: Alignment.bottomRight,
                       child: TextButton(
-                         onPressed:() => GetStartedAction.getStartedButtonPress(  context,  "forgeted_password",),
+                         onPressed:() => SignInAction.signInButtonPress(context, "forgeted_email",),
                          style: TextButton.styleFrom(
                           padding: EdgeInsets.all(0),
                           minimumSize: Size(0, 0),
                           tapTargetSize: MaterialTapTargetSize.shrinkWrap
                          ),
                          child: Text(
-                           'Forgeted password?',
+                           'Forgeted email?',
                            style: TextStyle(
                              color: AppColors.kPrimaryColor,
                              fontSize: 13.0,

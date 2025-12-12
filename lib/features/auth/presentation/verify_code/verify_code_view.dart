@@ -1,4 +1,5 @@
 // features/auth/presentation/verify_code/verify_code_view.dart
+import 'package:Ascend/features/auth/presentation/sign_in/manager/sign_in_cubit.dart';
 import 'package:Ascend/features/auth/presentation/verify_code/manager/verify_code_cubit.dart';
 import 'package:Ascend/features/auth/presentation/verify_code/manager/verify_code_states.dart';
 import 'package:Ascend/features/auth/presentation/verify_code/widgets/field_otp_view.dart';
@@ -21,6 +22,8 @@ class VerifyCodeView extends StatelessWidget {
         listener: (context, state) {},
         builder:(context, state) {
              var cubitVerify = VerifyCodeCubit.get(context);
+             var cubit_SignIn = SignInCubit.get(context).isPhoneSelected;
+             String phone = cubit_SignIn ? "phone" : "email";
           return Scaffold(
             backgroundColor: Colors.black,
             body: Padding(
@@ -43,10 +46,10 @@ class VerifyCodeView extends StatelessWidget {
                   const SizedBox(height: 20),
                 
                   // ******************************* subtitle
-                  const Text(
-                    "We sent a 6-digit code to your email.\nEnter it below to access your purchase.",
+                  Text(
+                   "We sent a 6-digit code to your `${phone}`\nEnter it below to check your account",
                     textAlign: TextAlign.center,
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: AppColors.kGreyColor,
                       fontSize: 14,
                     ),

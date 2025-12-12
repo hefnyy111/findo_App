@@ -30,14 +30,15 @@ void main() async {
     await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  
   DioHelper.init();
   await CasheHelper.init();
 
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
   await NotificationService().init();
   
-  // runApp(DevicePreview(enabled: true, builder: (context) => const MyApp()));
-  runApp(const MyApp());
+  runApp(DevicePreview(enabled: true, builder: (context) => const MyApp()));
+  // runApp(const MyApp());
 }
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
