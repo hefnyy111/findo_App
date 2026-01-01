@@ -44,7 +44,7 @@ class StepAccount2View extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     // ******************************* Step Progress
-                    StepProgress(currentStep: 2, totalSteps: 5),
+                    StepProgress(currentStep: 2, totalSteps: 4),
                     // ******************************* Sizebox
                     SizedBox(height: 60.0),
                     // ******************************* Secure your account

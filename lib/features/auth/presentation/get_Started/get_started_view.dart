@@ -1,6 +1,4 @@
 // features/auth/presentation/get_Started/get_started_view.dart
-
-
 import 'package:Ascend/features/auth/presentation/get_Started/action/get_started_action.dart';
 import 'package:Ascend/features/auth/presentation/get_Started/language/manager/language_cubit.dart';
 import 'package:Ascend/features/auth/presentation/get_Started/language/manager/language_states.dart';

@@ -19,6 +19,7 @@ class ForgetEmailView extends StatelessWidget {
         leading: customIconback(funtions: () {
           Navigator.pop(context);
         }),
+
         title: Text(
           'Find your account',
           style: TextStyle(color: Colors.white, fontSize: 19),

@@ -54,6 +54,7 @@ class StepAccount1View extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisSize: MainAxisSize.min,
                   children: [
+                    SizedBox(height: 100.0),
                     // ******************************* Step Progress
                     StepProgress(currentStep: 1, totalSteps: 4),
                     // ******************************* Sizebox

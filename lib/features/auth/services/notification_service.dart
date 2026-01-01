@@ -60,4 +60,5 @@ class NotificationService {
       platformDetails,
     );
   }
+
 }
