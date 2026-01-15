@@ -11,6 +11,7 @@ import 'package:Ascend/features/auth/presentation/Sign_up/widgets/step_progress.
 import 'package:Ascend/shared/Components/components.dart';
 import 'package:Ascend/shared/core/constants/app_router.dart';
 import 'package:Ascend/shared/core/constants/constants.dart';
+import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -20,7 +21,7 @@ import 'package:shimmer_animation/shimmer_animation.dart';
 class StepAccount3View extends StatelessWidget {
   final String full_name;
   final String username;
-  final String password;
+  final String? password;
   StepAccount3View({ required this.full_name, required this.username, required this.password});
 
   
@@ -34,15 +35,17 @@ class StepAccount3View extends StatelessWidget {
             Navigator.pop(context);
           }
         },
+
         builder: (context, state) {
           var cubit_step3 = StepAccount3Cubit.get(context);
           return Scaffold(
             backgroundColor: AppColors.kbackgroundColor,
             appBar: AppBar(
+              automaticallyImplyLeading: false,
               backgroundColor: AppColors.kbackgroundColor,
               leading: customIconback(
                 funtions: () {
-                  GoRouter.of(context).go(AppRouter.kGetStartedView);
+                  Navigator.pop(context);
                 },
               ),
             ),
@@ -100,35 +103,42 @@ class StepAccount3View extends StatelessWidget {
                         ),
                 
                         // ************** الصورة
-                        CircleAvatar(
-                          radius: 100,
-                          backgroundColor: AppColors.kbackGroundField,
-                          child: ClipOval(
-                            child: cubit_step3.profileImage != null ?
-                             Image.file(File(cubit_step3.profileImage!.path),
-                             width: 240,
-                             height: 240,
-                             fit: BoxFit.cover,
-                             ) :
-                             Image.network(
-                              'src', // حط لينك الصورة هنا
-                              fit: BoxFit.cover,
-                              width: 240,
-                              height: 240,
-                              loadingBuilder: (context, child, loadingProgress) {
-                                if (loadingProgress == null) return child;
-                                return const Center(
-                                  child: CircularProgressIndicator(),
-                                );
-                              },
-                              errorBuilder:
-                                  (context, error, stackTrace) => const Icon(
-                                    Icons.person,
-                                    size: 100,
-                                    color: Colors.grey,
-                                  ),
+                        ConditionalBuilder(
+                          condition: state is! ProfileImageLoading,
+                          builder: (context) {
+                          return CircleAvatar(
+                            radius: 100,
+                            backgroundColor: AppColors.kbackGroundField,
+                            child: ClipOval(
+                              child: cubit_step3.profileImage != null  ?
+                               Image.file(File(cubit_step3.profileImage!.path),
+                               width: 240,
+                               height: 240,
+                               fit: BoxFit.cover,
+                               ) :
+                               Image.network(
+                                'src', // حط لينك الصورة هنا
+                                fit: BoxFit.cover,
+                                width: 240,
+                                height: 240,
+                                loadingBuilder: (context, child, loadingProgress) {
+                                  if (loadingProgress == null) return child;
+                                  return const Center(
+                                    child: CircularProgressIndicator(),
+                                  );
+                                },
+                                errorBuilder:
+                                    (context, error, stackTrace) => const Icon(
+                                      Icons.person,
+                                      size: 100,
+                                      color: Colors.grey,
+                                    ),
+                              ),
                             ),
-                          ),
+                          );
+                          
+                          },
+                          fallback: (context) => CircularProgressIndicator(color: AppColors.kPrimaryColor,)
                         ),
                 
                         // ************** زرار الكاميرا
@@ -154,17 +164,17 @@ class StepAccount3View extends StatelessWidget {
                               onPressed: () {
                                 showModelBottomSheet(
                                   context,
-                                  onPressed1: () {
-                                    cubit_step3.pickAndCropImage( ImageSource.camera,);
+                                  onPressed1: () async {
+                                    await cubit_step3.pickAndCropImage( ImageSource.camera,);
                                     cubit_step3.changeButton(onClickButton: () => StepAccount3Action.StepAccount_3Action(full_name, username, password, context, "next_step4"));
                                   },
-                                  onPressed2: () {
-                                    cubit_step3.pickAndCropImage(
-                                      ImageSource.gallery,
-                                    );
+                                  onPressed2: () async {
+                                    await cubit_step3.pickAndCropImage(ImageSource.gallery,);
+                                     cubit_step3.changeButton(onClickButton: () => StepAccount3Action.StepAccount_3Action(full_name, username, password, context, "next_step4"));
                                   },
                                 );
                               },
+                              
                               // cubit_step3.pickAndCropImage,
                               icon: Icon(
                                 Icons.add_a_photo,
@@ -189,7 +199,7 @@ class StepAccount3View extends StatelessWidget {
                 child: Shimmer(
                   duration: Duration(seconds: 4),
                   interval: Duration(seconds: 1),
-                  color: Colors.grey,
+                    color: Colors.white,
                   colorOpacity: 1,
                   enabled: cubit_step3.shimmer_button,
                   direction: ShimmerDirection.fromLBRT(),

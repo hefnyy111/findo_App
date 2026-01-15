@@ -11,6 +11,7 @@ class StepAccount2Action {
   static void StepAccount_2Action(context, String? value, full_name, username, String? action) {
     var cubit_step2 = StepAccount2Cubit.get(context);
     switch(action) {
+           // ******************************* Next password
       case "next_password": {
          if(cubit_step2.password.text.trim() != cubit_step2.confirm_password.text.trim()) {
           customSnackBarMessage(
@@ -19,9 +20,15 @@ class StepAccount2Action {
             color: Colors.white
             );
          } else {
-          navigatorAndFinish(context, StepAccount3View(full_name: full_name, username: username, password: value!,));
+          navgiatorPush(context, StepAccount3View(full_name: full_name, username: username, password: value,));
          }
       }
+      break;
+           // ******************************* Skip password
+      case 'skip_password': {
+           navgiatorPush(context, StepAccount3View(full_name: full_name, username: username, password: value));
+      }
     }
+    
   }
 }

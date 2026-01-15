@@ -11,5 +11,6 @@ class StepAccount3AddPhotoStates extends StepAccount3States {}
 
 class ProfileImageSelected extends StepAccount3States {
   ProfileImageSelected(file);
-
 }
+
+class ProfileImageLoading extends StepAccount3States {}

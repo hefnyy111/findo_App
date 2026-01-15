@@ -1,4 +1,6 @@
 // features/auth/presentation/verify_code/widgets/field_otp_view.dart
+import 'package:Ascend/features/auth/presentation/sign_in/manager/sign_in_cubit.dart';
+import 'package:Ascend/features/auth/presentation/verify_code/action/verify_code_action.dart';
 import 'package:Ascend/features/auth/presentation/verify_code/manager/verify_code_cubit.dart';
 import 'package:Ascend/features/auth/presentation/verify_code/manager/verify_code_states.dart';
 import 'package:Ascend/shared/core/constants/constants.dart';
@@ -17,6 +19,7 @@ class FieldOtpView extends StatelessWidget {
     required this.endIndex,
     required this.currentBorderr,
   });
+  
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +27,7 @@ class FieldOtpView extends StatelessWidget {
       listener: (context, state) {},
       builder: (context, state) {
         var cubitVerify = VerifyCodeCubit.get(context);
+          final String email = SignInCubit.get(context).email.text.trim();
 
         return ClipRRect(
           borderRadius: BorderRadiusGeometry.circular(20),
@@ -71,43 +75,37 @@ class FieldOtpView extends StatelessWidget {
 
                   return Container(
                     width: 30,
-                    height: 50,
+                    height: 45,
                     alignment: Alignment.center,
                     margin: const EdgeInsets.symmetric(horizontal: 4),
-                    child: TextField(
-                              controller: cubitVerify.controllers[realIndex],
-                              focusNode: cubitVerify.FocusNodee[realIndex],
-                              showCursor: false,
-                              keyboardType: TextInputType.number,
-                              cursorWidth: 0,
-                              enableInteractiveSelection: false,
-                              textAlign: TextAlign.center,
-                              maxLength: 1,
-                              style: const TextStyle(
-                                fontSize: 32,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white,
-                              ),
-                              decoration: const InputDecoration(
-                                hintText: "0",
-                                hintStyle: TextStyle(
+                    child: Center(
+                      child: TextField(
+                                controller: cubitVerify.controllers[realIndex],
+                                focusNode: cubitVerify.FocusNodee[realIndex],
+                                showCursor: false,
+                                keyboardType: TextInputType.number,
+                                cursorWidth: 0,
+                                enableInteractiveSelection: false,
+                                textAlign: TextAlign.center,
+                                maxLength: 1,
+                                style: const TextStyle(
                                   fontSize: 32,
                                   fontWeight: FontWeight.bold,
-                                  color: Colors.white24,
+                                  color: Colors.white,
                                 ),
-                                counterText: "",
-                                border: InputBorder.none,
+                                decoration: const InputDecoration(
+                                  hintText: "0",
+                                  hintStyle: TextStyle(
+                                    fontSize: 32,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white24,
+                                  ),
+                                  counterText: "",
+                                  border: InputBorder.none,
+                                ),
+                                onChanged: (value) => VerifyCodeAction.handleVerifyCode(context, value, realIndex, "verify_code"),
                               ),
-                              onChanged: (value) {
-                                cubitVerify.codeField(
-                                  context,
-                                  value,
-                                  realIndex,
-                                );
-                                // cubitVerify.checkCode();
-                                print(cubitVerify.controllers[0].text);
-                              },
-                            ),
+                    ),
                   );
                 }),
               ),

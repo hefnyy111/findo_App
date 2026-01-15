@@ -21,6 +21,8 @@ class StepAccount3Cubit extends Cubit<StepAccount3States> {
   File? profileImage;
 
   Future<void> pickAndCropImage(ImageSource source) async {
+      emit(ProfileImageLoading());
+
     try {
       final picked = await imagePicker.pickImage(source: source);
       if (picked == null) return;
@@ -59,8 +61,8 @@ class StepAccount3Cubit extends Cubit<StepAccount3States> {
       if (cropped == null) return;
 
       profileImage = File(cropped.path);
-
-      if (cropped == null) return;
+      
+      await Future.delayed(const Duration(seconds: 3));
 
       emit(ProfileImageSelected(File(cropped.path)));
     } catch (er) {

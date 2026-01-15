@@ -14,7 +14,7 @@ import 'package:shimmer_animation/shimmer_animation.dart';
 class StepAccount4View extends StatelessWidget {
   final String full_name;
   final String username;
-  final String password;
+  final String? password;
   final String photo_url;
   
   StepAccount4View({required this.full_name, required this.username, required this.password, required this.photo_url});
@@ -23,7 +23,13 @@ class StepAccount4View extends StatelessWidget {
     return BlocProvider(
       create: (context) => StepAccount4Cubit(),
       child: BlocConsumer<StepAccount4Cubit, StepAccount4States>(
-        listener: (context, state) {},
+        listener: (context, state) {
+          if(state is StepAccount4SuccessAccountStates) {
+            loadingScreen(context, 3, text: 'Please wait to create account...');
+            
+          }
+
+        },
         builder: (context, state) {
           var cubit_step4 = StepAccount4Cubit.get(context);
           return Scaffold(
@@ -31,10 +37,11 @@ class StepAccount4View extends StatelessWidget {
             extendBodyBehindAppBar: true,
             backgroundColor: AppColors.kbackgroundColor,
             appBar: AppBar(
+              automaticallyImplyLeading: false,
               backgroundColor: AppColors.kbackgroundColor,
               leading: customIconback(
                 funtions: () {
-                  GoRouter.of(context).go(AppRouter.kGetStartedView);
+                  Navigator.pop(context);
                 },
               ),
             ),
@@ -49,6 +56,7 @@ class StepAccount4View extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisSize: MainAxisSize.min,
                       children: [
+                        SizedBox(height: 100,),
                         // ******************************* Step Progress
                         StepProgress(currentStep: 4, totalSteps: 4),
                         // ******************************* Sizebox
@@ -159,7 +167,7 @@ class StepAccount4View extends StatelessWidget {
                 child: Shimmer(
                   duration: Duration(seconds: 4),
                   interval: Duration(seconds: 1),
-                  color: Colors.grey,
+                  color: Colors.white, 
                   colorOpacity: 1,
                   enabled: cubit_step4.shimmer_button,
                   direction: ShimmerDirection.fromLBRT(),

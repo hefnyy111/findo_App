@@ -1,7 +1,10 @@
 // features/auth/presentation/verify_code/manager/verify_code_cubit.dart
 import 'dart:async';
 
+import 'package:Ascend/features/auth/data/models/verify_model/verify_code.dart';
+import 'package:Ascend/features/auth/presentation/sign_in/manager/sign_in_cubit.dart';
 import 'package:Ascend/features/auth/presentation/verify_code/manager/verify_code_states.dart';
+import 'package:Ascend/shared/network/dio_helper.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -28,41 +31,88 @@ class VerifyCodeCubit extends Cubit<VerifyCodeStates> {
   }
    
    // ******************************* Checks fields 
-  void codeField(context, String? value, int index) {
-    if(index >= 0 && index <= 2 ) { // لو فاول خانة او الخانة التالتة البوردر يتحط علي اول خانة
-      currentBorder = 1;
-    } else {
-      currentBorder = 2;            // العكس يروح علي تاني بوردر
-    }
-    emit(VerifyCodeChangeCurrentBorderStates());
+    String get otpCode => controllers.map((e) => e.text).join();
+  void codeField(BuildContext context, String? value, int index) {
+  // Border
+  currentBorder = (index <= 2) ? 1 : 2;
+  emit(VerifyCodeChangeCurrentBorderStates());
 
-    if(value!.isNotEmpty && index < 5) {  
-      FocusScope.of(context).requestFocus(FocusNodee[index + 1]);
-    } else if (value.isEmpty && index > 0) {
-      FocusScope.of(context).requestFocus(FocusNodee[index - 1]);
-    }
-    if(index == 5 && value.isNotEmpty) { // لو وصلنا لاخر رقم في الكود يبدأ يتشك بقا
-      checkCode(context);
-      showCodeIncorrect = false;
-    }
+  // Focus control
+  if (value != null && value.isNotEmpty && index < 5) {
+    FocusScope.of(context).requestFocus(FocusNodee[index + 1]);
+  } else if (value != null && value.isEmpty && index > 0) {
+    FocusScope.of(context).requestFocus(FocusNodee[index - 1]);
   }
+
+  // آخر خانة
+  if (index == 5 && value != null && value.isNotEmpty) {
+    // نأجل التنفيذ علشان controller يتحدث
+    Future.delayed(Duration.zero, () {
+      final otp = otpCode;
+
+      print('OTP SENT => [$otp]'); // Debug
+
+      verifyCode(
+        email: SignInCubit.get(context).email.text.trim(),
+        code: otp,
+      ).then((isValid) {
+        checkCode(context, isValid);
+      });
+    });
+  }
+}
  
+  
+  // ******************************* Api verify code
+Future<bool> verifyCode({required String email, required String code}) async {
+  emit(VerificationCodeLoadingState());
+
+  try {
+    final response = await DioHelper.postData(
+      url: "verify_email",
+      data: {
+        "email": email,
+        "code": code,
+      },
+    );
+
+    final verifyCodeModel = VerifyEmailResponse.fromJson(response.data);
+
+    if (verifyCodeModel.nextStep == "home") {
+      print('Go Home');
+      emit(VerificationCodeSuccessGoHomeState());
+      return true;
+    } else if (verifyCodeModel.nextStep == "register") {
+      print('Go Register');
+      emit(VerificationCodeSuccessGoRegisterState());
+      return true;
+      
+    } else {
+      return false;
+    }
+  } catch (er) {
+       print('VERIFY ERROR => $er');
+    emit(VerificationCodeErrorState(er.toString()));
+    return false;
+  }
+}
+
+
   // ******************************* Ckeck code
-  String get otpCode => controllers.map((e) => e.text).join();
-  void checkCode(context) async {
-    // هنا بعد مدخلت اخر رقم البوردر side يتشال وال شميير يبدأ يشتغل
+
+  void checkCode(context, isValid) async {
     startShimmer = true;
     currentBorder = 0;
     emit(VerifyCodeStartChecksBorderStates());
-    print(otpCode);
-
-   await Future.delayed(Duration(seconds: 3), () {
-   if(otpCode == "123456") {
+   
+   await Future.delayed(Duration(seconds: 3));
+   if(isValid) {
+    print(isValid);
     startShimmer = false;
     showCodeSuccess = true;
     Future.delayed(Duration(seconds: 4), () {
     print('success');
-
+    
     });
    } else {
     showCodeIncorrect = true;
@@ -75,8 +125,10 @@ class VerifyCodeCubit extends Cubit<VerifyCodeStates> {
    }
 
    emit(VerifyCodeFinishChecksBorderStates());
-    });
+
   }
+
+
 
   // ******************************* StartTimer
   void startTimeer() {

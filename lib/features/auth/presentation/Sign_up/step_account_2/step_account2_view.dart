@@ -1,4 +1,5 @@
 // features/auth/presentation/Sign_up/step_account_2/step_account2_view.dart
+import 'package:Ascend/features/auth/presentation/Sign_up/step_account_1/step_account1_view.dart';
 import 'package:Ascend/features/auth/presentation/Sign_up/step_account_2/action/step_account2_action.dart';
 import 'package:Ascend/features/auth/presentation/Sign_up/step_account_2/manager/step_account2_cubit.dart';
 import 'package:Ascend/features/auth/presentation/Sign_up/step_account_2/manager/step_account2_states.dart';
@@ -16,9 +17,10 @@ class StepAccount2View extends StatelessWidget {
   final String full_name;
   final String username;
   StepAccount2View({required this.full_name, required this.username});
-
+  
   @override
   Widget build(BuildContext context) {
+
     return BlocProvider(
       create: (context) => StepAccount2Cubit(),
       child: BlocConsumer<StepAccount2Cubit, StepAccount2States>(
@@ -28,10 +30,13 @@ class StepAccount2View extends StatelessWidget {
           return Scaffold(
             backgroundColor: AppColors.kbackgroundColor,
             appBar: AppBar(
+              automaticallyImplyLeading: false,
               backgroundColor: AppColors.kbackgroundColor,
               leading: customIconback(
                 funtions: () {
-                  GoRouter.of(context).go(AppRouter.kGetStartedView);
+                  print('BACK PRESSED');
+
+                  Navigator.pop(context);
                 },
               ),
             ),
@@ -138,7 +143,7 @@ class StepAccount2View extends StatelessWidget {
                     child: Shimmer(
                       duration: Duration(seconds: 4),
                       interval: Duration(seconds: 1),
-                      color: Colors.grey,
+                      color: Colors.white,
                       colorOpacity: 1,
                       enabled: cubit_step2.shimmer_button,
                       direction: ShimmerDirection.fromLBRT(),
@@ -153,8 +158,9 @@ class StepAccount2View extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 15.0),
+
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () => StepAccount2Action.StepAccount_2Action(context, null, full_name, username, "skip_password"),
                     child: Text(
                       'Skip',
                       style: TextStyle(

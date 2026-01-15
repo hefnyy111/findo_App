@@ -42,7 +42,7 @@ Widget BuildSplash() => Column(
     // ====================== Image ======================
     Center(
       child: Image(
-        image: AssetImage('assets/images/logo_acsend.png'),
+        image: AssetImage('assets/Images/logo_acsend.png'),
         height: 165.0,
         width: 165.0,
         fit: BoxFit.cover,

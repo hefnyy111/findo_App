@@ -7,7 +7,8 @@ class StepAccount4Action {
     switch(action) {
       
       case "finish": {
-       cubit_step4.createAccount(display_name: full_name, username: username, password: password, photo_url: photo_url, bio: value!);
+       cubit_step4.createAccount(display_name: full_name, username: username, password: password == null ? "null" : password, photo_url: photo_url, bio: value!);
+
       }
     }
   }

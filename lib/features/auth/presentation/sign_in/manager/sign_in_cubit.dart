@@ -137,6 +137,7 @@ class SignInCubit extends Cubit<SignInStates> {
       );
 
       final login_model = response.data['next_step'];
+      
       if (login_model == "verify_login") {
         print('Done login to homeview');
       } else if (login_model == "verify_register") {

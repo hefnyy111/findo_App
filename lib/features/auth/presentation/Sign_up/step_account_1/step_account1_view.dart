@@ -20,10 +20,11 @@ class StepAccount1View extends StatelessWidget {
       create: (context) => StepAccount1Cubit(),
       child: BlocConsumer<StepAccount1Cubit, StepAccount1States>(
         listener: (context, state) {
+
     if (state is StepAccount1UserAvailableStates) {
        var cubit_step1 = StepAccount1Cubit.get(context);
-      navigatorAndFinish(context, StepAccount2View(full_name: cubit_step1.full_name.text, username: cubit_step1.username.text,));
-      
+      navgiatorPush(context, StepAccount2View(full_name: cubit_step1.full_name.text, username: cubit_step1.username.text));
+
     } else if (state is StepAccount1UserIsTakenStates || state is StepAccount1UserErrorStates) {
       customSnackBarMessage(
         context, 
@@ -41,10 +42,34 @@ class StepAccount1View extends StatelessWidget {
             extendBodyBehindAppBar: true,
             backgroundColor: AppColors.kbackgroundColor,
             appBar: AppBar(
+              automaticallyImplyLeading: false,
             backgroundColor: AppColors.kbackgroundColor,
               leading: customIconback(funtions: () {
-                GoRouter.of(context).go(AppRouter.kGetStartedView);
+                showMessage(context,
+                
+                width1: double.infinity,
+                text1: "Are you sure you want to exit?",
+                text2: "If you exit now, your progress will be\nlost and the account will not be created.\nAre you sure you want to leave?",
+                text_button1: "Exit",
+                text_buttonSize1: 15,
+                textColor_button1: Colors.white,
+                color_buttonBackground1: AppColors.kPrimaryColor,
+
+                text_button2: "Cancel",
+                text1_buttonSize2: 13,
+                textColor_button2: Colors.white,
+                color_buttonBackground2: Colors.transparent,
+                
+                onpressed_button1: () async {
+                await loadingScreen(context, 2);
+                  GoRouter.of(context).go(AppRouter.kGetStartedView);
+                },
+                onpressed_button2: () {
+                  Navigator.pop(context);
+                },
+                );
               }),
+              
             ),
             body: Padding(
               padding: EdgeInsets.all(20.0),
@@ -121,7 +146,7 @@ class StepAccount1View extends StatelessWidget {
               child: Shimmer(
                 duration: Duration(seconds: 4),
                         interval: Duration(seconds: 1),
-                        color: Colors.grey,
+                        color: Colors.white,
                         colorOpacity: 1,
                         enabled: cubit_step1.shimmer_button,
                         direction: ShimmerDirection.fromLBRT(),

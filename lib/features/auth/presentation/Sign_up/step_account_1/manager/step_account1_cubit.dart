@@ -54,15 +54,12 @@ void checkUsername({ required String username }) async {
       },
     );
 
-    print(response.data); 
-
     if (response.data['available'] == true) {
-      emit(StepAccount1UserAvailableStates()); // لو اليوزر محدش عمله قبل كدا
+      emit(StepAccount1UserAvailableStates());
     } else {
-      emit(StepAccount1UserIsTakenStates()); // لو اليوزر حد عمله قبل كدا
+      emit(StepAccount1UserIsTakenStates());
     }
   } catch (e) {
-    print('error: $e');
     emit(StepAccount1UserErrorStates(e.toString()));
   }
 }

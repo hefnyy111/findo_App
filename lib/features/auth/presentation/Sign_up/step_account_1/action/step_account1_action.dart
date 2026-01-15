@@ -12,12 +12,6 @@ class StepAccount1Action {
         cubit_step1.checkUsername(username: cubit_step1.username.text);
       }
 
-    switch (action) {
-      case 'next_details':
-        {
-          cubit_step1.checkUsername(username: cubit_step1.username.text);
-        }
-    }
   };
   }
 }

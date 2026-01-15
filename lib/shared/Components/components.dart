@@ -13,6 +13,13 @@ void navigatorAndFinish(context, widget) {
   );
 }
 
+void navgiatorPush(context, widget) {
+  Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => widget),
+  );
+}
+
 // ====================== Icon back ======================
 Widget customIconback({required VoidCallback funtions}) {
   return IconButton(
@@ -236,24 +243,24 @@ void showMessage(
     barrierDismissible: false,
     builder:
         (context) => Dialog(
-          backgroundColor: Color.fromARGB(255, 24, 24, 26),
+          backgroundColor: AppColors.kbackGroundField,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(16),
           ),
           child: Padding(
             padding: EdgeInsetsGeometry.symmetric(vertical: 20, horizontal: 15),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
               mainAxisSize: MainAxisSize.min,
               children: [
                 // ******************************* Text 1
                 Text(
                   text1 ?? "",
-                  textAlign: TextAlign.start,
+                  textAlign: TextAlign.center,
                   style: TextStyle(
-                    color: AppColors.kGreyColor,
-                    fontSize: 12.0,
+                    color: Colors.white,
+                    fontSize: 15.0,
                     fontWeight: FontWeight.w500,
                     height: 1.7,
                   ),
@@ -263,16 +270,16 @@ void showMessage(
                   const SizedBox(height: 15),
                   Text(
                     text2 ?? "",
-                    textAlign: TextAlign.start,
+                    textAlign: TextAlign.center,
                     style: const TextStyle(
-                      color: Colors.black87,
+                      color: AppColors.kGreyColor,
                       fontWeight: FontWeight.w500,
-                      fontSize: 10.0,
+                      fontSize: 13.0,
                     ),
                   ),
                 ],
 
-                const SizedBox(height: 15),
+                const SizedBox(height: 20),
                 // ******************************* Button 1
                 Align(
                   alignment: alignment1 ?? Alignment.center,
@@ -280,10 +287,8 @@ void showMessage(
                     width: width1,
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor:
-                            color_buttonBackground1 ?? AppColors.kPrimaryColor,
-                        side: BorderSide(
-                          color: color_buttonSide1 ?? AppColors.kPrimaryColor,
+                        backgroundColor: color_buttonBackground1 ?? AppColors.kPrimaryColor,
+                        side: BorderSide( color: color_buttonSide1 ?? AppColors.kPrimaryColor,
                         ),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(25),
@@ -312,7 +317,7 @@ void showMessage(
                       child: OutlinedButton(
                         style: OutlinedButton.styleFrom(
                           backgroundColor: color_buttonBackground2,
-                          side: BorderSide(color: color_buttonSide2!),
+                          side: BorderSide(color: color_buttonSide2 ?? color_buttonBackground2!),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(25),
                           ),
@@ -339,7 +344,7 @@ void showMessage(
 }
 
 // ====================== Custom Loading ======================
-Future<dynamic> loadingScreen(context, int secondes) {
+Future<dynamic> loadingScreen(context, int secondes, {String? text}) async {
  Future.delayed(Duration(seconds: secondes), () {
   if(Navigator.of(context).canPop()) {
      Navigator.pop(context);
@@ -353,24 +358,42 @@ Future<dynamic> loadingScreen(context, int secondes) {
         width: double.infinity,
         height: double.infinity,
         color: Colors.black.withOpacity(0.5),
-        child: Center(
-          child: Lottie.asset(
-            'assets/Images/Auth/loading/loading_circle.json',
-            width: 140,
-            height: 140,
-            fit: BoxFit.contain,
-            delegates: LottieDelegates(values: [
-              ValueDelegate.color(
-                value:AppColors.kPrimaryColor,
-                const ["**"],
+        child: Scaffold(
+          backgroundColor: Colors.transparent,
+          body: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Center(
+                child: Lottie.asset(
+                  'assets/Images/Auth/loading/loading_circle.json',
+                  width: 140,
+                  height: 140,
+                  fit: BoxFit.contain,
+                  delegates: LottieDelegates(values: [
+                    ValueDelegate.color(
+                      value:AppColors.kPrimaryColor,
+                      const ["**"],
+                    ),
+              
+                  ])
+              
+                ),
               ),
-
-            ])
-
+              SizedBox(height: 15.0,),
+              Text(text ?? "",
+               style: TextStyle(
+                color: Colors.white,
+                fontSize: 16,
+                fontWeight: FontWeight.w500
+               ),
+               ),
+            ],
           ),
         ),
       );
     },
     barrierDismissible: false,
   );
+
 }

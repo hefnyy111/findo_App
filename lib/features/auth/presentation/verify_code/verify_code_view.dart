@@ -4,12 +4,14 @@ import 'package:Ascend/features/auth/presentation/verify_code/manager/verify_cod
 import 'package:Ascend/features/auth/presentation/verify_code/manager/verify_code_states.dart';
 import 'package:Ascend/features/auth/presentation/verify_code/widgets/field_otp_view.dart';
 import 'package:Ascend/shared/Components/components.dart';
+import 'package:Ascend/shared/core/constants/app_router.dart';
 import 'package:Ascend/shared/core/constants/constants.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class VerifyCodeView extends StatelessWidget {
   const VerifyCodeView({super.key});
@@ -19,7 +21,17 @@ class VerifyCodeView extends StatelessWidget {
     return BlocProvider(
       create: (context) => VerifyCodeCubit()..initFields(),
       child: BlocConsumer<VerifyCodeCubit, VerifyCodeStates>(
-        listener: (context, state) {},
+        listener: (context, state) async {
+          if(state is VerificationCodeSuccessGoHomeState) {
+
+          print('HomeView');
+          } else if(state is VerificationCodeSuccessGoRegisterState) {
+
+          print('Register');
+          } else {
+          print('error');
+          }
+        },
         builder:(context, state) {
              var cubitVerify = VerifyCodeCubit.get(context);
              var cubit_SignIn = SignInCubit.get(context).isPhoneSelected;
