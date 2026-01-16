@@ -23,7 +23,7 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   await Firebase.initializeApp();
   print("🔹 Background message received: ${message.data}");
 }
-
+ 
 void main() async {
   Bloc.observer = AppBlocObserver();
   WidgetsFlutterBinding.ensureInitialized();
@@ -37,8 +37,8 @@ void main() async {
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
   await NotificationService().init();
   
-  // runApp(DevicePreview(enabled: true, builder: (context) => const MyApp()));
-   runApp(const MyApp());
+  runApp(DevicePreview(enabled: true, builder: (context) => const MyApp()));
+
 }
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
