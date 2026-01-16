@@ -12,12 +12,12 @@ class StepAccount1Action {
     var cubit_step1 = StepAccount1Cubit.get(context);
 
     switch(action) {
-      // ******************************* Next => 2
+       // ******************************* Next => 2
       case 'next_details': {
         cubit_step1.checkUsername(username: cubit_step1.username.text);
       }
       break;
-      // ******************************* Back to home
+       // ******************************* Back to home
       case 'back_home': {
          showMessage(context,
                 
