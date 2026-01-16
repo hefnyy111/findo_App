@@ -82,6 +82,7 @@ class GetStartedView extends StatelessWidget {
               ),
             ),
           ),
+          
           // ******************************* Button Navigate
           bottomNavigationBar: Padding(
             padding: const EdgeInsets.symmetric(

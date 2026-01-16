@@ -8,7 +8,7 @@ import 'package:go_router/go_router.dart';
 
 class StepAccount2Action {
 
-  static void StepAccount_2Action(context, String? value, full_name, username, String? action) {
+  static void StepAccount_2Action(context, full_name, username, String? action, {String? value}) {
     var cubit_step2 = StepAccount2Cubit.get(context);
     switch(action) {
            // ******************************* Next password
@@ -28,6 +28,12 @@ class StepAccount2Action {
       case 'skip_password': {
            navgiatorPush(context, StepAccount3View(full_name: full_name, username: username, password: value));
       }
+      break;
+       // ******************************* Back => 1
+       case 'back_step1': {
+                  print('BACK PRESSED');
+                  Navigator.pop(context);
+       }
     }
     
   }

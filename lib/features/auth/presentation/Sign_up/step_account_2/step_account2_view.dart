@@ -33,11 +33,7 @@ class StepAccount2View extends StatelessWidget {
               automaticallyImplyLeading: false,
               backgroundColor: AppColors.kbackgroundColor,
               leading: customIconback(
-                funtions: () {
-                  print('BACK PRESSED');
-
-                  Navigator.pop(context);
-                },
+                funtions: () => StepAccount2Action.StepAccount_2Action(context, full_name, username, "back_step1"),
               ),
             ),
             body: Padding(
@@ -93,7 +89,7 @@ class StepAccount2View extends StatelessWidget {
                           onClickButton:
                               () => StepAccount2Action.StepAccount_2Action(
                                 context,
-                                value,
+                                value: value,
                                 full_name,
                                 username,
                                 "next_password",
@@ -114,7 +110,7 @@ class StepAccount2View extends StatelessWidget {
                           onClickButton:
                               () => StepAccount2Action.StepAccount_2Action(
                                 context,
-                                value,
+                                value: value,
                                 full_name,
                                 username,
                                 "next_password",
@@ -131,6 +127,7 @@ class StepAccount2View extends StatelessWidget {
                 ),
               ),
             ),
+
             // ******************************* Button Next
             bottomNavigationBar: Padding(
               padding: EdgeInsets.all(24),
@@ -160,7 +157,7 @@ class StepAccount2View extends StatelessWidget {
                   SizedBox(height: 15.0),
 
                   TextButton(
-                    onPressed: () => StepAccount2Action.StepAccount_2Action(context, null, full_name, username, "skip_password"),
+                    onPressed: () => StepAccount2Action.StepAccount_2Action(context, value: null, full_name, username, "skip_password"),
                     child: Text(
                       'Skip',
                       style: TextStyle(

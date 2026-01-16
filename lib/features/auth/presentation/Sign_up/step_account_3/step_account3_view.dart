@@ -7,6 +7,7 @@ import 'package:Ascend/features/auth/presentation/Sign_up/step_account_3/manager
 import 'package:Ascend/features/auth/presentation/Sign_up/step_account_3/manager/step_account3_states.dart';
 import 'package:Ascend/features/auth/presentation/Sign_up/step_account_3/widgets/DashedBorderPainter.dart';
 import 'package:Ascend/features/auth/presentation/Sign_up/step_account_3/widgets/show_bottom_sheet.dart';
+import 'package:Ascend/features/auth/presentation/Sign_up/step_account_3/widgets/upload_photo.dart';
 import 'package:Ascend/features/auth/presentation/Sign_up/widgets/step_progress.dart';
 import 'package:Ascend/shared/Components/components.dart';
 import 'package:Ascend/shared/core/constants/app_router.dart';
@@ -44,9 +45,7 @@ class StepAccount3View extends StatelessWidget {
               automaticallyImplyLeading: false,
               backgroundColor: AppColors.kbackgroundColor,
               leading: customIconback(
-                funtions: () {
-                  Navigator.pop(context);
-                },
+                funtions: () => StepAccount3Action.StepAccount_3Action(full_name, username, password, context, "back_step2"),
               ),
             ),
             body: Padding(
@@ -92,100 +91,7 @@ class StepAccount3View extends StatelessWidget {
                     SizedBox(height: 60.0),
                 
                     // ******************************* Avatar
-                    Stack(
-                      alignment: Alignment.center,
-                      children: [
-                        // ************** الخط المتقطع حوالين الصورة
-                        SizedBox(
-                          width: 220,
-                          height: 220,
-                          child: CustomPaint(painter: DashedBorderPainter()),
-                        ),
-                
-                        // ************** الصورة
-                        ConditionalBuilder(
-                          condition: state is! ProfileImageLoading,
-                          builder: (context) {
-                          return CircleAvatar(
-                            radius: 100,
-                            backgroundColor: AppColors.kbackGroundField,
-                            child: ClipOval(
-                              child: cubit_step3.profileImage != null  ?
-                               Image.file(File(cubit_step3.profileImage!.path),
-                               width: 240,
-                               height: 240,
-                               fit: BoxFit.cover,
-                               ) :
-                               Image.network(
-                                'src', // حط لينك الصورة هنا
-                                fit: BoxFit.cover,
-                                width: 240,
-                                height: 240,
-                                loadingBuilder: (context, child, loadingProgress) {
-                                  if (loadingProgress == null) return child;
-                                  return const Center(
-                                    child: CircularProgressIndicator(),
-                                  );
-                                },
-                                errorBuilder:
-                                    (context, error, stackTrace) => const Icon(
-                                      Icons.person,
-                                      size: 100,
-                                      color: Colors.grey,
-                                    ),
-                              ),
-                            ),
-                          );
-                          
-                          },
-                          fallback: (context) => CircularProgressIndicator(color: AppColors.kPrimaryColor,)
-                        ),
-                
-                        // ************** زرار الكاميرا
-                        Positioned(
-                          bottom: 8,
-                          right: 8,
-                          child: Container(
-                            width: 45,
-                            height: 45,
-                            decoration: BoxDecoration(
-                              color: AppColors.kPrimaryColor,
-                              shape: BoxShape.circle,
-                              border: Border.all(color: Colors.black, width: 1),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.black.withOpacity(0.3),
-                                  blurRadius: 6,
-                                  offset: const Offset(0, 3),
-                                ),
-                              ],
-                            ),
-                            child: IconButton(
-                              onPressed: () {
-                                showModelBottomSheet(
-                                  context,
-                                  onPressed1: () async {
-                                    await cubit_step3.pickAndCropImage( ImageSource.camera,);
-                                    cubit_step3.changeButton(onClickButton: () => StepAccount3Action.StepAccount_3Action(full_name, username, password, context, "next_step4"));
-                                  },
-                                  onPressed2: () async {
-                                    await cubit_step3.pickAndCropImage(ImageSource.gallery,);
-                                     cubit_step3.changeButton(onClickButton: () => StepAccount3Action.StepAccount_3Action(full_name, username, password, context, "next_step4"));
-                                  },
-                                );
-                              },
-                              
-                              // cubit_step3.pickAndCropImage,
-                              icon: Icon(
-                                Icons.add_a_photo,
-                                color: Colors.white,
-                                size: 24,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
+                    UploadPhoto(fullName: full_name, username: username, password: password.toString()),
                   ],
                 ),
               ),

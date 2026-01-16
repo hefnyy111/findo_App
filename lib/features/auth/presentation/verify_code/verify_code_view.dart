@@ -26,7 +26,7 @@ class VerifyCodeView extends StatelessWidget {
 
           print('HomeView');
           } else if(state is VerificationCodeSuccessGoRegisterState) {
-
+          GoRouter.of(context).push(AppRouter.kStepAccount1View);
           print('Register');
           } else {
           print('error');

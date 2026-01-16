@@ -166,16 +166,14 @@ Widget customTextField({
     inputFormatters: inputFormatters,
     maxLength: length, // length
     decoration: InputDecoration(
+      counter: null,
       counterText: "",
       label: Text(text, style: TextStyle(color: Colors.white)),
       labelStyle: const TextStyle(color: Color(0xFF9E9E9E), fontSize: 13),
       prefixIcon: prefixIcon,
       prefixIconConstraints: BoxConstraints(minWidth: 0, minHeight: 0),
       contentPadding: EdgeInsets.zero,
-      suffixIcon:
-          suffixIcon != null
-              ? IconButton(onPressed: onSuffixPressed, icon: suffixIcon)
-              : null,
+      suffixIcon: suffixIcon != null ? IconButton(onPressed: onSuffixPressed, icon: suffixIcon) : null,
 
       // ===== البوردر الخطّي =====
       enabledBorder: const UnderlineInputBorder(

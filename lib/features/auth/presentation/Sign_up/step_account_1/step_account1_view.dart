@@ -44,31 +44,7 @@ class StepAccount1View extends StatelessWidget {
             appBar: AppBar(
               automaticallyImplyLeading: false,
             backgroundColor: AppColors.kbackgroundColor,
-              leading: customIconback(funtions: () {
-                showMessage(context,
-                
-                width1: double.infinity,
-                text1: "Are you sure you want to exit?",
-                text2: "If you exit now, your progress will be\nlost and the account will not be created.\nAre you sure you want to leave?",
-                text_button1: "Exit",
-                text_buttonSize1: 15,
-                textColor_button1: Colors.white,
-                color_buttonBackground1: AppColors.kPrimaryColor,
-
-                text_button2: "Cancel",
-                text1_buttonSize2: 13,
-                textColor_button2: Colors.white,
-                color_buttonBackground2: Colors.transparent,
-                
-                onpressed_button1: () async {
-                await loadingScreen(context, 2);
-                  GoRouter.of(context).go(AppRouter.kGetStartedView);
-                },
-                onpressed_button2: () {
-                  Navigator.pop(context);
-                },
-                );
-              }),
+              leading: customIconback(funtions: () => StepAccount1Action.StepAccount_1Action(context, "back_home")),
               
             ),
             body: Padding(
@@ -118,7 +94,7 @@ class StepAccount1View extends StatelessWidget {
                       controller: cubit_step1.full_name,
                       validate: (value) {},
                       onChanged: (value) {
-                         cubit_step1.changeButton(value, onClickButton: () => StepAccount1Action.StepAccount_1Action(context, value, "next_details"),);
+                         cubit_step1.changeButton(value, onClickButton: () => StepAccount1Action.StepAccount_1Action(context, value: value, "next_details"),);
                       },
                       text: "Full name",
                     ),
@@ -130,7 +106,7 @@ class StepAccount1View extends StatelessWidget {
                       controller: cubit_step1.username,
                       validate: (value) {},
                       onChanged: (value) {
-                        cubit_step1.changeButton(value, onClickButton: () => StepAccount1Action.StepAccount_1Action(context, value, "next_details"),);
+                        cubit_step1.changeButton(value, onClickButton: () => StepAccount1Action.StepAccount_1Action(context, value: value, "next_details"),);
                       },
                       text: "Username",
                     ),

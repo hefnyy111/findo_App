@@ -4,6 +4,7 @@ import 'package:Ascend/features/auth/presentation/Sign_up/step_account_3/manager
 import 'package:Ascend/features/auth/presentation/Sign_up/step_account_4/step_account4_view.dart';
 import 'package:Ascend/shared/Components/components.dart';
 import 'package:Ascend/shared/core/constants/app_router.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
 
 class StepAccount3Action {
@@ -20,6 +21,12 @@ class StepAccount3Action {
         print('Path ${cubit_step3.profileImage!.path}');
         navgiatorPush(context, StepAccount4View(full_name: full_name, username: username, password: password, photo_url: cubit_step3.profileImage!.path.trim(),));
        }
+      }
+      break;
+      
+      // ******************************* Back => 2
+      case 'back_step2': {
+         Navigator.pop(context);
       }
     }
   }

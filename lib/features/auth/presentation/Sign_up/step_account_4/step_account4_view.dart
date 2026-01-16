@@ -2,6 +2,7 @@
 import 'package:Ascend/features/auth/presentation/Sign_up/step_account_4/action/step_account4_action.dart';
 import 'package:Ascend/features/auth/presentation/Sign_up/step_account_4/manager/step_account4_cubit.dart';
 import 'package:Ascend/features/auth/presentation/Sign_up/step_account_4/manager/step_account4_states.dart';
+import 'package:Ascend/features/auth/presentation/Sign_up/step_account_4/widgets/about_me.dart';
 import 'package:Ascend/features/auth/presentation/Sign_up/widgets/step_progress.dart';
 import 'package:Ascend/shared/Components/components.dart';
 import 'package:Ascend/shared/core/constants/app_router.dart';
@@ -40,9 +41,7 @@ class StepAccount4View extends StatelessWidget {
               automaticallyImplyLeading: false,
               backgroundColor: AppColors.kbackgroundColor,
               leading: customIconback(
-                funtions: () {
-                  Navigator.pop(context);
-                },
+                funtions: () => StepAccount4Action.StepAccount_4Action(full_name, username, password, photo_url, context, "back_step3"),
               ),
             ),
             body: Padding(
@@ -91,67 +90,7 @@ class StepAccount4View extends StatelessWidget {
                         // ******************************* Sizebox
                         SizedBox(height: 60.0),
                         // ******************************* Bio
-                        Container(
-                          width: double.infinity,
-                          height: 200,
-                          decoration: BoxDecoration(
-                            color: AppColors.kbackGroundField,
-                            borderRadius: BorderRadius.circular(15),
-                            boxShadow: [
-                              BoxShadow(
-                                color: AppColors.kPrimaryColor,
-                                offset: Offset(0, 2),
-                                blurRadius: 4,
-                              )
-                            ],
-                          ),
-                          
-                          child: Padding(
-                            padding: const EdgeInsets.all(15.0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                // ************** Description
-                                Text('About me',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 14,
-                                ),
-                                ),
-                                SizedBox(height: 10.0,),
-                                // ************** Field
-                                Expanded(
-                                  child: TextField(
-                                    keyboardType: TextInputType.multiline,
-                                    maxLines: 8,
-                                    maxLength: 500,
-                                    controller: cubit_step4.bio,
-                                    cursorColor: AppColors.kPrimaryColor,
-                                    style: TextStyle(color: Colors.white, fontSize: 12),
-                                    onChanged: (value) {
-                                      cubit_step4.changeButton(value, onClickButton: () => StepAccount4Action.StepAccount_4Action(full_name,username,password,photo_url, context, value, "finish")
-                                      );
-                                    },
-                                    decoration: InputDecoration(
-                                      hintText: 'Write something about yourself here',
-                                      hintStyle: TextStyle(color: Colors.grey[500], fontSize: 12),
-                                      counterText: "${cubit_step4.bio.text.length}/500 characters",
-                                      counterStyle: TextStyle(color: AppColors.kGreyColor),
-                                      filled: true,
-                                      fillColor: AppColors.kbackgroundColor,
-                                      border: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(15),
-                                        borderSide: BorderSide.none
-                                      ),
-                                      contentPadding: EdgeInsets.all(10)
-                                    ),
-                                  ),
-                                ),
-                    
-                              ],
-                            ),
-                          ),
-                        ),
+                        AboutMe(full_name: full_name, username: username, password: password.toString(), photo_url: photo_url),
                     
                       ],
                     ),
