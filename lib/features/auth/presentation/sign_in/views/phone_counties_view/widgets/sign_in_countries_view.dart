@@ -22,7 +22,7 @@ class SignInCountriesView extends StatelessWidget {
           );
         });
         return Scaffold(
-          backgroundColor: Colors.black,
+          backgroundColor: AppColors.kbackgroundColor,
           appBar: cubit_signin.showSearch == true ? buildAppar_true(context, cubit_signin) : buildAppar_false(context),
 
           body: Padding(
@@ -77,7 +77,7 @@ class SignInCountriesView extends StatelessWidget {
 
 // ******************************* Appar (true)
 AppBar buildAppar_true(context, SignInCubit cubit_signin) => AppBar(
-  backgroundColor: Colors.black,
+  backgroundColor: AppColors.kbackgroundColor,
   automaticallyImplyLeading: false,
   title: Padding(
     padding: const EdgeInsets.symmetric(vertical: 5.0),
@@ -113,6 +113,7 @@ AppBar buildAppar_true(context, SignInCubit cubit_signin) => AppBar(
               child: TextField(
                 controller: cubit_signin.searchController,
                 autofocus: true,
+                textAlignVertical: TextAlignVertical.center, 
                 onChanged: (value) {
                   cubit_signin.updateSearchQuery(value);
                 },
@@ -136,7 +137,9 @@ AppBar buildAppar_true(context, SignInCubit cubit_signin) => AppBar(
                           )
                           : null,
                   border: InputBorder.none,
-                  contentPadding: const EdgeInsets.symmetric(vertical: 14),
+                  isDense: true,
+                  
+                  contentPadding: const EdgeInsets.symmetric(vertical: 8),
                 ),
               ),
             ),
@@ -151,7 +154,7 @@ AppBar buildAppar_true(context, SignInCubit cubit_signin) => AppBar(
 
 // ******************************* Appar (false)
 AppBar buildAppar_false(context) => AppBar(
-  backgroundColor: Colors.black,
+  backgroundColor: AppColors.kbackgroundColor,
   automaticallyImplyLeading: false,
   leading: customIconback(
     funtions: () => SignInAction.signInButtonPress(context, "back_signin"),

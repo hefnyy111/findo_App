@@ -1,5 +1,6 @@
 // features/auth/presentation/verify_code/verify_code_view.dart
 import 'package:Ascend/features/auth/presentation/sign_in/manager/sign_in_cubit.dart';
+import 'package:Ascend/features/auth/presentation/verify_code/action/verify_code_action.dart';
 import 'package:Ascend/features/auth/presentation/verify_code/manager/verify_code_cubit.dart';
 import 'package:Ascend/features/auth/presentation/verify_code/manager/verify_code_states.dart';
 import 'package:Ascend/features/auth/presentation/verify_code/widgets/field_otp_view.dart';
@@ -21,23 +22,38 @@ class VerifyCodeView extends StatelessWidget {
     return BlocProvider(
       create: (context) => VerifyCodeCubit()..initFields(),
       child: BlocConsumer<VerifyCodeCubit, VerifyCodeStates>(
-        listener: (context, state) async {
+        listener: (context, state) {
+          
+          Future.delayed(Duration(seconds: 5), () async {
+            
           if(state is VerificationCodeSuccessGoHomeState) {
-
+          await loadingScreen(context, 3, text: "Loading...");
+          GoRouter.of(context).push(AppRouter.kHomeView);
           print('HomeView');
           } else if(state is VerificationCodeSuccessGoRegisterState) {
+          await loadingScreen(context, 3, text: "Loading...");
           GoRouter.of(context).push(AppRouter.kStepAccount1View);
           print('Register');
           } else {
           print('error');
           }
+
+          });
+
         },
+        
         builder:(context, state) {
              var cubitVerify = VerifyCodeCubit.get(context);
              var cubit_SignIn = SignInCubit.get(context).isPhoneSelected;
              String phone = cubit_SignIn ? "phone" : "email";
+
           return Scaffold(
-            backgroundColor: Colors.black,
+            appBar: AppBar(
+              backgroundColor: AppColors.kbackgroundColor,
+              leading: customIconback(funtions: () => VerifyCodeAction.handleVerifyCode(context, "back_getstarted"),
+            ),
+            ),
+            backgroundColor: AppColors.kbackgroundColor,
             body: Padding(
               padding: EdgeInsets.all(24),
               child: SingleChildScrollView(
@@ -73,6 +89,7 @@ class VerifyCodeView extends StatelessWidget {
                   // ******************************* Code incorrect
                   if(cubitVerify.showCodeIncorrect) ...[
                   const SizedBox(height: 20,),
+
                   Container(
                         padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                         decoration: BoxDecoration(

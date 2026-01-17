@@ -19,7 +19,6 @@ class FieldOtpView extends StatelessWidget {
     required this.endIndex,
     required this.currentBorderr,
   });
-  
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +26,7 @@ class FieldOtpView extends StatelessWidget {
       listener: (context, state) {},
       builder: (context, state) {
         var cubitVerify = VerifyCodeCubit.get(context);
-          final String email = SignInCubit.get(context).email.text.trim();
+        final String email = SignInCubit.get(context).email.text.trim();
 
         return ClipRRect(
           borderRadius: BorderRadiusGeometry.circular(20),
@@ -39,10 +38,14 @@ class FieldOtpView extends StatelessWidget {
             enabled: cubitVerify.startShimmer,
             direction: ShimmerDirection.fromLBRT(),
             child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 6),
+              padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
               decoration: BoxDecoration(
-                color: cubitVerify.showCodeSuccess ? AppColors.kbutton_disabel : AppColors.kbackGroundField,
-                border: cubitVerify.currentBorder == currentBorderr
+                color:
+                    cubitVerify.showCodeSuccess
+                        ? AppColors.kbutton_disabel
+                        : AppColors.kbackGroundField,
+                border:
+                    cubitVerify.currentBorder == currentBorderr
                         ? Border.all(color: AppColors.kPrimaryColor, width: 2)
                         : Border.all(
                           color: AppColors.kbackgroundColor,
@@ -50,65 +53,85 @@ class FieldOtpView extends StatelessWidget {
                         ), // بوردر عريض
                 borderRadius: BorderRadius.circular(20),
               ),
-              child: cubitVerify.showCodeSuccess ? SizedBox(
-                              height: 60,
-                              width: 120,
-                              child: Center(
-                                child: Lottie.asset(
-                                  'assets/Images/Auth/Animations/success.json',
-                                  width: 85,
-                                  height: 85,
-                                  repeat: false,
-                                  delegates: LottieDelegates(
-                                    values: [
-                                      ValueDelegate.color(const [
-                                        '**',
-                                      ], value: AppColors.kPrimaryColor),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ) : Row(
-                mainAxisSize: MainAxisSize.min,
-                children: List.generate(endIndex - startIndex, (index) {
-                  final realIndex = startIndex + index;
+              child: cubitVerify.showCodeSuccess
+                      ? SizedBox(
+                        height: 60,
+                        width: 120,
+                        child: Center(
+                          child: Lottie.asset(
+                            'assets/Images/Auth/Animations/success.json',
+                            width: 85,
+                            height: 85,
+                            repeat: false,
+                            delegates: LottieDelegates(
+                              values: [
+                                ValueDelegate.color(const [
+                                  '**',
+                                ], value: AppColors.kPrimaryColor),
+                              ],
+                            ),
+                          ),
+                        ),
+                      )
+                      : Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: List.generate(endIndex - startIndex, (index) {
+                          final realIndex = startIndex + index;
 
-                  return Container(
-                    width: 30,
-                    height: 45,
-                    alignment: Alignment.center,
-                    margin: const EdgeInsets.symmetric(horizontal: 4),
-                    child: Center(
-                      child: TextField(
+                          return Container(
+                            width: 30,
+                            height: 45,
+                            alignment: Alignment.center,
+                            margin: const EdgeInsets.symmetric(
+                              horizontal: 4,
+                              vertical: 6,
+                            ),
+                            child: Center(
+                              child: TextField(
                                 controller: cubitVerify.controllers[realIndex],
                                 focusNode: cubitVerify.FocusNodee[realIndex],
                                 showCursor: false,
                                 keyboardType: TextInputType.number,
-                                cursorWidth: 0,
                                 enableInteractiveSelection: false,
-                                textAlign: TextAlign.center,
                                 maxLength: 1,
+                                textAlign: TextAlign.center,
+                                textAlignVertical: TextAlignVertical.center, 
+
                                 style: const TextStyle(
                                   fontSize: 32,
                                   fontWeight: FontWeight.bold,
                                   color: Colors.white,
+                                  height: 1.0, 
                                 ),
+
                                 decoration: const InputDecoration(
                                   hintText: "0",
+                                  counterText: "",
+                                  border: InputBorder.none,
+                                  isDense: true,
+                                  contentPadding: EdgeInsets.zero,
                                   hintStyle: TextStyle(
                                     fontSize: 32,
                                     fontWeight: FontWeight.bold,
                                     color: Colors.white24,
+                                    height: 1.0, 
                                   ),
-                                  counterText: "",
-                                  border: InputBorder.none,
                                 ),
-                                onChanged: (value) => VerifyCodeAction.handleVerifyCode(context, value, realIndex, "verify_code"),
+
+                                onChanged:
+                                    (value) =>
+                                        VerifyCodeAction.handleVerifyCode(
+                                          context,
+                                          value: value,
+                                          realIndex: realIndex,
+                                          "verify_code",
+
+                                        ),
                               ),
-                    ),
-                  );
-                }),
-              ),
+                            ),
+                          );
+                        }),
+                      ),
             ),
           ),
         );

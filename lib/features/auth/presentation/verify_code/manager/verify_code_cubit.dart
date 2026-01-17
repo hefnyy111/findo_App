@@ -4,9 +4,12 @@ import 'dart:async';
 import 'package:Ascend/features/auth/data/models/verify_model/verify_code.dart';
 import 'package:Ascend/features/auth/presentation/sign_in/manager/sign_in_cubit.dart';
 import 'package:Ascend/features/auth/presentation/verify_code/manager/verify_code_states.dart';
+import 'package:Ascend/shared/Components/components.dart';
+import 'package:Ascend/shared/core/constants/app_router.dart';
 import 'package:Ascend/shared/network/dio_helper.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class VerifyCodeCubit extends Cubit<VerifyCodeStates> {
   VerifyCodeCubit() : super(VerifyCodeInitialStates());
@@ -63,7 +66,7 @@ class VerifyCodeCubit extends Cubit<VerifyCodeStates> {
 }
  
   
-  // ******************************* Api verify code
+  // ******************************* Api verify code ( Email )
 Future<bool> verifyCode({required String email, required String code}) async {
   emit(VerificationCodeLoadingState());
 
@@ -97,6 +100,10 @@ Future<bool> verifyCode({required String email, required String code}) async {
   }
 }
 
+ // ******************************* Api verify code ( Phone )
+ Future<bool> verifyCodePhone({required String phone, required String code}) async {
+
+ }
 
   // ******************************* Ckeck code
 
@@ -110,8 +117,8 @@ Future<bool> verifyCode({required String email, required String code}) async {
     print(isValid);
     startShimmer = false;
     showCodeSuccess = true;
-    Future.delayed(Duration(seconds: 4), () {
-    print('success');
+    Future.delayed(Duration(seconds: 4), () async {
+      print('success');
     
     });
    } else {

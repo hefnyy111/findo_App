@@ -350,48 +350,61 @@ Future<dynamic> loadingScreen(context, int secondes, {String? text}) async {
  });
  
  return showDialog(
-    context: context,
-    builder: (BuildContext) {
-      return Container(
-        width: double.infinity,
-        height: double.infinity,
-        color: Colors.black.withOpacity(0.5),
-        child: Scaffold(
-          backgroundColor: Colors.transparent,
-          body: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
+  context: context,
+  barrierDismissible: false,
+  barrierColor: Colors.black.withOpacity(0.45),
+  builder: (_) {
+    return Center(
+      child: Material(
+        color: Colors.transparent,
+        child: Container(
+          width: 220,
+          padding: const EdgeInsets.symmetric(
+            vertical: 24,
+            horizontal: 20,
+          ),
+          decoration: BoxDecoration(
+            color: const Color(0xFF1E1E1E),
+            borderRadius: BorderRadius.circular(20),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.3),
+                blurRadius: 20,
+                offset: const Offset(0, 8),
+              ),
+            ],
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
             children: [
-              Center(
-                child: Lottie.asset(
-                  'assets/Images/Auth/loading/loading_circle.json',
-                  width: 140,
-                  height: 140,
-                  fit: BoxFit.contain,
-                  delegates: LottieDelegates(values: [
+              Lottie.asset(
+                'assets/Images/Auth/loading/loading_circle.json',
+                width: 90,
+                height: 90,
+                delegates: LottieDelegates(
+                  values: [
                     ValueDelegate.color(
-                      value:AppColors.kPrimaryColor,
-                      const ["**"],
+                      const ['**'],
+                      value: AppColors.kPrimaryColor,
                     ),
-              
-                  ])
-              
+                  ],
                 ),
               ),
-              SizedBox(height: 15.0,),
-              Text(text ?? "",
-               style: TextStyle(
-                color: Colors.white,
-                fontSize: 16,
-                fontWeight: FontWeight.w500
-               ),
-               ),
+              const SizedBox(height: 5),
+              Text(
+                text ?? 'Loading...',
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 15,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
             ],
           ),
         ),
-      );
-    },
-    barrierDismissible: false,
-  );
-
+      ),
+    );
+  },
+);
 }

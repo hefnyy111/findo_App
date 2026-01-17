@@ -1,4 +1,5 @@
 // features/auth/presentation/Sign_up/step_account_4/step_account4_view.dart
+import 'package:Ascend/features/Home/home.dart';
 import 'package:Ascend/features/auth/presentation/Sign_up/step_account_4/action/step_account4_action.dart';
 import 'package:Ascend/features/auth/presentation/Sign_up/step_account_4/manager/step_account4_cubit.dart';
 import 'package:Ascend/features/auth/presentation/Sign_up/step_account_4/manager/step_account4_states.dart';
@@ -24,9 +25,10 @@ class StepAccount4View extends StatelessWidget {
     return BlocProvider(
       create: (context) => StepAccount4Cubit(),
       child: BlocConsumer<StepAccount4Cubit, StepAccount4States>(
-        listener: (context, state) {
+        listener: (context, state) async {
           if(state is StepAccount4SuccessAccountStates) {
-            loadingScreen(context, 3, text: 'Please wait to create account...');
+           await loadingScreen(context, 3, text: 'Please wait to create account...');
+            navigatorAndFinish(context, Home());
             
           }
 
